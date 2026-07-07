@@ -24,10 +24,14 @@ export default function Home() {
         Teto: CMED/Anvisa (lista de jun/2026), calculado com o ICMS de 19% de Goiás · De graça: lista do
         Farmácia Popular de jun/2026. Projeto de portfólio, sem fins comerciais — não substitui médico
         nem farmacêutico.
-        <br />
-        <Link href="/metodologia" className="foot-link">
-          Como calculamos isso — fontes e metodologia →
-        </Link>
+        <div className="foot-links">
+          <Link href="/panorama" className="foot-link">
+            O remédio em números →
+          </Link>
+          <Link href="/metodologia" className="foot-link">
+            Fontes e metodologia →
+          </Link>
+        </div>
       </footer>
     </main>
   );
