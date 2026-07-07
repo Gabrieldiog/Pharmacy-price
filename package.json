@@ -9,13 +9,14 @@
     "etl:pfpb": "tsx etl/pfpb-run.ts",
     "build:data": "tsx etl/build-dataset.ts",
     "build:client": "tsx etl/build-client.ts",
+    "build:precos-go": "tsx etl/build-precos-go.ts",
     "data:all": "pnpm etl:cmed && pnpm etl:pfpb && pnpm build:data",
     "dev": "next dev",
     "prebuild": "tsx etl/build-client.ts",
     "build": "next build",
     "fixture": "tsx etl/__fixtures__/make-fixture.ts",
     "pretest": "tsx etl/__fixtures__/make-fixture.ts",
-    "test": "node --import tsx --test etl/parse-cmed.test.ts etl/parse-pfpb.test.ts etl/enrich.test.ts"
+    "test": "node --import tsx --test etl/parse-cmed.test.ts etl/parse-pfpb.test.ts etl/enrich.test.ts etl/vtex.test.ts"
   },
   "dependencies": {
     "minisearch": "^7.2.0",
