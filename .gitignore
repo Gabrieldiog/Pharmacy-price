@@ -12,6 +12,7 @@ next-env.d.ts
 # datasets gerados do cliente (regerados no build)
 /public/medicamentos-go.json
 /public/precos-meta.json
+/public/destaques.json
 
 # dados gerados pelo ETL (regerados pelo pipeline; sample/lookup versionados à parte)
 data/cmed-*.ndjson

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Search } from "@/components/Search";
+import { Destaques } from "@/components/Destaques";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
           Compare com o <strong>teto legal</strong> da Anvisa e descubra o que é{" "}
           <strong>de graça</strong> no Farmácia Popular. Preço por lei, não por marketing.
         </p>
-        <Search />
+        <Search fallback={<Destaques />} />
         <Link href="/colaborar" className="cta-colab">
           Pagou caro no balcão? Ajude a mapear as farmácias de Goiânia →
         </Link>

@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { loadMedsIndex, searchMeds, type MedsIndex } from "@/lib/meds-client";
 import { MedCard } from "./MedCard";
 
-export function Search() {
+export function Search({ fallback }: { fallback?: ReactNode }) {
   const [idx, setIdx] = useState<MedsIndex | null>(null);
   const [q, setQ] = useState("");
   const [loading, setLoading] = useState(true);
@@ -43,7 +43,7 @@ export function Search() {
         />
       </div>
 
-      {show && (
+      {show ? (
         <div className="results">
           <div className="results-count">
             {results.length ? `${results.length} resultado${results.length > 1 ? "s" : ""}` : "Nada encontrado — tente o nome genérico"}
@@ -52,6 +52,9 @@ export function Search() {
             <MedCard key={m.id} med={m} meta={idx?.meta ?? null} />
           ))}
         </div>
+      ) : (
+        // destaques aparecem na hora (2 KB proprios), sem esperar o indice de busca (8,5 MB)
+        fallback
       )}
     </div>
   );

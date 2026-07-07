@@ -34,3 +34,37 @@ export interface PrecosMeta {
   observadoEm: string;
   redes: RedeMeta[];
 }
+
+// Destaques precomputados no build pra home mostrar valor antes de qualquer busca.
+export interface EconomiaCard {
+  id: string; // do mais barato (link do detalhe)
+  substancia: string | null;
+  concentracao: string | null;
+  apresentacao: string | null;
+  baratoProduto: string;
+  baratoLab: string | null;
+  baratoCents: number;
+  caroProduto: string;
+  caroLab: string | null;
+  caroCents: number;
+  economiaPct: number;
+}
+export interface GratisCard {
+  id: string;
+  produto: string;
+  substancia: string | null;
+  indicacao: string | null;
+}
+export interface TetoCard {
+  id: string;
+  produto: string;
+  cents: number;
+  teto: number;
+  acimaPct: number;
+  rede: string;
+}
+export interface Destaques {
+  economia: EconomiaCard[];
+  gratis: GratisCard[];
+  acimaDoTeto: TetoCard[];
+}

@@ -3,6 +3,7 @@ import { gzipSync } from "node:zlib";
 import type { AppMed } from "./enrich";
 import { grupoKey } from "./enrich";
 import { pmcParaUF } from "./aliquotas";
+import { computeDestaques } from "./destaques";
 import { upsertPreco, sortRedePrecos, type RedePreco } from "./precos";
 
 // Gera o dataset enxuto do cliente (piloto Goiania): campos da UI + teto de GO + precos
@@ -78,8 +79,15 @@ writeFileSync(
   }),
 );
 
+// destaques da home (economia, de graca, acima do teto) — precomputados pra mostrar valor na hora
+const destaques = computeDestaques(out);
+writeFileSync("public/destaques.json", JSON.stringify(destaques));
+
 const comPreco = out.filter((m) => m.precos.length > 0).length;
 const comparaveis = out.filter((m) => m.precos.length > 1).length;
 console.log(
   `public/medicamentos-go.json: ${out.length} itens | ${(json.length / 1e6).toFixed(1)} MB | ${(gzipSync(json).length / 1e6).toFixed(2)} MB gzip | ${comPreco} com preco (${comparaveis} comparaveis em 2+ redes)`,
+);
+console.log(
+  `public/destaques.json: ${destaques.economia.length} economia | ${destaques.gratis.length} de graca | ${destaques.acimaDoTeto.length} acima do teto`,
 );

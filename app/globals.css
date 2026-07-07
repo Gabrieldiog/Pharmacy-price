@@ -271,6 +271,63 @@ body {
 }
 .cta-colab:hover { color: #7aa9ff; border-bottom-color: rgba(79, 141, 255, 0.5); }
 
+/* destaques da home (mostrados antes de qualquer busca) */
+.destaques { margin-top: 30px; text-align: left; display: flex; flex-direction: column; gap: 30px; }
+.dest-h2 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+.dest-lede { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+
+.dest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.dest-eco {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.16s, background 0.16s, transform 0.16s;
+}
+.dest-eco:hover { border-color: rgba(52, 210, 127, 0.4); background: var(--elev); transform: translateY(-1px); }
+.dest-eco-sub { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--faint); }
+.dest-eco-precos { display: flex; align-items: baseline; gap: 10px; margin-top: 6px; }
+.dest-eco-barato { font-size: 25px; font-weight: 700; color: var(--brand); font-variant-numeric: tabular-nums; }
+.dest-eco-pct {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--free);
+  background: rgba(61, 220, 151, 0.12);
+  border: 1px solid rgba(61, 220, 151, 0.3);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.dest-eco-antes { font-size: 12.5px; color: var(--faint); }
+.dest-eco-antes s { color: var(--faint); }
+.dest-eco-nomes { font-size: 13px; color: var(--ink); font-weight: 600; margin-top: 2px; }
+.dest-eco-vs { color: var(--faint); font-weight: 400; }
+
+.dest-gratis-sec { }
+.dest-gratis { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.dest-free {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(61, 220, 151, 0.07);
+  border: 1px solid rgba(61, 220, 151, 0.22);
+  border-radius: 12px;
+  padding: 10px 14px;
+  text-decoration: none;
+  transition: border-color 0.16s, background 0.16s;
+}
+.dest-free:hover { background: rgba(61, 220, 151, 0.12); border-color: rgba(61, 220, 151, 0.4); }
+.dest-free-nome { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+.dest-free-ind { font-size: 11.5px; color: var(--free); }
+
+@media (max-width: 560px) {
+  .dest-grid { grid-template-columns: 1fr; }
+}
+
 /* pagina de colaboracao */
 .hero-sub { text-align: left; }
 .hero-sub .title, .hero-sub .lede { margin-left: 0; margin-right: 0; }
