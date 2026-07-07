@@ -1,1394 +1,4285 @@
 {
-  "rede": "Pague Menos",
   "tipo": "retirada",
   "cidade": "Goiânia",
   "uf": "GO",
-  "observadoEm": "2026-07-07T14:18:40.310Z",
-  "lojasCount": 22,
-  "lojas": [
+  "observadoEm": "2026-07-07T15:11:16.038Z",
+  "redes": [
     {
-      "id": "paguemenos00325_8bc777c7-dc14-4681-8923-b50251fcad4b",
-      "nome": "Pague Menos - Av.T-63, 955 (Loja 325). ",
-      "endereco": "Avenida T, 63",
-      "bairro": "Setor Bueno",
-      "cidade": "Goiânia",
-      "uf": "GO",
-      "lng": -49.26787,
-      "lat": -16.71445
+      "nome": "Pague Menos",
+      "host": "www.paguemenos.com.br",
+      "lojasCount": 22,
+      "lojas": [
+        {
+          "id": "paguemenos00325_8bc777c7-dc14-4681-8923-b50251fcad4b",
+          "nome": "Pague Menos - Av.T-63, 955 (Loja 325). ",
+          "endereco": "Avenida T, 63",
+          "bairro": "Setor Bueno",
+          "cidade": "Goiânia",
+          "uf": "GO",
+          "lng": -49.26787,
+          "lat": -16.71445
+        },
+        {
+          "id": "paguemenos00788_caecc7e9-553c-4af9-a6d2-a6fb0114e690",
+          "nome": "Retirar na Loja 788",
+          "endereco": "COUTO MAGALHAES, 5",
+          "bairro": "SETOR BELA VISTA",
+          "cidade": "GOIANIA",
+          "uf": "GO",
+          "lng": -49.25876,
+          "lat": -16.71964
+        },
+        {
+          "id": "paguemenos00595_9c7061ae-bec9-4105-b475-f22be8a91465",
+          "nome": "Pague Menos - Av. T-9, 1174 (Loja 595). ",
+          "endereco": "Avenida T-2, 1174",
+          "bairro": "Setor Bueno",
+          "cidade": "Goiânia",
+          "uf": "GO",
+          "lng": -49.27312,
+          "lat": -16.70234
+        },
+        {
+          "id": "paguemenos00458_4841990d-973c-4aca-a5ad-053563c7ff07",
+          "nome": "Pague Menos -  Av. 136, 41 (Loja 458). ",
+          "endereco": "Avenida 136, 41",
+          "bairro": "Setor Marista",
+          "cidade": "Goiânia",
+          "uf": "GO",
+          "lng": -49.26349,
+          "lat": -16.69988
+        },
+        {
+          "id": "paguemenos00648_1cf0eaf4-d3be-4767-93bb-87ab8042cc0e",
+          "nome": "Pague Menos - Av. Portugal, 1148 (Loja 648) 24 horas.",
+          "endereco": "Portugal, 1148",
+          "bairro": "Setor Marista",
+          "cidade": "GOIANIA",
+          "uf": "GO",
+          "lng": -49.2696,
+          "lat": -16.6962
+        },
+        {
+          "id": "paguemenos00290_1fbe859",
+          "nome": "Pague Menos - Av. 85, 594 (Loja 290). ",
+          "endereco": "Avenida 85, 594",
+          "bairro": "Setor Oeste",
+          "cidade": "Goiânia",
+          "uf": "GO",
+          "lng": -49.26129,
+          "lat": -16.68956
+        }
+      ]
     },
     {
-      "id": "paguemenos00788_caecc7e9-553c-4af9-a6d2-a6fb0114e690",
-      "nome": "Retirar na Loja 788",
-      "endereco": "COUTO MAGALHAES, 5",
-      "bairro": "SETOR BELA VISTA",
-      "cidade": "GOIANIA",
-      "uf": "GO",
-      "lng": -49.25876,
-      "lat": -16.71964
+      "nome": "São João",
+      "host": "www.saojoaofarmacias.com.br",
+      "lojasCount": 0,
+      "lojas": []
     },
     {
-      "id": "paguemenos00595_9c7061ae-bec9-4105-b475-f22be8a91465",
-      "nome": "Pague Menos - Av. T-9, 1174 (Loja 595). ",
-      "endereco": "Avenida T-2, 1174",
-      "bairro": "Setor Bueno",
-      "cidade": "Goiânia",
-      "uf": "GO",
-      "lng": -49.27312,
-      "lat": -16.70234
-    },
-    {
-      "id": "paguemenos00458_4841990d-973c-4aca-a5ad-053563c7ff07",
-      "nome": "Pague Menos -  Av. 136, 41 (Loja 458). ",
-      "endereco": "Avenida 136, 41",
-      "bairro": "Setor Marista",
-      "cidade": "Goiânia",
-      "uf": "GO",
-      "lng": -49.26349,
-      "lat": -16.69988
-    },
-    {
-      "id": "paguemenos00648_1cf0eaf4-d3be-4767-93bb-87ab8042cc0e",
-      "nome": "Pague Menos - Av. Portugal, 1148 (Loja 648) 24 horas.",
-      "endereco": "Portugal, 1148",
-      "bairro": "Setor Marista",
-      "cidade": "GOIANIA",
-      "uf": "GO",
-      "lng": -49.2696,
-      "lat": -16.6962
-    },
-    {
-      "id": "paguemenos00290_1fbe859",
-      "nome": "Pague Menos - Av. 85, 594 (Loja 290). ",
-      "endereco": "Avenida 85, 594",
-      "bairro": "Setor Oeste",
-      "cidade": "Goiânia",
-      "uf": "GO",
-      "lng": -49.26129,
-      "lat": -16.68956
-    },
-    {
-      "id": "paguemenos00572_c57839bb-04f2-402d-bfe0-1217a89edb86",
-      "nome": "Pague Menos - Rua 109 , 214 (Loja 572).",
-      "endereco": "109, 214",
-      "bairro": "VILA SAO JOAO",
-      "cidade": "GOIANIA",
-      "uf": "GO",
-      "lng": -49.24065,
-      "lat": -16.70861
-    },
-    {
-      "id": "paguemenos00457_ed38ae08-17b7-46c5-82f3-81c4165fb9be",
-      "nome": "Pague Menos -  Av. Rio Verde QD. 97 LT.10-3  (Loja 457)",
-      "endereco": "Avenida Rio Verde, 97 ",
-      "bairro": "Vila São Tomaz",
-      "cidade": "Aparecida de Goiânia",
-      "uf": "GO",
-      "lng": -49.2762,
-      "lat": -16.7413
+      "nome": "Drogal",
+      "host": "www.drogal.com.br",
+      "lojasCount": 0,
+      "lojas": []
     }
   ],
   "byEan": {
+    "45304": {
+      "produto": "Ibuflex 400mg 4 Cápsulas Moles",
+      "marca": "Ibuflex",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 499
+        }
+      ]
+    },
+    "60320": {
+      "produto": "Ibuliv 400mg 4 Cápsulas",
+      "marca": "Ibuliv",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 639
+        }
+      ]
+    },
+    "63820": {
+      "produto": "Doralex 500mg 10 Comprimidos",
+      "marca": "Doralex",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 312
+        }
+      ]
+    },
+    "78223": {
+      "produto": "Paracetamol 750mg Neo Química 4 Comprimidos",
+      "marca": "Neo Química",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 489
+        }
+      ]
+    },
     "7896004706795": {
       "produto": "Losartana Potássica 50mg 30 Comprimidos Revestidos Genérico EMS",
       "marca": "Mono Isossorbida",
-      "precoCentavos": 599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 559
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 569
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 599
+        }
+      ]
     },
     "7896112114185": {
       "produto": "Losartana Potássica 50mg 30 Comprimidos Revestidos Genérico Teuto",
       "marca": "Mono Isossorbida",
-      "precoCentavos": 619,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 619
+        },
+        {
+          "rede": "São João",
+          "centavos": 711
+        }
+      ]
     },
     "7896714208565": {
       "produto": "Losartana Potássica 50mg 30 Comprimidos Revestidos Genérico Neo Química",
       "marca": "Neo Quimica",
-      "precoCentavos": 679,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 649
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 679
+        }
+      ]
     },
     "7899547505252": {
       "produto": "Losartana Potássica 50mg 30 Comprimidos Revestidos Genérico Prati-Donaduzzi",
       "marca": "Prati Donaduzzi",
-      "precoCentavos": 599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 490
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 599
+        }
+      ]
     },
     "7899547528626": {
       "produto": "Losartana Potássica 50mg 60 Comprimidos Revestidos Genérico Prati-Donaduzzi",
       "marca": "Losartana",
-      "precoCentavos": 1159,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1090
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1159
+        }
+      ]
     },
     "7897076923509": {
       "produto": "Losartana Potassica 50mg + Hidroclorotiazida 12,5mg 60 Comprimidos Genérico Ranbaxy",
       "marca": "Losartana Potassica + Hidroclorotiazida",
-      "precoCentavos": 9399,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 9399
+        }
+      ]
     },
     "7896112401278": {
       "produto": "Losartana Potássica 50mg + Hidroclorotiazida 12,5mg 30 Comprimidos Genérico Biolab",
       "marca": "Losartana Potassica + Hidroclorotiazida",
-      "precoCentavos": 1379,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1379
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1519
+        }
+      ]
     },
     "7897595625106": {
       "produto": "Losartana Potássica 50mg + Hidroclorotiazida 12,5mg 30 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Losart",
-      "precoCentavos": 1679,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1679
+        }
+      ]
     },
     "7896004713922": {
       "produto": "Losartana Potássica 50mg + Hidroclorotiazida 12,5mg 30 Comprimidos Revestidos Genérico EMS",
       "marca": "EMS",
-      "precoCentavos": 1169,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1169
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1609
+        },
+        {
+          "rede": "São João",
+          "centavos": 3249
+        }
+      ]
     },
     "7899095253834": {
       "produto": "Losartana Potássica + Hidroclorotiazida 50mg + 12,5mg Com 30 Comprimidos Generico Geolab",
       "marca": "Losartana Potassica + Hidroclorotiazida",
-      "precoCentavos": 1599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1599
+        }
+      ]
     },
     "7896422516853": {
       "produto": "Losartana Potássica 100mg 30 Comprimidos Revestidos Genérico Medley",
       "marca": "Mono Isossorbida",
-      "precoCentavos": 2849,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2849
+        }
+      ]
     },
     "7896004722870": {
       "produto": "Losartana Potássica 100mg 30 Comprimidos Revestidos Genérico EMS",
       "marca": "Mono Isossorbida",
-      "precoCentavos": 2699,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2699
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 3389
+        }
+      ]
     },
     "7897076923523": {
       "produto": "Losartana Potassica 100mg + Hidroclorotiazida 25mg 60 Comprimidos Genérico Ranbaxy",
       "marca": "Losartana Potassica + Hidroclorotiazida",
-      "precoCentavos": 15499,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 15499
+        }
+      ]
     },
     "7899547505269": {
       "produto": "Losartana Potássica 100mg 30 Comprimidos Revestidos Genérico Prati-Donaduzzi",
       "marca": "Losartana",
-      "precoCentavos": 2699,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2699
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 2979
+        }
+      ]
     },
     "7896112401285": {
       "produto": "Losartana Potássica 100mg + Hidroclorotiazida 25mg 30 Comprimidos Revestidos Genérico Biolab",
       "marca": "Losartana",
-      "precoCentavos": 4549,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 4549
+        }
+      ]
     },
     "7896004713915": {
       "produto": "Losartana Potássica 100mg + Hidroclorotiazida 25mg 30 Comprimidos Revestidos Genérico EMS",
       "marca": "Losart",
-      "precoCentavos": 5049,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 4839
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 5049
+        }
+      ]
     },
     "7899547523041": {
       "produto": "Losartana Potássica 100mg + Hidroclorotiazida 25mg 60 Comprimidos Revestidos Genérico Prati-Donaduzzi",
       "marca": "Losartana Potassica + Hidroclorotiazida",
-      "precoCentavos": 11299,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 11299
+        }
+      ]
     },
     "7899095253896": {
       "produto": "Losartana Potássica 100mg + Hidroclorotiazida + 25mg 30 Comprimidos Revestidos Genérico Geolab",
       "marca": "Losartana Potassica + Hidroclorotiazida",
-      "precoCentavos": 4599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 4599
+        }
+      ]
     },
     "7896181920410": {
       "produto": "Corus 50mg 30 Comprimidos Revestidos",
       "marca": "Corus",
-      "precoCentavos": 1199,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 890
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1199
+        }
+      ]
     },
     "7891317425869": {
       "produto": "Zart 50mg 30 Comprimidos Revestidos",
       "marca": "Zart",
-      "precoCentavos": 1039,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1039
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1109
+        }
+      ]
     },
     "7896714261515": {
       "produto": "Dipirona 500mg + Cafeína 65mg 16 Comprimidos Genérico Neo Química",
       "marca": "Neo Quimica",
-      "precoCentavos": 1649,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1219
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1649
+        }
+      ]
     },
     "7896004718446": {
       "produto": "Dipirona Sódica 500mg Gotas 20ml EMS Genérico",
       "marca": "EMS",
-      "precoCentavos": 449,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 449
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 479
+        }
+      ]
     },
     "7896004719115": {
       "produto": "Dipirona Sódica 500mg Gotas 10ml Genérico Germed",
       "marca": "Germed",
-      "precoCentavos": 419,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 399
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 419
+        }
+      ]
     },
     "7891058005726": {
       "produto": "Dipirona Monoidratada 500mg 10 Comprimidos Genérico Medley",
       "marca": "Medley",
-      "precoCentavos": 479,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 479
+        },
+        {
+          "rede": "São João",
+          "centavos": 579
+        }
+      ]
     },
     "7899547537208": {
       "produto": "Dipirona Monoidratada 500mg 10 Comprimidos Genérico Prati",
       "marca": "Prati Donaduzzi",
-      "precoCentavos": 449,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 429
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 449
+        },
+        {
+          "rede": "São João",
+          "centavos": 579
+        }
+      ]
     },
     "7896004756622": {
       "produto": "Dipirona Monoidratada 500mg 30 Comprimidos Genérico Germed",
       "marca": "Germed",
-      "precoCentavos": 1079,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1079
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1090
+        },
+        {
+          "rede": "São João",
+          "centavos": 1449
+        }
+      ]
     },
     "7896004703398": {
       "produto": "Dipirona Monoidratada 500mg 10 Comprimidos Genérico EMS",
       "marca": "EMS",
-      "precoCentavos": 449,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 409
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 449
+        }
+      ]
     },
     "7896422507059": {
       "produto": "Dipirona Monoidratada 500mg 30 Comprimidos Genérico Medley",
       "marca": "Medley",
-      "precoCentavos": 1039,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1039
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1069
+        },
+        {
+          "rede": "São João",
+          "centavos": 2090
+        }
+      ]
     },
     "7896422507066": {
       "produto": "Dipirona Monoidratada 500mg 10 Comprimidos Genérico Medley",
       "marca": "Medley",
-      "precoCentavos": 529,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 529
+        }
+      ]
     },
     "7899547531213": {
       "produto": "Dipirona Monoidratada 500mg 30 Comprimidos Genérico Prati-Donaduzzi",
       "marca": "Prati Donaduzzi",
-      "precoCentavos": 979,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 979
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1049
+        }
+      ]
     },
     "7899547531206": {
       "produto": "Dipirona Monoidratada 500mg 20 Comprimidos Prati Donaduzzi Genérico",
       "marca": "Prati Donaduzzi",
-      "precoCentavos": 979,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 979
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 999
+        },
+        {
+          "rede": "São João",
+          "centavos": 1290
+        }
+      ]
     },
     "7896714204130": {
       "produto": "Dipirona Sódica 500mg 4 Comprimidos Genérico Neo Química",
       "marca": "Neo Quimica",
-      "precoCentavos": 309,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 309
+        }
+      ]
     },
     "7896004715841": {
       "produto": "Dipirona Monoidratada 500mg/ml Solução Gotas 10ml Genérico EMS",
       "marca": "EMS",
-      "precoCentavos": 359,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 339
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 359
+        }
+      ]
     },
     "7899095203136": {
       "produto": "Dipirona Monoidratada 500mg/ml Solução Gotas 20ml Genérico Geolab",
       "marca": "Geolab",
-      "precoCentavos": 439,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 439
+        }
+      ]
     },
     "7896422506229": {
       "produto": "Dipirona Monoidratada 500mg/ml Solução Gotas 10ml Genérico Medley",
       "marca": "Medley",
-      "precoCentavos": 519,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 519
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 529
+        },
+        {
+          "rede": "São João",
+          "centavos": 829
+        }
+      ]
     },
     "7896422506236": {
       "produto": "Dipirona Monoidratada 500mg/ml Solução Oral Gotas 20ml Genérico Medley",
       "marca": "Medley",
-      "precoCentavos": 619,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 619
+        },
+        {
+          "rede": "São João",
+          "centavos": 1941
+        }
+      ]
     },
     "7896714261522": {
       "produto": "Dipirona Sódica 500mg + Cafeína 65mg 4 Comprimidos Genérico Neo Química",
       "marca": "Neo Quimica",
-      "precoCentavos": 259,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 259
+        }
+      ]
     },
     "7891106916660": {
       "produto": "Dipirona AspDip 500mg 30 Comprimidos",
       "marca": "Aspirina",
-      "precoCentavos": 3118,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 3118
+        }
+      ]
     },
     "7891106916684": {
       "produto": "Dipirona AspDip 500mg Gotas 20ml",
       "marca": "Aspirina",
-      "precoCentavos": 2102,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2102
+        }
+      ]
     },
     "7891058001599": {
       "produto": "Novalgina 500mg Dipirona 10 Comprimidos para Dor e Febre",
       "marca": "Novalgina",
-      "precoCentavos": 1599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1599
+        },
+        {
+          "rede": "São João",
+          "centavos": 1743
+        }
+      ]
     },
     "7899095238763": {
       "produto": "Gen Cloridrato de Metformina 850mg 30cp Geolab",
       "marca": "Cloridrato De Metformina",
-      "precoCentavos": 619,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 619
+        }
+      ]
     },
     "7899547528640": {
       "produto": "Cloridrato de Metformina 850mg 60 Comprimidos Revestidos Genérico Prati-Donaduzzi",
       "marca": "Cloridrato De Metformina",
-      "precoCentavos": 1419,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1419
+        }
+      ]
     },
     "7898148291298": {
       "produto": "Cloridrato de Metformina 850mg 30 Comprimidos Revestidos Genérico Prati-Donaduzzi",
       "marca": "Prati Donaduzzi",
-      "precoCentavos": 589,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 579
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 589
+        },
+        {
+          "rede": "São João",
+          "centavos": 890
+        }
+      ]
     },
     "7896004778143": {
       "produto": "Cloridrato de Metformina 850mg 30 Comprimidos Revestidos Genérico Nova Química",
       "marca": "Nova Quimica",
-      "precoCentavos": 669,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 669
+        }
+      ]
     },
     "7898687734928": {
       "produto": "Vildagliptina 50mg + Cloridrato de Metformina 850mg 60 Comprimidos Revestidos Genérico Althaia",
       "marca": "Althaia",
-      "precoCentavos": 9499,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 9479
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 9499
+        },
+        {
+          "rede": "São João",
+          "centavos": 11169
+        }
+      ]
     },
     "7897595635624": {
       "produto": "Fosfato de Sitagliptina 50mg + Cloridrato de Metformina 850mg 56 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Fosfato De Sitagliptina",
-      "precoCentavos": 20099,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 11639
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 14249
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 20099
+        }
+      ]
     },
     "7896261016255": {
       "produto": "Galvus Met 50mg + 850mg 56 Comprimidos Revestidos",
       "marca": "Galvus",
-      "precoCentavos": 22499,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 22499
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 26675
+        }
+      ]
     },
     "7891721027437": {
       "produto": "Glifage 850mg 30 Comprimidos Revestidos",
       "marca": "Glifage",
-      "precoCentavos": 4099,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 4029
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 4099
+        }
+      ]
     },
     "7897572004443": {
       "produto": "Nimegon Met 50mg + 850mg 56 Comprimidos Revestidos",
       "marca": "Nimegon",
-      "precoCentavos": 25799,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 25799
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 32078
+        },
+        {
+          "rede": "São João",
+          "centavos": 34261
+        }
+      ]
     },
     "7896004821467": {
       "produto": "Sitglu Met 50mg + 850mg 56 Comprimidos Revestidos",
       "marca": "Fosfato De Sitagliptina",
-      "precoCentavos": 10699,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 10239
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 10699
+        }
+      ]
     },
     "7891721201530": {
       "produto": "Glifage XR 850mg 30 Comprimidos de Liberação Prolongada",
       "marca": "Glifage",
-      "precoCentavos": 3059,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 3059
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 3299
+        }
+      ]
     },
     "7896004787558": {
       "produto": "Linadib Duo 2,5mg + 850mg 60 Comprimidos Revestidos",
       "marca": "EMS",
-      "precoCentavos": 14599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 14439
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 14599
+        }
+      ]
     },
     "7896094999527": {
       "produto": "Nesina Met 12,5mg + 850mg 60 Comprimidos Revestidos",
       "marca": "Nesina",
-      "precoCentavos": 15599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 15599
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 17009
+        },
+        {
+          "rede": "São João",
+          "centavos": 19379
+        }
+      ]
     },
     "7897572020177": {
       "produto": "Janumet 50mg + 850mg 56 Comprimidos Revestidos",
       "marca": "Janumet",
-      "precoCentavos": 32599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 32599
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 33812
+        },
+        {
+          "rede": "São João",
+          "centavos": 34263
+        }
+      ]
     },
     "7896004790923": {
       "produto": "Glunac Duo 2,5mg + 850mg 60 Comprimidos Revestidos",
       "marca": "Metformina",
-      "precoCentavos": 13899,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 12661
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 13899
+        }
+      ]
     },
     "7896094210752": {
       "produto": "Glink MET 2,5mg + 850mg 60 Comprimidos Revestidos",
       "marca": "Libbs",
-      "precoCentavos": 12779,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 12779
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 14500
+        },
+        {
+          "rede": "São João",
+          "centavos": 15573
+        }
+      ]
     },
     "7896026307031": {
       "produto": "Trayenta Duo 2,5mg + 850mg 60 Comprimidos Revestidos",
       "marca": "Trayenta",
-      "precoCentavos": 27999,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 27999
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 31309
+        }
+      ]
     },
     "7899547528602": {
       "produto": "Cloridrato de Metformina 500mg 60 Comprimidos Revestidos Genérico Prati-Donaduzzi",
       "marca": "Metformina",
-      "precoCentavos": 1179,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1179
+        }
+      ]
     },
     "7896026307741": {
       "produto": "Jardiance Duo 12,5mg + 850mg 60 Comprimidos Revestidos",
       "marca": "Jardiance",
-      "precoCentavos": 31299,
-      "disponivel": true
-    },
-    "7896004712895": {
-      "produto": "Cloridrato De Metformina 850mg Com 60 Comprimidos Genérico Ems",
-      "marca": "Metformina",
-      "precoCentavos": 1339,
-      "disponivel": false
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 31299
+        },
+        {
+          "rede": "São João",
+          "centavos": 33842
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 34254
+        }
+      ]
     },
     "7899095267442": {
       "produto": "Omeprazol 20mg 56 Cápsulas Genérico Geolab",
       "marca": "Omeprazol",
-      "precoCentavos": 1219,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1219
+        }
+      ]
     },
     "7896112148715": {
       "produto": "Omeprazol 20mg Com 28 Cápsulas Genérico Teuto",
       "marca": "Omeprazol",
-      "precoCentavos": 1169,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1169
+        },
+        {
+          "rede": "São João",
+          "centavos": 3347
+        }
+      ]
     },
     "7898060134154": {
       "produto": "Omeprazol 20mg 56 Cápsulas Genérico Globo",
       "marca": "Omeprazol",
-      "precoCentavos": 1529,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1529
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1699
+        }
+      ]
     },
     "7896004701967": {
       "produto": "Omeprazol 20mg  Com 28 Cápsulas Genérico Ems",
       "marca": "Omeprazol",
-      "precoCentavos": 1429,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1429
+        },
+        {
+          "rede": "São João",
+          "centavos": 2109
+        }
+      ]
     },
     "7896523227191": {
       "produto": "Omeprazol 20mg 56 Cápsulas de Liberação Retardada Genérico Cimed",
       "marca": "Cimed",
-      "precoCentavos": 1449,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1449
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1449
+        },
+        {
+          "rede": "São João",
+          "centavos": 1999
+        }
+      ]
     },
     "7896422517843": {
       "produto": "Omeprazol 20mg 42 Cápsulas Duras de Liberação Retardada Genérico Medley",
       "marca": "Omeprazol",
-      "precoCentavos": 4059,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 4059
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 5079
+        }
+      ]
     },
     "7898495604529": {
       "produto": "Omeprazol 20mg 90 Cápsulas Duras de Liberação Retardada Genérico Cifarma",
       "marca": "Cifarma",
-      "precoCentavos": 1589,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1589
+        }
+      ]
     },
     "7896523227184": {
       "produto": "Omeprazol 20mg 28 Cápsulas Duras de Liberação Retardada Genérico Cimed",
       "marca": "Cimed",
-      "precoCentavos": 1379,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1049
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1299
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1379
+        }
+      ]
     },
     "7896422504355": {
       "produto": "Omeprazol 20mg 7 Cápsulas Duras de Liberação Retardada Genérico Medley",
       "marca": "Omeprazol",
-      "precoCentavos": 1149,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1149
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1409
+        },
+        {
+          "rede": "São João",
+          "centavos": 2219
+        }
+      ]
     },
     "7896112181729": {
       "produto": "Omeprazol 20mg 56 Cápsulas Duras de Liberação Retardada Genérico Teuto",
       "marca": "Vazidin",
-      "precoCentavos": 1319,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1299
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1319
+        },
+        {
+          "rede": "São João",
+          "centavos": 2390
+        }
+      ]
     },
     "7896422504379": {
       "produto": "Omeprazol 20mg 28 Cápsulas Duras de Liberação Retardada Genérico Medley",
       "marca": "Omeprazol",
-      "precoCentavos": 1219,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1219
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1919
+        }
+      ]
     },
     "7896422504362": {
       "produto": "Omeprazol 20mg 14 Cápsulas Duras de Liberação Retardada Genérico Medley",
       "marca": "Omeprazol",
-      "precoCentavos": 2179,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2179
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 2199
+        }
+      ]
     },
     "7896004703282": {
       "produto": "Omeprazol 20mg 14 Cápsulas Duras de Liberação Retardada Genérico EMS",
       "marca": "Omeprazol",
-      "precoCentavos": 2179,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2179
+        }
+      ]
     },
     "7899620910478": {
       "produto": "Novoprazol 20mg 28 Cápsulas Gelatinosas Duras",
       "marca": "Novoprazol",
-      "precoCentavos": 1589,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1589
+        }
+      ]
     },
     "7899547531435": {
       "produto": "Pratiprazol 20mg 28 Cápsulas Duras de Liberação Retardada",
       "marca": "Prati Donaduzzi",
-      "precoCentavos": 739,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 739
+        }
+      ]
     },
     "7896006205883": {
       "produto": "Uniprazol 20mg 28 Cápsulas Duras",
       "marca": "Uniprazol",
-      "precoCentavos": 1399,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1399
+        }
+      ]
     },
     "7899095201453": {
       "produto": "Omenax 20mg 56 Cápsulas Duras",
       "marca": "Omenax",
-      "precoCentavos": 2159,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2159
+        }
+      ]
     },
     "7899095201460": {
       "produto": "Omenax 20mg 28 Cápsulas Duras",
       "marca": "Omenax",
-      "precoCentavos": 1289,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1289
+        }
+      ]
     },
     "7898075313032": {
       "produto": "Neprazol 20mg 56 Cápsulas Duras de Liberação Retardada",
       "marca": "Neprazol",
-      "precoCentavos": 3299,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 3299
+        }
+      ]
     },
     "7896004705477": {
       "produto": "Amoxicilina 500mg Suspensão 5ml Genérico EMS",
       "marca": "EMS",
-      "precoCentavos": 2484,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2484
+        },
+        {
+          "rede": "São João",
+          "centavos": 5916
+        }
+      ]
     },
     "7896004700427": {
       "produto": "Amoxicilina 500mg com 21 Cápsulas Genérico EMS",
       "marca": "EMS",
-      "precoCentavos": 1969,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1779
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1969
+        },
+        {
+          "rede": "São João",
+          "centavos": 3090
+        }
+      ]
     },
     "7896181917007": {
       "produto": "Amoxicilina 500mg Com 30 Capsulas Generico Biosintetica",
       "marca": "Amoxicilina",
-      "precoCentavos": 2624,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2624
+        }
+      ]
     },
     "7896004700441": {
       "produto": "Amoxicilina 500mg 15 Cápsulas Duras Genérico EMS",
       "marca": "Amoxicilina",
-      "precoCentavos": 937,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 937
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1179
+        },
+        {
+          "rede": "São João",
+          "centavos": 2346
+        }
+      ]
     },
     "7896004718996": {
       "produto": "Amoxicilina 500mg 30 Cápsulas Duras Genérico EMS",
       "marca": "EMS",
-      "precoCentavos": 1959,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1959
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 2099
+        },
+        {
+          "rede": "São João",
+          "centavos": 4149
+        }
+      ]
     },
     "7896714204079": {
       "produto": "Amoxicilina 500mg Com 15 Cápsulas Genérico Neo Química",
       "marca": "Amoxicilina",
-      "precoCentavos": 1105,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1105
+        }
+      ]
     },
     "7898148298914": {
       "produto": "Amoxicilina 500mg 21 Cápsulas Duras Genérico Prati-Donaduzzi",
       "marca": "Prati Donaduzzi",
-      "precoCentavos": 762,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 762
+        },
+        {
+          "rede": "São João",
+          "centavos": 2590
+        }
+      ]
     },
     "7896714207384": {
       "produto": "Amoxicilina 500mg 21 Cápsulas Duras Genérico Neo Química",
       "marca": "Neo Quimica",
-      "precoCentavos": 1245,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1239
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1245
+        }
+      ]
     },
     "7897595624642": {
       "produto": "Amoxicilina 500mg Com Clavulanato De Potássio 125mg Com 21 Comprimidos Sandoz Genérico",
       "marca": "Amoxi+clav",
-      "precoCentavos": 5529,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 5529
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 5639
+        },
+        {
+          "rede": "São João",
+          "centavos": 10499
+        }
+      ]
     },
     "7897076922519": {
       "produto": "Amoxicilina 500mg + Clavulanato de Potássio 125mg 12 Comprimidos Revestidos Genérico Ranbaxy",
       "marca": "Amoxi+clav",
-      "precoCentavos": 5074,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 5074
+        }
+      ]
     },
     "7897595624635": {
       "produto": "Amoxicilina 500mg + Clavulanato de Potássio 125mg 14 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Amoxi+clav",
-      "precoCentavos": 5319,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 4829
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 5319
+        }
+      ]
     },
     "7897076922908": {
       "produto": "Amoxicilina 500mg + Clavulanato de Potássio 125mg 21 Comprimidos Revestidos Genérico Ranbaxy",
       "marca": "Amoxicilina Clav",
-      "precoCentavos": 9999,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 9999
+        }
+      ]
     },
     "7897595637161": {
       "produto": "Amoxicilina 500mg + Clavulanato de Potássio 125mg 30 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Amoxi+clav",
-      "precoCentavos": 7979,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 7979
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 8349
+        },
+        {
+          "rede": "São João",
+          "centavos": 12989
+        }
+      ]
     },
     "7897595638618": {
       "produto": "Amoxicilina 500mg + Clavulanato de Potássio 125mg 18 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Amoxicilina Clav",
-      "precoCentavos": 7839,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 7049
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 7839
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 9229
+        }
+      ]
     },
     "7897595633309": {
       "produto": "Amoxicilina 500mg + Clavulanato de Potássio 125mg 12 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Amoxi+clav",
-      "precoCentavos": 7099,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 5469
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 7099
+        },
+        {
+          "rede": "São João",
+          "centavos": 9986
+        }
+      ]
     },
     "7908020508335": {
       "produto": "Amoxicilina Tri-Hidratada + Claritromicina + Lansoprazol 56 Cápsulas Duras Genérico Cifarma",
       "marca": "Cifarma",
-      "precoCentavos": 19039,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 19039
+        }
+      ]
     },
     "7896015556990": {
       "produto": "Amoxil 500mg 21 Cápsulas Duras",
       "marca": "Amoxil",
-      "precoCentavos": 6749,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 6588
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 6749
+        }
+      ]
     },
     "7896422519489": {
       "produto": "Pyloripac Retrat 30mg + 500mg + 500mg Kit de Tratamento 14 Blisters",
       "marca": "Pyloripac",
-      "precoCentavos": 44199,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 44199
+        }
+      ]
     },
     "7908020502739": {
       "produto": "H. Bacter IBP 30mg + 500mg + 500mg 7 Blisters + 28 Cápsulas",
       "marca": "H",
-      "precoCentavos": 24599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 24599
+        }
+      ]
     },
     "7896862993542": {
       "produto": "Paracetamol 750mg 10 Comprimidos",
       "marca": "Paracetamol",
-      "precoCentavos": 629,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 629
+        }
+      ]
     },
     "7891058005450": {
       "produto": "Paracetamol 750mg 20 Comprimidos Revestidos",
       "marca": "Medley",
-      "precoCentavos": 1529,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1529
+        }
+      ]
     },
     "7896422504928": {
       "produto": "Paracetamol 750mg 4 Comprimidos Genérico Medley",
       "marca": "Medley",
-      "precoCentavos": 609,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 609
+        }
+      ]
     },
     "7896112171324": {
       "produto": "Paracetamol 750mg 10 Comprimidos Genérico Teuto",
       "marca": "Teuto",
-      "precoCentavos": 559,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 559
+        }
+      ]
     },
     "7896004719207": {
       "produto": "Paracetamol 750mg com 4 Comprimiddo Genérico Germed",
       "marca": "Germed",
-      "precoCentavos": 429,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 429
+        }
+      ]
     },
     "7896523211848": {
       "produto": "Paracetamol 750mg 4 Comprimidos Genérico Cimed",
       "marca": "Cimed",
-      "precoCentavos": 419,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 419
+        }
+      ]
     },
     "7896523201689": {
       "produto": "Paracetamol 750mg com 10 Comprimidos Genérico Cimed",
       "marca": "Cimed",
-      "precoCentavos": 559,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 559
+        }
+      ]
     },
     "7898927564308": {
       "produto": "Paracetamol 750mg 10 Comprimidos Genérico Zydus Nikkho",
       "marca": "Zydus",
-      "precoCentavos": 559,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 559
+        }
+      ]
     },
     "7896714294384": {
       "produto": "Paracetamol 750mg 4 Comprimidos Genérico Neo Química",
       "marca": "Neo Quimica",
-      "precoCentavos": 506,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 506
+        }
+      ]
     },
     "7896004703596": {
       "produto": "Paracetamol 750mg 20 Comprimidos Revestidos Genérico EMS",
       "marca": "EMS",
-      "precoCentavos": 769,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 769
+        },
+        {
+          "rede": "São João",
+          "centavos": 1590
+        }
+      ]
     },
     "7899547543766": {
       "produto": "Paracetamol 750mg 20 Comprimidos Genérico Prati Donaduzzi",
       "marca": "Prati Donaduzzi",
-      "precoCentavos": 819,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 819
+        }
+      ]
     },
     "7896714214498": {
       "produto": "Paracetamol 750mg 20 Comprimidos Genérico Neo Química",
       "marca": "Neo Quimica",
-      "precoCentavos": 759,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 759
+        }
+      ]
     },
     "7898910350147": {
       "produto": "Paracetamol 750mg 10 Comprimidos Genérico Zydus Nikkho",
       "marca": "Zydus",
-      "precoCentavos": 589,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 589
+        }
+      ]
     },
     "7896714214542": {
       "produto": "Paracetamol 750mg 4 Comprimidos Genérico Neo Química",
       "marca": "Neo Quimica",
-      "precoCentavos": 379,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 379
+        }
+      ]
     },
     "7896004703602": {
       "produto": "Paracetamol 750mg 4 Comprimidos Revestidos Genérico EMS",
       "marca": "EMS",
-      "precoCentavos": 389,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 389
+        }
+      ]
     },
     "7899547543902": {
       "produto": "Paracetamol 750mg 10 Comprimidos Revestidos Genérico Prati-Donaduzzi",
       "marca": "Prati Donaduzzi",
-      "precoCentavos": 679,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 679
+        },
+        {
+          "rede": "São João",
+          "centavos": 799
+        }
+      ]
     },
     "7898148295142": {
       "produto": "Paracetamol 750mg 12 Comprimidos Revestidos Genérico Prati-Donaduzzi",
       "marca": "Prati Donaduzzi",
-      "precoCentavos": 635,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 635
+        }
+      ]
     },
     "7896090611850": {
       "produto": "Sonridor Dor e Febre 750mg 10 Comprimidos",
       "marca": "Sonridor",
-      "precoCentavos": 599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 549
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 599
+        }
+      ]
     },
     "7891010256722": {
       "produto": "Tylenol 750mg 4 Comprimidos Revestidos",
       "marca": "Tylenol",
-      "precoCentavos": 1049,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1049
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1119
+        }
+      ]
     },
     "7896523227146": {
       "produto": "Cimegripe Dor e Febre 750mg 20 Comprimidos",
       "marca": "Cimegripe",
-      "precoCentavos": 1199,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1199
+        }
+      ]
     },
     "7898216366309": {
       "produto": "Sinvastatina 20mg Com 30 Comprimidos Genérico Pharlab",
       "marca": "Pharlab",
-      "precoCentavos": 989,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 989
+        }
+      ]
     },
     "7899620911031": {
       "produto": "Sinvastatina 20mg 30 Comprimidos Revestidos Genérico Globo",
       "marca": "Sinvastatina",
-      "precoCentavos": 989,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 989
+        }
+      ]
     },
     "7897595632548": {
       "produto": "Sinvastatina 20mg 30 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Novartis",
-      "precoCentavos": 889,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 889
+        },
+        {
+          "rede": "São João",
+          "centavos": 929
+        }
+      ]
     },
     "7897595609854": {
       "produto": "Sinvastatina 20mg 30 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Sinvastatina",
-      "precoCentavos": 889,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 859
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 889
+        }
+      ]
     },
     "7896523215235": {
       "produto": "Sinvastatina 20mg 30 Comprimidos Revestidos Genérico Cimed",
       "marca": "Sinvastatina",
-      "precoCentavos": 889,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 749
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 749
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 889
+        }
+      ]
     },
     "7896004747057": {
       "produto": "Ezetimiba 10mg + sinvastatina 20mg 30 Comprimidos Genérico Ems",
       "marca": "Sinvastatina",
-      "precoCentavos": 7099,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 6609
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 7099
+        },
+        {
+          "rede": "São João",
+          "centavos": 7299
+        }
+      ]
     },
     "7896112407928": {
       "produto": "Ezetimiba 10mg + Sinvastatina 20mg 30 Comprimidos Genérico Biolab",
       "marca": "Ezetimiba + Sinvastatina",
-      "precoCentavos": 6399,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 6399
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 6839
+        }
+      ]
     },
     "7896714292182": {
       "produto": "Ezetimiba 10mg + Sinvastatina 20mg 30 Comprimidos Revestidos Genérico Neo Química",
       "marca": "Ezetimiba + Sinvastatina",
-      "precoCentavos": 7099,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 7099
+        }
+      ]
     },
     "7897595601773": {
       "produto": "Sinvastacor 20mg 30 Comprimidos Revestidos",
       "marca": "Sinvastacor",
-      "precoCentavos": 2059,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2059
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 2149
+        }
+      ]
     },
     "7896112411413": {
       "produto": "Vaslip 20mg 60 Comprimidos Revestidos",
       "marca": "Vaslip",
-      "precoCentavos": 6999,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 6999
+        }
+      ]
     },
     "7897851250530": {
       "produto": "Sinvascor 20mg 30 Comprimidos Revestidos",
       "marca": "Sinvascor",
-      "precoCentavos": 2199,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2199
+        }
+      ]
     },
     "7894916206860": {
       "produto": "Sinvalip 20mg 30 Comprimidos Revestidos",
       "marca": "Sinvalip",
-      "precoCentavos": 6149,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 6149
+        }
+      ]
     },
     "7891721012884": {
       "produto": "Clinfar 20mg 30 Comprimidos Revestidos",
       "marca": "Clinfar",
-      "precoCentavos": 5949,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 5489
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 5949
+        }
+      ]
     },
     "7898096578243": {
       "produto": "Unak 20mg 30 Comprimidos Revestidos",
       "marca": "Unak",
-      "precoCentavos": 1189,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1189
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 3539
+        }
+      ]
     },
     "7896241228142": {
       "produto": "Vaslip 20mg 30 Comprimidos Revestidos",
       "marca": "Vaslip",
-      "precoCentavos": 4399,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 4398
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 4399
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 4579
+        }
+      ]
     },
     "7897337716871": {
       "produto": "Zetsim 10mg + 20mg 30 Comprimidos",
       "marca": "Zetsim",
-      "precoCentavos": 9813,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 9599
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 9813
+        }
+      ]
     },
     "7897595609816": {
       "produto": "Sinvastatina 10mg 30 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Sinvastatina",
-      "precoCentavos": 539,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 539
+        }
+      ]
     },
     "7897337714488": {
       "produto": "Vytorin 10mg + 20mg 30 Comprimidos",
       "marca": "Vytorin",
-      "precoCentavos": 11399,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 10279
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 11399
+        }
+      ]
     },
     "7896112407980": {
       "produto": "Posicor Sin 10mg + 20mg 30 Comprimidos",
       "marca": "Posicor",
-      "precoCentavos": 4959,
-      "disponivel": true
-    },
-    "7896004710792": {
-      "produto": "Gn Sinvastatina 20mg 30cp Germe",
-      "marca": "Sinvastatina",
-      "precoCentavos": 1329,
-      "disponivel": false
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 4959
+        },
+        {
+          "rede": "São João",
+          "centavos": 5286
+        }
+      ]
     },
     "7896094999954": {
       "produto": "Buscofem Ibuprofeno 400mg 20 cápsulas",
       "marca": "Buscofem",
-      "precoCentavos": 4799,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 4799
+        },
+        {
+          "rede": "São João",
+          "centavos": 5299
+        }
+      ]
     },
     "7891142201638": {
       "produto": "Alivium Ibuprofeno 400mg 10 Cápsulas Moles",
       "marca": "Alivium",
-      "precoCentavos": 2999,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2999
+        }
+      ]
     },
     "7896094921344": {
       "produto": "Buscofem Ibuprofeno 400mg 10 Cápsulas Moles",
       "marca": "Buscofem",
-      "precoCentavos": 2699,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2699
+        },
+        {
+          "rede": "São João",
+          "centavos": 2765
+        }
+      ]
     },
     "7891142201621": {
       "produto": "Alivium Ibuprofeno 400mg 8 Cápsulas Moles",
       "marca": "Alivium",
-      "precoCentavos": 2499,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2499
+        }
+      ]
     },
     "7896094921337": {
       "produto": "Buscofem Ibuprofeno 400mg 2 Cápsulas Moles",
       "marca": "Buscofem",
-      "precoCentavos": 729,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 729
+        },
+        {
+          "rede": "São João",
+          "centavos": 786
+        }
+      ]
     },
     "7891142203434": {
       "produto": "Alivium Ibuprofeno 400mg 20 Cápsulas Moles",
       "marca": "Alivium",
-      "precoCentavos": 5599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 5599
+        }
+      ]
     },
     "7896523201665": {
       "produto": "Ibuprofeno 400mg 10 Cápsulas Moles Genérico Cimed",
       "marca": "Ibuprofeno",
-      "precoCentavos": 939,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 939
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 1569
+        },
+        {
+          "rede": "São João",
+          "centavos": 1659
+        }
+      ]
     },
     "7891058002725": {
       "produto": "Ibuprofeno 400mg 10 Cápsulas Moles Genérico Medley",
       "marca": "Ibuprofeno",
-      "precoCentavos": 1299,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1269
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1299
+        },
+        {
+          "rede": "São João",
+          "centavos": 1709
+        }
+      ]
     },
     "7896714211275": {
       "produto": "Ibuprofeno 400mg 10 Comprimidos Genérico Neo Química",
       "marca": "Ibuprofeno",
-      "precoCentavos": 2229,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1099
+        },
+        {
+          "rede": "São João",
+          "centavos": 1290
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 2229
+        }
+      ]
     },
     "7899095202573": {
       "produto": "Ibuprofeno 400mg 4 Cápsulas Moles Genérico Geolab",
       "marca": "Ibuprofeno",
-      "precoCentavos": 999,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 999
+        }
+      ]
     },
     "7899095202597": {
       "produto": "Ibuprofeno 400mg 8 Cápsulas Mole Genérico Geolab",
       "marca": "Ibuprofeno",
-      "precoCentavos": 2099,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2099
+        }
+      ]
     },
     "7896523201320": {
       "produto": "Analgésico Ibuprofeno Pralívio 400 Mg Capsula De Gel Mole",
       "marca": "Pralivio",
-      "precoCentavos": 2199,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1579
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 2199
+        }
+      ]
     },
     "KITPGM-20001": {
       "produto": "Kit Advil Ibuprofeno 400mg 3 Cápsulas + Leite de Magnésia EnoMagno 8% 1 Sachê 10ml",
       "marca": "Advil",
-      "precoCentavos": 1279,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1279
+        }
+      ]
     },
     "7896009498411": {
       "produto": "Advil 400mg Ibuprofeno Alívio Rápido da Dor de Cabeça 3 Cápsulas",
       "marca": "Advil",
-      "precoCentavos": 899,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 899
+        }
+      ]
     },
     "7896009498442": {
       "produto": "Advil 400mg Ibuprofeno Alívio Rápido da Dor de Cabeça 8 Cápsulas",
       "marca": "Advil",
-      "precoCentavos": 2299,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1599
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 2299
+        }
+      ]
     },
     "7896009498435": {
       "produto": "Advil 400mg Ibuprofeno Alívio Rápido da Dor de Cabeça Blister 8 Cápsulas",
       "marca": "Advil",
-      "precoCentavos": 2099,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2099
+        }
+      ]
     },
     "7891142203410": {
       "produto": "Alivium 400mg 3 Cápsulas Moles",
       "marca": "Alivium",
-      "precoCentavos": 1039,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1039
+        }
+      ]
     },
     "7896112160298": {
       "produto": "Ibupril 400mg 10 Cápsulas Gelatinosas Moles",
       "marca": "Ibupril",
-      "precoCentavos": 1299,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1299
+        },
+        {
+          "rede": "São João",
+          "centavos": 1899
+        }
+      ]
     },
     "7896004747507": {
       "produto": "Ibuflex 400mg 4 Cápsulas Moles",
       "marca": "Ibuflex",
-      "precoCentavos": 449,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 449
+        }
+      ]
     },
     "7896009498961": {
       "produto": "Advil 400mg 16 Cápsulas Moles",
       "marca": "Advil",
-      "precoCentavos": 3699,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 3699
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 4219
+        }
+      ]
     },
     "7897441642134": {
       "produto": "Atenolol 25mg 30 Comprimidos Genérico Aché",
       "marca": "Biosintetica",
-      "precoCentavos": 239,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 239
+        }
+      ]
     },
     "7897595605412": {
       "produto": "Atenolol 25mg 60 Comprimidos Genérico Sandoz",
       "marca": "Sandoz",
-      "precoCentavos": 895,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 895
+        }
+      ]
     },
     "7896422506342": {
       "produto": "Atenolol 25mg 30 Comprimidos Medley Genérico",
       "marca": "Medley",
-      "precoCentavos": 259,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 259
+        }
+      ]
     },
     "7897595602572": {
       "produto": "Atenolol 25mg 30 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Sandoz",
-      "precoCentavos": 229,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 229
+        },
+        {
+          "rede": "São João",
+          "centavos": 349
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 599
+        }
+      ]
     },
     "7898049799442": {
       "produto": "Atenolol 100mg + Clortalidona 25mg 30 Comprimidos Genérico Vitamedic",
       "marca": "Vitamedic",
-      "precoCentavos": 4279,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 4279
+        }
+      ]
     },
     "7894916144681": {
       "produto": "Atenolol 100mg + Clortalidona 25mg 30 Comprimidos Genérico Legrand",
       "marca": "Legrand",
-      "precoCentavos": 4499,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 4499
+        }
+      ]
     },
     "7896241225547": {
       "produto": "Ablok Plus Atenolol + Clortalidona 100mg + 25mg 30 Comprimidos Biolab",
       "marca": "Ablok",
-      "precoCentavos": 7849,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 6926
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 7849
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 7959
+        }
+      ]
     },
     "7896241221853": {
       "produto": "Ablok 25mg 30 Comprimidos",
       "marca": "Ablok",
-      "precoCentavos": 1359,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 490
+        },
+        {
+          "rede": "São João",
+          "centavos": 1189
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1359
+        }
+      ]
     },
     "7896181916222": {
       "produto": "Angipress 25mg 30 Comprimidos",
       "marca": "Angipress",
-      "precoCentavos": 2529,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2529
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 2549
+        }
+      ]
     },
     "7896241225257": {
       "produto": "Ablok Plus 25mg + 12,5mg 30 Comprimidos",
       "marca": "Ablok",
-      "precoCentavos": 2629,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 2379
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 2629
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 2649
+        }
+      ]
     },
     "7896181909071": {
       "produto": "Betalor 5mg + 25mg 30 Cápsulas",
       "marca": "Betalor",
-      "precoCentavos": 8399,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 8289
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 8399
+        },
+        {
+          "rede": "São João",
+          "centavos": 8428
+        }
+      ]
     },
     "7896112411529": {
       "produto": "Ablok Plus 25mg + 12,5mg 60 Comprimidos",
       "marca": "Ablok",
-      "precoCentavos": 5249,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 5249
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 5329
+        }
+      ]
     },
     "7898049799084": {
       "produto": "Atenoclor 100mg+25mg 30 Comprimidos",
       "marca": "Atenoclor",
-      "precoCentavos": 4559,
-      "disponivel": true
-    },
-    "7896004709024": {
-      "produto": "Atenolol 25mg Comprimidos30 Gn-Germ",
-      "marca": "Atenolol",
-      "precoCentavos": 399,
-      "disponivel": false
-    },
-    "7896004705781": {
-      "produto": "Atenolol 25mg 30 Comprimidos EMS Genérico",
-      "marca": "EMS",
-      "precoCentavos": 559,
-      "disponivel": false
-    },
-    "7896714262031": {
-      "produto": "Atenolol 25mg Com 30 Comprimidos Generico Neo Quimica",
-      "marca": "Atenolol",
-      "precoCentavos": 439,
-      "disponivel": false
-    },
-    "7898148290772": {
-      "produto": "Atenolol 25mg Com 30 Comprimidos Genérico Prati Donaduzzi",
-      "marca": "Atenolol",
-      "precoCentavos": 449,
-      "disponivel": false
-    },
-    "7896112401452": {
-      "produto": "Atenolol 25mg 30 Comprimidos Revestidos Genérico Biolab",
-      "marca": "Atenolol",
-      "precoCentavos": 249,
-      "disponivel": false
-    },
-    "7896004709123": {
-      "produto": "Atenolol 100mg + Clortadilona 25mg 30 Comprimidos EMS Genérico",
-      "marca": "EMS",
-      "precoCentavos": 4179,
-      "disponivel": false
-    },
-    "7891317444747": {
-      "produto": "Atenolol 100mg + Clortalidona 25mg 30 Comprimidos Eurofarma Genérico",
-      "marca": "Eurofarma",
-      "precoCentavos": 5599,
-      "disponivel": false
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 4559
+        }
+      ]
     },
     "7896862918583": {
       "produto": "Hidroclorotiazida 25mg 30 Comprimidos Genérico Medquimica",
       "marca": "Medquimica",
-      "precoCentavos": 249,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 249
+        }
+      ]
     },
     "7891058002657": {
       "produto": "Hidroclorotiazida 25mg 30 Comprimidos Genérico Medley",
       "marca": "Hidroclorotiazida",
-      "precoCentavos": 219,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 169
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 219
+        }
+      ]
     },
     "7896714211978": {
       "produto": "Hidroclorotiazida 25mg 30 Comprimidos Genérico Neo Química",
       "marca": "Neo Quimica",
-      "precoCentavos": 189,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 169
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 189
+        }
+      ]
     },
     "7894916508377": {
       "produto": "Brasart Hct Valsartana 320mg + Hidroclorotiazida 25mg 30 Comprimidos",
       "marca": "Brasart",
-      "precoCentavos": 11099,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 10725
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 11099
+        }
+      ]
     },
     "7896181922872": {
       "produto": "Valsartana 160mg + Hidroclorotiazida 25mg 30 Comprimidos Revestidos Genérico Ache",
       "marca": "Valsartana+hid",
-      "precoCentavos": 6249,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 6249
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 6339
+        }
+      ]
     },
     "7896714295589": {
       "produto": "Telmisartana 80mg + Hidroclorotiazida 25mg 30 Comprimidos Genérico Neo Química",
       "marca": "Telmisartana",
-      "precoCentavos": 10533,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 9949
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 10533
+        }
+      ]
     },
     "7896112401353": {
       "produto": "Maleato de Enalapril 10mg + Hidroclorotiazida 25mg 30 Comprimidos Genérico Biolab",
       "marca": "Maleato De Enalapril",
-      "precoCentavos": 3479,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 3479
+        }
+      ]
     },
     "8902220112278": {
       "produto": "Valsartana 160mg + Hidroclorotiazida 25mg 30 Comprimidos Revestidos Genérico Torrent",
       "marca": "Valsartana+hid",
-      "precoCentavos": 6599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 6599
+        }
+      ]
     },
     "7896004750354": {
       "produto": "Olmesartana Medoxomila 40mg + Hidroclorotiazida 25mg 30 Comprimidos Revestidos Genérico EMS",
       "marca": "Olmesartana Medoxomila",
-      "precoCentavos": 3859,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 3849
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 3859
+        },
+        {
+          "rede": "São João",
+          "centavos": 5804
+        }
+      ]
     },
     "7896004710860": {
       "produto": "Cloridrato de Amilorida 2,5mg + Hidroclorotiazida 25mg 30 Comprimidos Genérico EMS",
       "marca": "Cloridrato De Amilorida+hidro",
-      "precoCentavos": 919,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 864
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 919
+        }
+      ]
     },
     "7896714249001": {
       "produto": "Olmesartana Medoxomila 40mg + Hidroclorotiazida 25mg 30 Comprimidos Revestidos Genérico Neo Química",
       "marca": "Olmesartana + Hidroclorotiazida",
-      "precoCentavos": 3859,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 3859
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 4339
+        }
+      ]
     },
     "7891317124038": {
       "produto": "Olmesartana+hidroclorotiazida 40mg+25mg 30 Comprimidos Genérico Eurofarma",
       "marca": "Olmesartana + Hidroclorotiazida",
-      "precoCentavos": 5199,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 4119
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 5199
+        },
+        {
+          "rede": "São João",
+          "centavos": 5879
+        }
+      ]
     },
     "7891317445294": {
       "produto": "Gen Losartana 100mg+hidroclorotiazida25mg 30cp Rev Euro",
       "marca": "Losartana Potassica + Hidroclorotiazida",
-      "precoCentavos": 5049,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 5049
+        }
+      ]
     },
     "7894916510431": {
       "produto": "Olmy HCT 40mg+25mg 30 Comprimidos Revestidos",
       "marca": "Olmy",
-      "precoCentavos": 6449,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 5790
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 6449
+        }
+      ]
     },
     "7897337707404": {
       "produto": "Hyzaar 100mg + 25mg 30 Comprimidos Revestidos",
       "marca": "Hyzaar",
-      "precoCentavos": 12699,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 12699
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 12979
+        }
+      ]
     },
     "7897595609892": {
       "produto": "Sinvastatina 40mg Com 30 Comprimidos Genérico Sandoz",
       "marca": "Sinvastatina",
-      "precoCentavos": 2129,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1029
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 2129
+        }
+      ]
     },
     "7897595632623": {
       "produto": "Sinvastatina 40mg 30 Comprimidos Revestidos Genérico Sandoz",
       "marca": "Novartis",
-      "precoCentavos": 1389,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1239
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1389
+        }
+      ]
     },
     "7896523215273": {
       "produto": "Sinvastatina 40mg 30 Comprimidos Revestidos Genérico Cimed",
       "marca": "Sinvastatina",
-      "precoCentavos": 1749,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1079
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 1749
+        }
+      ]
     },
     "7899620911079": {
       "produto": "Sinvastatina 40mg 30 Comprimidos Revestidos Genérico Globo",
       "marca": "Sinvastatina",
-      "precoCentavos": 1569,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 1569
+        }
+      ]
     },
     "7896004747064": {
       "produto": "Ezetimiba 10mg + Sinvastatina 40mg 30 Comprimidos Genérico EMS",
       "marca": "Sinvastatina",
-      "precoCentavos": 12799,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 12799
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 14309
+        }
+      ]
     },
     "7897595604163": {
       "produto": "Sinvastacor 40mg 30 Comprimidos Revestidos",
       "marca": "Sinvastacor",
-      "precoCentavos": 2929,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 2929
+        }
+      ]
     },
     "7897851250622": {
       "produto": "Sinvascor 40mg 30 Comprimidos Revestidos",
       "marca": "Sinvascor",
-      "precoCentavos": 3459,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 3459
+        }
+      ]
     },
     "7891721016165": {
       "produto": "Clinfar 40mg 30 Comprimidos Revestidos",
       "marca": "Clinfar",
-      "precoCentavos": 11599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 11589
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 11599
+        }
+      ]
     },
     "7897337716888": {
       "produto": "Zetsim 10mg + 40mg 30 Comprimidos",
       "marca": "Zetsim",
-      "precoCentavos": 15837,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 14589
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 15837
+        }
+      ]
     },
     "7897337714495": {
       "produto": "Vytorin 10mg + 40mg 30 Comprimidos",
       "marca": "Vytorin",
-      "precoCentavos": 20099,
-      "disponivel": true
-    },
-    "7896004711126": {
-      "produto": "Sinvastatina 40mg Com 30 Comprimidos Genérico Germed",
-      "marca": "Sinvastatina",
-      "precoCentavos": 1779,
-      "disponivel": false
-    },
-    "7894916141215": {
-      "produto": "Sinvastatina 40mg 30 Comprimidos Revestidos Genérico Legrand",
-      "marca": "Sinvastatina",
-      "precoCentavos": 1829,
-      "disponivel": false
-    },
-    "7895296449281": {
-      "produto": "Sinvastatina 40mg 30 Comprimidos Revestidos Genérico Multilab",
-      "marca": "Sinvastatina",
-      "precoCentavos": 1849,
-      "disponivel": false
-    },
-    "7896004749167": {
-      "produto": "Ezetimiba+sinvastatina 10mg + 40mg Cpd/30 Generico Germed",
-      "marca": "Ezetimiba",
-      "precoCentavos": 5649,
-      "disponivel": false
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 20099
+        }
+      ]
     },
     "7896241228203": {
       "produto": "Aradois 100mg 60 Comprimidos Revestidos",
       "marca": "Aradois",
-      "precoCentavos": 19199,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 19199
+        }
+      ]
     },
     "7896241227701": {
       "produto": "Aradois 100mg 30 Comprimidos Revestidos",
       "marca": "Aradois",
-      "precoCentavos": 14999,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 14999
+        }
+      ]
     },
     "7897337707336": {
       "produto": "Cozaar 100mg 30 Comprimidos Revestidos",
       "marca": "Cozaar",
-      "precoCentavos": 9249,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 9249
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 9439
+        }
+      ]
     },
     "7896112427735": {
       "produto": "Aradois H 100mg + 25mg 30 Comprimidos Revestidos",
       "marca": "Aradois",
-      "precoCentavos": 14699,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 14699
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 16669
+        }
+      ]
     },
     "7896181908890": {
       "produto": "Lotar 5mg + 100mg 30 Cápsulas",
       "marca": "Lotar",
-      "precoCentavos": 9049,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 8339
+        },
+        {
+          "rede": "Pague Menos",
+          "centavos": 9049
+        }
+      ]
     },
     "7891317451400": {
       "produto": "Zart H 100mg + 25mg 30 Comprimidos Revestidos",
       "marca": "Zart",
-      "precoCentavos": 9499,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 9499
+        }
+      ]
     },
     "7896112427797": {
       "produto": "Aradois H 100mg + 25mg 60 Comprimidos Revestidos",
       "marca": "Aradois",
-      "precoCentavos": 18999,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 18999
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 21309
+        }
+      ]
     },
     "7896112427773": {
       "produto": "Aradois H 100mg + 25mg 90 Comprimidos Revestidos",
       "marca": "Aradois H",
-      "precoCentavos": 20099,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 20099
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 22189
+        }
+      ]
     },
     "7896181900085": {
       "produto": "Corus H 100mg+25mg 30 Comprimidos Revestidos",
       "marca": "Corus",
-      "precoCentavos": 12599,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 12599
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 15579
+        }
+      ]
     },
     "7891317451417": {
       "produto": "Zart H 50mg + 12,5mg 30 Comprimidos Revestidos",
       "marca": "Zart",
-      "precoCentavos": 5649,
-      "disponivel": true
+      "precos": [
+        {
+          "rede": "Pague Menos",
+          "centavos": 5649
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 5739
+        }
+      ]
+    },
+    "7891058021740": {
+      "produto": "Anador Dipirona 500mg 4 Comprimidos",
+      "marca": "Anador",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 505
+        }
+      ]
+    },
+    "7891058008635": {
+      "produto": "Novalgina Dipirona 500mg 30 Comprimidos",
+      "marca": "Novalgina",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 4289
+        }
+      ]
+    },
+    "7896026300988": {
+      "produto": "Anador Dipirona 500mg 24 Comprimidos",
+      "marca": "Anador",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 2809
+        }
+      ]
+    },
+    "7898166040847": {
+      "produto": "Dipirona 500mg Genérico Farmace Gotas 10ml",
+      "marca": "Farmace",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 499
+        }
+      ]
+    },
+    "7898133131011": {
+      "produto": "Dipirona 500mg Solução Oral Gotas 20ml Maxalgina Natulab",
+      "marca": "Natulab",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 679
+        }
+      ]
+    },
+    "7898133130403": {
+      "produto": "Dipirona 500mg Solução Oral Gotas 10ml Maxalgina Natulab",
+      "marca": "Natulab",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 499
+        }
+      ]
+    },
+    "7896714292755": {
+      "produto": "Dipirona 500mg/ml Frasco 20ml Gotas Genérico Neo Química",
+      "marca": "Neo Química",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 769
+        },
+        {
+          "rede": "São João",
+          "centavos": 1671
+        }
+      ]
+    },
+    "7896714296074": {
+      "produto": "Dipirona 500mg/ml Frasco 20ml Abacaxi Gotas Genérico Neo Química",
+      "marca": "Neo Química",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 769
+        },
+        {
+          "rede": "São João",
+          "centavos": 2635
+        }
+      ]
+    },
+    "7897322702209": {
+      "produto": "Lisador Dipirona 500mg + Adifenina 10mg + Prometazina 5mg 16 Comprimidos",
+      "marca": "Lisador",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 4499
+        }
+      ]
+    },
+    "7897322707211": {
+      "produto": "Lisador Dipirona 500Mg + Adifenina 10Mg + Prometazina 5mg 24 Comprimidos",
+      "marca": "Lisador",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 5867
+        }
+      ]
+    },
+    "7896094917460": {
+      "produto": "Atroveran Dip Dipirona Monoidratada 500mg/ml Solução Gotas 20ml Hypera Pharma",
+      "marca": "Atroveran",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 2409
+        }
+      ]
+    },
+    "7898049790913": {
+      "produto": "Metformina 850mg 30 Comprimidos Genérico Vitamedic",
+      "marca": "Apsen",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1591
+        }
+      ]
+    },
+    "7898060134239": {
+      "produto": "Omeprazol 20mg 28 Comprimidos Genérico Globo",
+      "marca": "Globo",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1490
+        }
+      ]
+    },
+    "7898060134246": {
+      "produto": "Omeprazol 20mg Cápsulas 56 Unidades Genérico Globo",
+      "marca": "Globo",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1629
+        }
+      ]
+    },
+    "7896004743936": {
+      "produto": "Esomeprazol 20mg 14 Comprimidos Revestidos Genérico EMS",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 5457
+        }
+      ]
+    },
+    "7897076914057": {
+      "produto": "Esomeprazol Magnésico 20mg 28 comprimidos Ranbaxy Genérico",
+      "marca": "Ranbaxy",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2649
+        },
+        {
+          "rede": "São João",
+          "centavos": 5590
+        }
+      ]
+    },
+    "7896004742069": {
+      "produto": "Esomeprazol Magnésico Tri-Hidratado EMS 20mg 28 Comprimidos Genérico",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1669
+        },
+        {
+          "rede": "São João",
+          "centavos": 7309
+        }
+      ]
+    },
+    "7896523208107": {
+      "produto": "Amoxicilina 500mg Genérico Cimed 21 Cápsulas Duras",
+      "marca": "Cimed",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 2290
+        }
+      ]
+    },
+    "7897076923776": {
+      "produto": "Amoxicilina 500mg + Clavulanato 21 Comprimidos Genérico Ranbaxy",
+      "marca": "Ranbaxy",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 8719
+        },
+        {
+          "rede": "São João",
+          "centavos": 9999
+        }
+      ]
+    },
+    "7896015520311": {
+      "produto": "Clavulin Amoxicilina 500mg + Clavulanato 125mg 21 Comprimidos",
+      "marca": "Outras",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 16612
+        }
+      ]
+    },
+    "7897076923769": {
+      "produto": "Amoxicilina 500mg + Clavulanato 14 Comprimidos Genérico Ranbaxy",
+      "marca": "Ranbaxy",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 7909
+        },
+        {
+          "rede": "São João",
+          "centavos": 9799
+        }
+      ]
+    },
+    "7896015520380": {
+      "produto": "Clavulin Amoxicilina 500mg + Clavulanato 125mg 30 Comprimidos",
+      "marca": "Clavulin",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 21901
+        }
+      ]
+    },
+    "7896004795232": {
+      "produto": "Amoxicilina 500mg + Clavulanato de Potássio 125mg 21 Comprimidos Genérico EMS",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 7999
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 8079
+        }
+      ]
+    },
+    "7896004703411": {
+      "produto": "Amoxicilina + Clavulanato de Potássio 500mg 18 Comprimidos Genérico EMS",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 8949
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 9449
+        }
+      ]
+    },
+    "7896004703404": {
+      "produto": "Amoxicilina + Clavulanato de Potássio 500mg 12 Comprimidos Genérico EMS",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 6509
+        },
+        {
+          "rede": "São João",
+          "centavos": 6990
+        }
+      ]
+    },
+    "7897595633316": {
+      "produto": "Amoxicilina + Clavulanato De Potássio 500mg 18 Comprimidos Revestidos Genérico Sandoz",
+      "marca": "Sandoz",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 8199
+        },
+        {
+          "rede": "São João",
+          "centavos": 9989
+        }
+      ]
+    },
+    "7891106916738": {
+      "produto": "Aspmol Paracetamol 750mg 20 Comprimidos Bayer",
+      "marca": "Bayer",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1090
+        }
+      ]
+    },
+    "7899620913776": {
+      "produto": "Paracetamol 750mg 20 Comprimidos Genérico Globo",
+      "marca": "Globo",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1090
+        }
+      ]
+    },
+    "7896862993535": {
+      "produto": "Paracetamol Genérico Medquímica 750mg 20 Comprimidos",
+      "marca": "Medquímica",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 990
+        }
+      ]
+    },
+    "7899547531237": {
+      "produto": "Paracetamol Genérico Prati-Donaduzzi 750mg 20 Comprimidos Revestidos",
+      "marca": "Prati Donaduzzi",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 890
+        }
+      ]
+    },
+    "7896004710761": {
+      "produto": "Sinvastatina Genérico EMS 20mg 30 Comprimidos Revestidos",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 909
+        },
+        {
+          "rede": "São João",
+          "centavos": 1490
+        }
+      ]
+    },
+    "7891142982469": {
+      "produto": "Alivium Ibuprofeno 400mg 20 Cápsulas",
+      "marca": "Alivium",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 6026
+        }
+      ]
+    },
+    "7891142982384": {
+      "produto": "Alivium Cápsula Ibuprofeno 400mg 8 Cápsulas",
+      "marca": "Alivium",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 2479
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 2579
+        }
+      ]
+    },
+    "7891142982407": {
+      "produto": "Alivium Cápsula Ibuprofeno 400mg 10 Cápsulas",
+      "marca": "Alivium",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2990
+        },
+        {
+          "rede": "São João",
+          "centavos": 3308
+        }
+      ]
+    },
+    "7896004746029": {
+      "produto": "Ibuprofeno 400mg 4 Cápsulas Ibuliv EMS",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 829
+        }
+      ]
+    },
+    "7896004746012": {
+      "produto": "Ibuprofeno 400mg 8 Cápsulas Ibuliv EMS",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1429
+        }
+      ]
+    },
+    "7896004779805": {
+      "produto": "Ibuliv Ibuprofeno 400mg Cápsulas 20 Unidades EMS",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1790
+        }
+      ]
+    },
+    "7898148290772": {
+      "produto": "Atenolol Genérico Prati-Donaduzzi 25mg 30 Comprimidos",
+      "marca": "Prati Donaduzzi",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 519
+        }
+      ]
+    },
+    "7896004705781": {
+      "produto": "Atenolol Genérico EMS 25mg 30 Comprimidos",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 390
+        }
+      ]
+    },
+    "7897595901521": {
+      "produto": "Clorana Hidroclorotiazida 25mg 30 Comprimidos Sanofi",
+      "marca": "Clorana",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 1499
+        }
+      ]
+    },
+    "7896523210070": {
+      "produto": "Hidroclorotiazida 25mg Genérico Cimed 30 Comprimidos",
+      "marca": "Cimed",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 349
+        }
+      ]
+    },
+    "7896026304016": {
+      "produto": "Micardis HCT Telmisartana 80mg + Hidroclorotiazida 25mg 30 Comprimidos Boehringer",
+      "marca": "Outras",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 23708
+        }
+      ]
+    },
+    "7896094201095": {
+      "produto": "Naprix D Ramipril 5mg + Hidroclorotiazida 25mg 30 Cápsulas Libbs",
+      "marca": "Naprix",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 6873
+        }
+      ]
+    },
+    "7894916508360": {
+      "produto": "Brasart HCT Valsartana 160mg + Hidroclorotiazida 25mg 30 comprimidos EMS",
+      "marca": "Brasart",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 10587
+        },
+        {
+          "rede": "Drogal",
+          "centavos": 11479
+        }
+      ]
+    },
+    "7891317051167": {
+      "produto": "Olsar H Olmesartana Medoxomila 40mg + Hidroclorotiazida 25mg 60 Comprimidos Revestidos Momenta",
+      "marca": "Momenta",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 15696
+        }
+      ]
+    },
+    "7896004716176": {
+      "produto": "Hidroclorotiazida Genérico EMS 25mg 30 Comprimidos",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "São João",
+          "centavos": 249
+        }
+      ]
+    },
+    "7896004711188": {
+      "produto": "Sinvastatina Genérico EMS 40mg 30 Comprimidos Revestidos",
+      "marca": "Ems",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1589
+        },
+        {
+          "rede": "São João",
+          "centavos": 2199
+        }
+      ]
+    },
+    "7896422507738": {
+      "produto": "Losartana Potássica 50mg Medley 30 Comprimidos",
+      "marca": "Medley",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 419
+        }
+      ]
+    },
+    "7896181915638": {
+      "produto": "Losartana Potássica 50mg Biosintética 30 Comprimidos Revestidos",
+      "marca": "Biosintética",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 429
+        }
+      ]
+    },
+    "7891317445287": {
+      "produto": "Losartana Potássica 50mg + Hidroclorotiazida 12,5mg Eurofarma 30 Comprimidos Revestidos",
+      "marca": "Eurofarma",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1979
+        }
+      ]
+    },
+    "7896112486787": {
+      "produto": "Aradois 50mg 30 Comprimidos Revestidos",
+      "marca": "Aradois",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 849
+        }
+      ]
+    },
+    "7896112486886": {
+      "produto": "Aradois 50mg 60 Comprimidos Revestidos",
+      "marca": "Aradois",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2419
+        }
+      ]
+    },
+    "7896181915072": {
+      "produto": "Lotar 5mg + 50mg 30 Cápsulas",
+      "marca": "Lotar",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 8629
+        }
+      ]
+    },
+    "7896112428015": {
+      "produto": "Aradois H 50mg + 12,5mg 90 Comprimidos Revestidos",
+      "marca": "Aradois",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 17759
+        }
+      ]
+    },
+    "7896112427933": {
+      "produto": "Aradois H 50mg + 12,5mg 60 Comprimidos Revestidos",
+      "marca": "Aradois",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 13389
+        }
+      ]
+    },
+    "7897337706384": {
+      "produto": "Cozaar 50mg 30 Comprimidos Revestidos",
+      "marca": "Cozaar",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 5359
+        }
+      ]
+    },
+    "7896261024199": {
+      "produto": "Neparvis 50mg 28 Comprimidos Revestidos",
+      "marca": "Neparvis",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 14779
+        }
+      ]
+    },
+    "7898700413014": {
+      "produto": "Dipirona Monoidratada 500mg Vitamedic 10 Comprimidos",
+      "marca": "Vitamedic",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 509
+        }
+      ]
+    },
+    "7896004769196": {
+      "produto": "Dipirona Monoidratada 500mg EMS 10 Comprimidos",
+      "marca": "EMS",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 476
+        }
+      ]
+    },
+    "7891058005733": {
+      "produto": "Dipirona Monoidratada 500mg Medley 10 Comprimidos",
+      "marca": "Medley",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 469
+        }
+      ]
+    },
+    "7896714273198": {
+      "produto": "Dipirona Sódica 500mg + Cafeína 65mg Neo Química 4 Comprimidos",
+      "marca": "Neo Química",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 279
+        }
+      ]
+    },
+    "7891058002602": {
+      "produto": "Dipirona Monoidratada 1g Medley 10 Comprimidos",
+      "marca": "Medley",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 939
+        }
+      ]
+    },
+    "7891058021597": {
+      "produto": "Anador 500mg 24 Comprimidos",
+      "marca": "Anador",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2989
+        }
+      ]
+    },
+    "7896523201887": {
+      "produto": "Dipirona Monoidratada 1g Cimed 10 Comprimidos",
+      "marca": "Cimed",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 859
+        }
+      ]
+    },
+    "7896112126485": {
+      "produto": "Cloridrato de Metformina 850mg Teuto 30 Comprimidos",
+      "marca": "Teuto",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 739
+        }
+      ]
+    },
+    "7897337708173": {
+      "produto": "Janumet 50/850mg 28 Comprimidos Revestidos",
+      "marca": "Janumet",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 12649
+        }
+      ]
+    },
+    "7898687735031": {
+      "produto": "Vildagliptina 50mg + Cloridrato de Metformina 1000mg Althaia 60 Comprimidos Revestidos",
+      "marca": "Althaia",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 9479
+        }
+      ]
+    },
+    "7898687734812": {
+      "produto": "Vildagliptina + Cloridrato de Metformina 50mg + 500mg Althaia 60 Comprimidos Revestidos",
+      "marca": "Althaia",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 10199
+        }
+      ]
+    },
+    "7896004790930": {
+      "produto": "Glunac Duo 2,5mg + 1000mg 60 Comprimidos Revestidos",
+      "marca": "Glunac",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 12701
+        }
+      ]
+    },
+    "7896006214717": {
+      "produto": "Omeprazol 20mg União Química 56 Cápsulas",
+      "marca": "União Química",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 3157
+        }
+      ]
+    },
+    "7896714230290": {
+      "produto": "Omeprazol 20mg Neo Química 28 Cápsulas",
+      "marca": "Neo Química",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 3319
+        }
+      ]
+    },
+    "7895296449700": {
+      "produto": "Omeprazol 20mg Nova Química 56 Cápsulas de Liberação Retardada",
+      "marca": "Nova Química",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1444
+        }
+      ]
+    },
+    "7891142982605": {
+      "produto": "Esomeprazol Magnésico 20mg Neo Química 28 Cápsulas Duras de Liberação Retardada",
+      "marca": "Neo Química",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 3699
+        }
+      ]
+    },
+    "7898953165425": {
+      "produto": "Haldol 5mg 20 comprimidos",
+      "marca": "Haldol",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1779
+        }
+      ]
+    },
+    "7896422504614": {
+      "produto": "Omeprazol 40mg Medley 7 Cápsulas",
+      "marca": "Medley",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 3619
+        }
+      ]
+    },
+    "7896006257929": {
+      "produto": "Bisalax 5mg 20 Drágeas",
+      "marca": "Bisalax",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 799
+        }
+      ]
+    },
+    "7896658004162": {
+      "produto": "Novocilin 875mg 20 Comprimidos",
+      "marca": "Novocilin",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 11129
+        }
+      ]
+    },
+    "7898953165401": {
+      "produto": "Haldol (C1) 1mg caixa com 20 comprimidos",
+      "marca": "Haldol",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 849
+        }
+      ]
+    },
+    "7896422506533": {
+      "produto": "Omeprazol - Medley 10mg caixa com 14 cápsulas",
+      "marca": "Medley",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1419
+        }
+      ]
+    },
+    "7896004702223": {
+      "produto": "Amoxicilina 500mg Germed 21 Cápsulas",
+      "marca": "Germed",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2839
+        }
+      ]
+    },
+    "7896181916963": {
+      "produto": "Amoxicilina 500mg Aché 15 Cápsulas",
+      "marca": "Biosintética",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2489
+        }
+      ]
+    },
+    "7896112151180": {
+      "produto": "Lansoprazol 30mg + Claritromicina 500mg + Amoxicilina 500mg Teuto + 28 Cápsulas de Lansoprazol",
+      "marca": "Teuto",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 14079
+        }
+      ]
+    },
+    "7896004710501": {
+      "produto": "Amoxicilina 875mg Germed 14 Comprimidos Revestidos",
+      "marca": "Germed",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 4409
+        }
+      ]
+    },
+    "7898700412512": {
+      "produto": "Paracetamol 750mg Vitamedic 20 Comprimidos",
+      "marca": "Vitamedic",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1749
+        }
+      ]
+    },
+    "7896112101567": {
+      "produto": "Paracetamol 750mg Teuto 20 Comprimidos Revestidos",
+      "marca": "Teuto",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 809
+        }
+      ]
+    },
+    "7896006298571": {
+      "produto": "Paracetamol 750mg União Química 20 Comprimidos",
+      "marca": "União Química",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1090
+        }
+      ]
+    },
+    "7891010256715": {
+      "produto": "Tylenol Múltiplas Dores 750mg 10 Comprimidos Revestidos",
+      "marca": "Tylenol",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2490
+        }
+      ]
+    },
+    "7891010256708": {
+      "produto": "Tylenol Múltiplas Dores 750mg 20 Comprimidos Revestidos",
+      "marca": "Tylenol",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 3749
+        }
+      ]
+    },
+    "7899547543896": {
+      "produto": "Paracetamol 500mg Prati-Donaduzzi 10 Comprimidos",
+      "marca": "Prati donaduzzi",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 579
+        }
+      ]
+    },
+    "7899547543858": {
+      "produto": "Paracetamol 500mg Prati-Donaduzzi 20 Comprimidos",
+      "marca": "Prati donaduzzi",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 599
+        }
+      ]
+    },
+    "7908079514752": {
+      "produto": "Aflevil 750mg 4 Comprimidos",
+      "marca": "Aflevil",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 329
+        }
+      ]
+    },
+    "7896658036057": {
+      "produto": "Cefalium One 750mg 20 Comprimidos - Ache",
+      "marca": "Cefalium",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2869
+        }
+      ]
+    },
+    "7891010256630": {
+      "produto": "Tylenol Dor de Cabeça 500mg Paracetamol + 65mg Cafeína 10 Comprimidos Revestidos",
+      "marca": "Tylenol",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1490
+        }
+      ]
+    },
+    "7891010256609": {
+      "produto": "Tylenol Dor e frebre 500mg 10 Comprimidos Revestidos",
+      "marca": "Tylenol",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2329
+        }
+      ]
+    },
+    "7891010986155": {
+      "produto": "Tylenol Múltiplas Dores 500mg 20 Comprimidos Revestidos",
+      "marca": "Tylenol",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 4059
+        }
+      ]
+    },
+    "7891010255909": {
+      "produto": "Tylenol Bebê 100mg/ml Suspensão Oral Sabor Frutas 15ml + Seringa Dosadora",
+      "marca": "Tylenol",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 4490
+        }
+      ]
+    },
+    "7896004710792": {
+      "produto": "Sinvastatina 20mg Germed 30 Comprimidos",
+      "marca": "Germed",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1019
+        }
+      ]
+    },
+    "7896004701943": {
+      "produto": "Sinvastatina EMS 10mg 30 Comprimidos",
+      "marca": "EMS",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 729
+        }
+      ]
+    },
+    "7894916515337": {
+      "produto": "Clabat 500mg 20 Comprimidos",
+      "marca": "Clabat",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 18759
+        }
+      ]
+    },
+    "7896004747040": {
+      "produto": "Ezetimiba 10mg + Sinvastatina 10mg EMS 30 Comprimidos",
+      "marca": "EMS",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 9419
+        }
+      ]
+    },
+    "7897851260232": {
+      "produto": "Sinvascor EZE 20mg + 10mg 30 Comprimidos",
+      "marca": "Sinvascor",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 9959
+        }
+      ]
+    },
+    "7897337714471": {
+      "produto": "Vytorin 10/10mg 30 Comprimidos",
+      "marca": "Vytorin",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 10279
+        }
+      ]
+    },
+    "7894916509329": {
+      "produto": "Brasart BCC 320mg + 5mg 30 Comprimidos Revestidos",
+      "marca": "Brasart",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 13460
+        }
+      ]
+    },
+    "7896241293737": {
+      "produto": "Vaslip 10mg 30 Comprimidos Revestidos",
+      "marca": "Vaslip",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2709
+        }
+      ]
+    },
+    "7898687730722": {
+      "produto": "Ibuprofeno 400mg Althaia 10 Cápsulas Moles",
+      "marca": "Althaia",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1189
+        }
+      ]
+    },
+    "7899547512748": {
+      "produto": "Ibuprofeno 400mg Pratti Donaduzzi 10 Comprimidos Revestidos",
+      "marca": "Prati donaduzzi",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 979
+        }
+      ]
+    },
+    "7891142982452": {
+      "produto": "Alivium 400mg 3 Cápsulas Líquidas",
+      "marca": "Alivium",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1095
+        }
+      ]
+    },
+    "7891142982476": {
+      "produto": "Alivium 400mg 20 Cápsulas Líquidas",
+      "marca": "Alivium",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 5879
+        }
+      ]
+    },
+    "7896004732930": {
+      "produto": "Ibuflex 400mg 8 cápsulas",
+      "marca": "Ibuflex",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 799
+        }
+      ]
+    },
+    "7896009498459": {
+      "produto": "Advil 400mg 20 Cápsulas Líquidas",
+      "marca": "Advil",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 3679
+        }
+      ]
+    },
+    "7896112160311": {
+      "produto": "Ibupril 400mg 36 Cápsulas Gelatinosas Moles",
+      "marca": "Ibupril",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2669
+        }
+      ]
+    },
+    "7891045164184": {
+      "produto": "Advil Mulher 400mg 10 Cápsulas Líquidas",
+      "marca": "Advil",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2949
+        }
+      ]
+    },
+    "7896009498404": {
+      "produto": "Advil 400mg Blister 3 Cápsulas Líquidas",
+      "marca": "Advil",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 979
+        }
+      ]
+    },
+    "7896009498428": {
+      "produto": "Advil 400mg Blister 8 Cápsulas Líquidas",
+      "marca": "Advil",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 2269
+        }
+      ]
+    },
+    "7896009498466": {
+      "produto": "Advil Mulher 400mg Blister 2 Cápsulas Líquidas",
+      "marca": "Advil",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 639
+        }
+      ]
+    },
+    "7896181900122": {
+      "produto": "Atenolol 25mg Biosintética 30 Comprimidos",
+      "marca": "Biosintética",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 229
+        }
+      ]
+    },
+    "7896112401452": {
+      "produto": "Atenolol 25mg 30 Comprimidos - Biolab",
+      "marca": "Biolab",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 319
+        }
+      ]
+    },
+    "7891317444747": {
+      "produto": "Atenolol 100mg + Clortalidona 25mg Eurofarma 30 Comprimidos",
+      "marca": "Eurofarma",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 4159
+        }
+      ]
+    },
+    "7894916144223": {
+      "produto": "Atenolol 100mg Legrand 30 Comprimidos",
+      "marca": "Legrand",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 3109
+        }
+      ]
+    },
+    "7897595605429": {
+      "produto": "Atenolol 50mg Sandoz 60 Comprimidos",
+      "marca": "Sandoz",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1599
+        }
+      ]
+    },
+    "7896422506366": {
+      "produto": "Atenolol 100mg Medley 30 comprimidos",
+      "marca": "Medley",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 3019
+        }
+      ]
+    },
+    "7896422506359": {
+      "produto": "Atenolol 50mg Medley 30 comprimidos",
+      "marca": "Medley",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 769
+        }
+      ]
+    },
+    "7896004759739": {
+      "produto": "Atenolol 50mg + Clortalidona 12,5mg EMS 60 Comprimidos",
+      "marca": "EMS",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 4359
+        }
+      ]
+    },
+    "7891317451035": {
+      "produto": "Atenolol 50mg + Clortalidona 12,5mg Eurofarma 30 Comprimidos",
+      "marca": "Eurofarma",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1729
+        }
+      ]
+    },
+    "7896181909101": {
+      "produto": "Betalor 5mg + 50mg 30 Cápsulas",
+      "marca": "Betalor",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 9169
+        }
+      ]
+    },
+    "7896241225530": {
+      "produto": "Ablok 100mg 30 Comprimidos",
+      "marca": "Ablok",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 6519
+        }
+      ]
+    },
+    "7896241225523": {
+      "produto": "Ablok 50mg 30 Comprimidos",
+      "marca": "Ablok",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 3759
+        }
+      ]
+    },
+    "7896241225127": {
+      "produto": "Ablok Plus 50mg + 12,5mg 30 Comprimidos",
+      "marca": "Ablok",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 4809
+        }
+      ]
+    },
+    "7896004716190": {
+      "produto": "Hidroclorotiazida 25mg 30 Comprimidos - Germed",
+      "marca": "Germed",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 299
+        }
+      ]
+    },
+    "7899420503177": {
+      "produto": "Asea HCT 40mg + 25mg 30 Comprimidos Revestidos",
+      "marca": "Asea",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 6767
+        }
+      ]
+    },
+    "7896714205779": {
+      "produto": "Hidroclorotiazida 50mg Neo Química 20 Comprimidos",
+      "marca": "Neo Química",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 519
+        }
+      ]
+    },
+    "7891142983763": {
+      "produto": "Olzicar HCT 40mg + 25mg 30 Comprimidos Revestidos",
+      "marca": "Olzicar",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 8109
+        }
+      ]
+    },
+    "7891058002664": {
+      "produto": "Hidroclorotiazida - Medley 50mg caixa com 20 comprimidos",
+      "marca": "Medley",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 459
+        }
+      ]
+    },
+    "7896112409861": {
+      "produto": "Biolme H 40mg + 25mg 30 Comprimidos Revestidos",
+      "marca": "Biolme",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 7389
+        }
+      ]
+    },
+    "7894916550116": {
+      "produto": "Tenadren 40mg + 25mg 30 Comprimidos",
+      "marca": "Tenadren",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1589
+        }
+      ]
+    },
+    "8903855087917": {
+      "produto": "Telmisartana 40mg + Hidroclorotiazida 12,5mg Torrent 30 Comprimidos",
+      "marca": "Torrent",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 8479
+        }
+      ]
+    },
+    "7896004711126": {
+      "produto": "Sinvastatina 40mg 30 Comprimidos - Germed Pharma",
+      "marca": "Germed",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 1619
+        }
+      ]
+    },
+    "7898096578250": {
+      "produto": "Unak 40mg 30 Comprimidos",
+      "marca": "Unak",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 6189
+        }
+      ]
+    },
+    "7897411600034": {
+      "produto": "Nustendi 180mg/10mg 30 Comprimidos Revestidos",
+      "marca": "Nustendi",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 20739
+        }
+      ]
+    },
+    "7897337716840": {
+      "produto": "Zetsim 10mg + 10mg 30 Comprimidos",
+      "marca": "Zetsim",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 11209
+        }
+      ]
+    },
+    "7896112427704": {
+      "produto": "Aradois 100mg 30 Comprimidos Revestidos",
+      "marca": "Aradois",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 13114
+        }
+      ]
+    },
+    "7896261024182": {
+      "produto": "Neparvis 100mg 60 Comprimidos Revestidos",
+      "marca": "Neparvis",
+      "precos": [
+        {
+          "rede": "Drogal",
+          "centavos": 33149
+        }
+      ]
     }
   }
 }
