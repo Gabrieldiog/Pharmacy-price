@@ -1,0 +1,24 @@
+# deps
+node_modules/
+.pnpm-store/
+
+# build
+.next/
+out/
+dist/
+*.tsbuildinfo
+
+# dados gerados pelo ETL (regerados pelo pipeline; sample versionado à parte)
+data/cmed-*.ndjson
+data/*.xlsx
+data/*.csv
+data/_raw/
+
+# env / segredos
+.env
+.env.*
+!.env.example
+
+# sistema
+.DS_Store
+*.log
