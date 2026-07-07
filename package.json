@@ -6,11 +6,13 @@
   "description": "Comparador de precos de medicamentos (Brasil): teto CMED + preco real + Farmacia Popular.",
   "scripts": {
     "etl:cmed": "tsx etl/run.ts",
+    "etl:pfpb": "tsx etl/pfpb-run.ts",
     "fixture": "tsx etl/__fixtures__/make-fixture.ts",
     "pretest": "tsx etl/__fixtures__/make-fixture.ts",
-    "test": "node --import tsx --test etl/parse-cmed.test.ts"
+    "test": "node --import tsx --test etl/parse-cmed.test.ts etl/parse-pfpb.test.ts"
   },
   "dependencies": {
+    "unpdf": "^1.6.2",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {

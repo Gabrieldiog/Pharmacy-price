@@ -8,10 +8,12 @@ out/
 dist/
 *.tsbuildinfo
 
-# dados gerados pelo ETL (regerados pelo pipeline; sample versionado à parte)
+# dados gerados pelo ETL (regerados pelo pipeline; sample/lookup versionados à parte)
 data/cmed-*.ndjson
+data/farmacia-popular-*.ndjson
 data/*.xlsx
 data/*.csv
+data/*.pdf
 data/_raw/
 
 # env / segredos
