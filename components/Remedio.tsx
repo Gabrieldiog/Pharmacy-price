@@ -7,6 +7,7 @@ import type { ClientMed } from "@/lib/types";
 import { loadMedsIndex, equivalentes, menorPreco, type MedsIndex } from "@/lib/meds-client";
 import { semaforo } from "@/lib/semaforo";
 import { brl, ddmm, tipoClass, tipoLabel } from "@/lib/med-format";
+import { Denuncia } from "./Denuncia";
 
 function Tags({ med }: { med: ClientMed }) {
   return (
@@ -144,6 +145,12 @@ export function Remedio() {
           <p className="det-preco-simples">Teto legal indisponível para esta apresentação.</p>
         )}
       </section>
+
+      {sem?.cls === "vermelho" && cheapest && med.tetoGo != null && (
+        <section className="det-denuncia">
+          <Denuncia produto={med.produto} precoCents={cheapest.centavos} tetoCents={med.tetoGo} uf="GO" />
+        </section>
+      )}
 
       {med.grupo && (
         <section className="det-equiv">

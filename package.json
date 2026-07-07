@@ -16,7 +16,7 @@
     "build": "next build",
     "fixture": "tsx etl/__fixtures__/make-fixture.ts",
     "pretest": "tsx etl/__fixtures__/make-fixture.ts",
-    "test": "node --import tsx --test etl/parse-cmed.test.ts etl/parse-pfpb.test.ts etl/enrich.test.ts etl/vtex.test.ts etl/precos.test.ts etl/destaques.test.ts lib/nfce.test.ts lib/equivalentes.test.ts"
+    "test": "node --import tsx --test etl/parse-cmed.test.ts etl/parse-pfpb.test.ts etl/enrich.test.ts etl/vtex.test.ts etl/precos.test.ts etl/destaques.test.ts lib/nfce.test.ts lib/equivalentes.test.ts lib/denuncia.test.ts"
   },
   "dependencies": {
     "minisearch": "^7.2.0",

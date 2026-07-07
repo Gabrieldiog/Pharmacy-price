@@ -618,6 +618,56 @@ body {
 .eq-gratis { color: var(--free); }
 .eq-vazio { color: var(--faint); font-weight: 400; }
 
+/* box de denuncia (preco acima do teto) */
+.det-denuncia { margin-top: 20px; }
+.denuncia {
+  background: rgba(242, 104, 95, 0.06);
+  border: 1px solid rgba(242, 104, 95, 0.3);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.denuncia-head { font-size: 14.5px; font-weight: 600; color: var(--danger); }
+.denuncia-passos {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.denuncia-texto {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.denuncia-acoes { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.denuncia-copiar {
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0a1120;
+  background: linear-gradient(180deg, #f2685f, #d9544c);
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: transform 0.14s;
+}
+.denuncia-copiar:hover { transform: translateY(-1px); }
+.denuncia-link { font-size: 13.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.denuncia-link:hover { text-decoration: underline; }
+
 /* footer */
 .foot {
   margin-top: auto;
