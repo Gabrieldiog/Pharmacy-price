@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Search } from "@/components/Search";
 
 export default function Home() {
@@ -13,6 +14,9 @@ export default function Home() {
           <strong>de graça</strong> no Farmácia Popular. Preço por lei, não por marketing.
         </p>
         <Search />
+        <Link href="/colaborar" className="cta-colab">
+          Pagou caro no balcão? Ajude a mapear as farmácias de Goiânia →
+        </Link>
       </header>
 
       <footer className="foot">

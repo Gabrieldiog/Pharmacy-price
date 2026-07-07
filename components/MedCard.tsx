@@ -1,4 +1,5 @@
 import type { ClientMed, PrecosMeta } from "@/lib/types";
+import { semaforo } from "@/lib/semaforo";
 
 function brl(cents: number | null): string | null {
   if (cents == null) return null;
@@ -30,14 +31,10 @@ export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null
   const sub = [med.concentracao, med.apresentacao].filter(Boolean).join(" · ");
 
   // semaforo: preco praticado vs teto legal
-  let sem: { cls: string; label: string } | null = null;
-  if (med.precoRede != null && med.tetoGo != null && !med.semTeto) {
-    const pct = med.precoRede / med.tetoGo;
-    const diff = Math.round((1 - pct) * 100);
-    if (pct > 1) sem = { cls: "vermelho", label: `${Math.abs(diff)}% acima do teto` };
-    else if (pct > 0.9) sem = { cls: "ambar", label: "quase no teto" };
-    else sem = { cls: "verde", label: `${diff}% abaixo do teto` };
-  }
+  const sem =
+    med.precoRede != null && med.tetoGo != null && !med.semTeto
+      ? semaforo(med.precoRede, med.tetoGo)
+      : null;
 
   return (
     <article className="card">
