@@ -634,3 +634,52 @@ Os 5 tipos **não** são comparáveis no mesmo eixo: só 2 são "compre agora" (
 - **iFood/Rappi:** só amostragem manual/spike, rótulo "delivery (pode ter acréscimo)", nunca central (ToS + anti-bot + fragilidade).
 
 **Quirks pro README** (é aqui que o projeto vira engenharia): GO sem portal estadual de preço; host canônico da NFC-e mudou (nfe→nfeweb) em 2025; SEFAZ-GO sem API JSON (scraping de HTML); WAF por rede (Akamai na RD, CloudFront na DPSP `www.*`, host nativo VTEX como saída); Pague Menos precifica nacional (CEP só afeta fulfillment); Procon em PDF-imagem (OCR); CNES com CNPJ-raiz vs NFC-e com filial.
+
+---
+
+### RD Saúde (Drogasil/Raia): caminhos legítimos para o preço
+
+Contexto: a RD Saúde (Drogasil `www.drogasil.com.br` + Droga Raia `www.drogaraia.com.br`) é a maior rede do país, mas o site inteiro fica atrás de **Akamai Bot Manager** na borda — confirmado ao vivo: `403 Forbidden` até no `/robots.txt` a partir de IP de datacenter (não é bloqueio pontual de `/api/*`). Investigamos 5 caminhos para obter o preço de forma legítima. Resumo honesto abaixo.
+
+#### 1. Tabela
+
+| Caminho | Viável? | Legitimidade | Esforço | Veredito |
+|---|---|---|---|---|
+| **Google Shopping / SERP APIs** (SerpApi, DataForSEO…) | ❌ Não (p/ medicamento por loja) | ⚠️→❌ ToS-sensível / **juridicamente contestado** | Alto | **Descartado** |
+| **JSON-LD `schema.org/Product` nas PDPs** + WAF por User-Agent | ⚠️ só de IP residencial · ❌ em datacenter | ❌ gray-area (circumvenção de WAF) | Médio | **Bloqueado em produção** |
+| **Feed de afiliado** (Awin / Rakuten) | ⚠️ parcial (preço nacional, gated) | ⚠️ legítimo, mas condicionado ao ToS do programa | Médio-alto | **Inadequado p/ preço por CEP** |
+| **API pública / engenharia reversa do app** | ❌ Não | ❌ proibido-ou-bloqueado | Muito alto | **Descartado** |
+| **Agregador Farmaindex** (alimentado por feed CPC **oficial** da RD) | ⚠️ Sim, p/ preço **nacional** | ⚠️ gray-area (ToS do Farmaindex) | Baixo-médio | **Melhor via p/ preço de referência — não por CEP** |
+
+#### 2. Detalhe de cada caminho
+
+**1. Google Shopping / SERP APIs — ❌**
+As ferramentas (SerpApi, DataForSEO, SearchApi, Bright Data) existem e parseiam a aba Shopping, mas não servem ao caso: (a) medicamento é categoria **restrita** no Merchant Center (exige certificação de farmácia + Google; prescrição geralmente barrada) — sem evidência de que Drogasil/Raia submetam feed de medicamentos nem apareçam como *seller* no Shopping BR; (b) granularidade errada — devolve preço de vitrine por *merchant*, **nunca por CEP/loja**; (c) legitimidade pior que "gray-area": em dez/2025 o Google **processou a SerpApi** (DMCA + circunvenção), caso em litígio ativo (motion to dismiss em fev/2026). Pago, instável e juridicamente contestado.
+
+**2. JSON-LD nas PDPs + WAF por User-Agent — ❌ (em produção)**
+Fato confirmado ao vivo: as PDPs `.html` servem `JSON-LD schema.org/Product` com `offers.price` (BRL), `gtin13`, `sku`, `availability` e `priceValidUntil` — o dado de preço existe embutido no HTML por SEO (ex.: Dipirona 1g Drogasil `19.49` / gtin `7899547500363`; Raia `27.98` / gtin `7896004782553`). O WAF filtra por **User-Agent sem validar reverse DNS** (Googlebot=200, Chrome=403, sem-UA=200). **Porém**: (a) o teste que passou saiu de **IP residencial**; todo fetch de datacenter levou `403` até no `robots.txt` — no Render provavelmente falha **independente do UA**; (b) forjar UA de Googlebot para furar o WAF é **circumvenção de controle de acesso** (o operador bloqueia navegadores reais de propósito); (c) é preço **nacional/default do SSR, não por CEP/loja** (personalização é client-side); (d) **não há sitemap de produtos** (`/sitemap.xml`=404, sem linha `Sitemap:` no robots) — descoberta de URL quebrada. Inviável e ToS-sensível para deploy em datacenter.
+
+**3. Feed de afiliado (Awin / Rakuten) — ⚠️ legítimo, mas inadequado**
+A RD tem programas oficiais de afiliado (Drogasil e Droga Raia na Awin; case study oficial do Grupo RD na Rakuten). O datafeed da Awin traz preço/disponibilidade/deep link — canal **sancionado por ToS**, sem tocar no site bloqueado. **Mas**: exige aprovação dupla (publisher + programa RD, não garantida e às vezes **pausada** — Lomadee mostrou Droga Raia/Drogasil "Anunciante pausado"); o preço é o **online nacional**, não por CEP/loja; refresh ~diário; e usar feed de afiliado como comparador puro tende a **violar os T&Cs** (muitos exigem tráfego via link de afiliado). Ninguém logou na Awin para inspecionar o feed real da RD — a existência de preço no feed vem de doc genérica, não do feed RD verificado. Legítimo apenas para promoção com deep link, não para alimentar comparador por CEP.
+
+**4. API pública / engenharia reversa do app — ❌**
+Não há API pública de produto/preço, portal de desenvolvedor nem dados abertos da RD. Stack é VTEX (endpoints padrão existem, mas **todos atrás do Akamai**). O app **não escapa** do WAF: apps sob Akamai Bot Manager exigem `x-acf-sensor-data` + cookies `_abck`/`bm_sz` gerados por SDK ofuscado atrelado a TLS fingerprint + IP; chamada de datacenter cai no mesmo `403`. Reverter o app com jadx/mitmproxy só para **entender** é aceitável como estudo; **reproduzir** a geração de `sensor_data` para consumir a API = evasão de bot = viola ToS e é instável. (Nota: *RD Ads* = retail media, não API de preço; *RD Station* = outra empresa.)
+
+**5. Agregador Farmaindex — ⚠️ a via realmente utilizável (preço nacional)**
+A tese inicial de que "nenhum agregador tem o preço da RD" foi **refutada ao vivo (07/07/2026)**. CliqueFarma, Consulta Remédios, Zoom e Buscapé de fato **não** trazem a RD — mas o **Farmaindex** (`farmaindex.com`) traz Drogasil **e** Droga Raia lado a lado (ex.: cabergolina — Droga Raia `R$ 141,98`, Drogasil `R$ 143,00`). Os deep links carregam `utm_campaign=…feedprodutos:rd:drogasil:alwayson…` e `utm_medium=cpc` — string da **própria RD**: ou seja, a RD **deliberadamente sindica seu catálogo com preço** a comparadores parceiros e paga por clique (CPC). Crucialmente, o **Farmaindex respondeu normalmente a fetch de datacenter (sem 403)**, diferente do site da RD. Então dá para obter um preço RD **sem furar o Akamai**. Ressalvas: (a) é o preço **nacional do e-commerce RD, não por CEP/loja física**; (b) raspar o HTML do Farmaindex é **gray-area quanto ao ToS do Farmaindex** (sem API pública confirmada); (c) estabilidade depende da RD manter a campanha "alwayson" e do Farmaindex não adicionar anti-bot — é dependência de parceiro comercial, não contrato nosso.
+
+#### 3. Recomendação final
+
+**Existe um caminho legítimo e estável para o preço da RD *por CEP/loja*? Não.** Nenhuma das 5 vias entrega o preço regionalizado por loja: o site está 100% atrás do Akamai (bloqueado em datacenter, evasão = ToS), o app idem, e todos os canais que fornecem algum preço (afiliado, Farmaindex) entregam o **preço nacional do e-commerce**, não o da loja física por CEP.
+
+**O que é defensável fazer:**
+
+1. **Fechar a RD como fonte DIRETA de preço** — com honestidade — e rotular como **"preço por loja/CEP não disponível publicamente"**. Documentar no README (seção "armadilhas de cada API") que a maior rede do país fica atrás de Akamai Bot Manager (site + app), sem API pública/portal/dados abertos. Isso vira **narrativa de engenharia**, não buraco.
+
+2. **Cobrir o preço praticado da RD via NFC-e / Procon** (preços de venda reais capturados de nota fiscal e das pesquisas de preço do Procon) — é a via legítima e aberta que efetivamente traz preço de varejo, e cobre a RD por tabela indireta sem tocar no WAF.
+
+3. **Preço de referência (opcional, legítimo):** usar a tabela **CMED/ANVISA (PMC/PMVG)** em CSV oficial como **teto regulatório** por medicamento/UF — 100% legítima e aberta (não é o preço praticado pela RD, mas é a referência mais defensável).
+
+4. **Se quiser exibir um preço RD indicativo:** o **Farmaindex** (alimentado pelo feed CPC oficial da RD) é a única via que obtém um preço RD **sem evadir WAF** — mas deve ser marcado explicitamente como **"preço nacional do e-commerce, não por loja/CEP"** e **gray-area de ToS do Farmaindex**. Não confiar como fonte estável; tratar como enriquecimento oportunista.
+
+**Por que a decisão é consciente e defensável:** o projeto é portfólio com postura anti-ToS-risk (ver CLAUDE.md). Tentar bypass de Akamai (proxies residenciais, spoof de sensor, headless farm) é ToS-violating, instável e **contradiz a proposta "legítima"** do Balcão. Cobrir a RD via NFC-e/Procon (preço praticado) + CMED (teto oficial), e rotular o preço-por-loja da RD como "não disponível publicamente", é a escolha honesta: entrega valor real ao usuário, documenta a limitação como engenharia, e não coloca o projeto em zona cinzenta jurídica por uma única rede.
