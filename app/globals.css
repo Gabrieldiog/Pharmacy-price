@@ -133,6 +133,8 @@ body {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 16px 18px;
+  color: inherit;
+  text-decoration: none;
   transition: border-color 0.16s, transform 0.16s, background 0.16s;
 }
 .card:hover {
@@ -409,6 +411,77 @@ body {
   box-shadow: none;
 }
 .colab-nota { font-size: 12px; color: var(--faint); line-height: 1.6; }
+
+/* pagina de detalhe do remedio */
+.det-loading { color: var(--muted); margin-top: 40px; text-align: center; }
+.det-vazio { margin-top: 40px; text-align: center; color: var(--muted); display: flex; flex-direction: column; gap: 14px; align-items: center; }
+
+.det { margin-top: 8px; }
+.det-head { margin-top: 12px; }
+.det-titulo { font-size: clamp(24px, 5vw, 34px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.det-sub { color: var(--muted); font-size: 15px; margin-top: 6px; }
+.det-head .card-tags { margin-top: 12px; }
+.det-head .free { margin-top: 14px; }
+
+.det-preco {
+  margin-top: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.det-preco-topo { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.det-preco-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); }
+.det-preco-val { font-size: 30px; font-weight: 700; color: var(--brand); font-variant-numeric: tabular-nums; margin-top: 4px; }
+.det-preco-rede { font-size: 15px; font-weight: 500; color: var(--muted); }
+.det-preco .semaforo { font-size: 12.5px; }
+
+.det-redes {
+  list-style: none;
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.det-redes li { display: flex; justify-content: space-between; font-size: 14px; color: var(--muted); }
+.det-redes li.melhor { color: var(--ink); font-weight: 600; }
+.det-redes .cr-val { font-variant-numeric: tabular-nums; }
+
+.det-preco-pe { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 14px; font-size: 12px; color: var(--faint); }
+.det-preco-simples { font-size: 15px; color: var(--muted); line-height: 1.6; }
+.det-preco-simples strong { color: var(--ink); }
+
+.det-equiv { margin-top: 30px; }
+.det-h2 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+.det-equiv-lede { color: var(--muted); font-size: 13.5px; margin-top: 6px; max-width: 60ch; }
+.det-equiv-vazio, .det-equiv-mais { color: var(--faint); font-size: 13px; margin-top: 12px; }
+
+.det-equiv-lista { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.eq {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 13px 16px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.14s, background 0.14s, transform 0.14s;
+}
+.eq:hover { border-color: rgba(79, 141, 255, 0.4); background: var(--elev); transform: translateY(-1px); }
+.eq-barato { border-color: rgba(52, 210, 127, 0.4); }
+.eq-nome { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.eq-titulo { font-size: 14px; font-weight: 500; }
+.eq-lab { color: var(--faint); font-weight: 400; }
+.eq-apr { font-size: 11.5px; color: var(--faint); font-weight: 400; }
+.eq-preco { font-size: 14.5px; font-weight: 700; color: var(--brand); font-variant-numeric: tabular-nums; white-space: nowrap; flex-shrink: 0; }
+.eq-teto { color: var(--muted); font-weight: 500; }
+.eq-gratis { color: var(--free); }
+.eq-vazio { color: var(--faint); font-weight: 400; }
 
 /* footer */
 .foot {

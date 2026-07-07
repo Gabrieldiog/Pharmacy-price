@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { gzipSync } from "node:zlib";
 import type { AppMed } from "./enrich";
+import { grupoKey } from "./enrich";
 import { pmcParaUF } from "./aliquotas";
 import { upsertPreco, sortRedePrecos, type RedePreco } from "./precos";
 
@@ -20,6 +21,7 @@ interface ClientMed {
   semTeto: boolean;
   tetoGo: number | null;
   precos: RedePreco[]; // precos por rede, ordenados asc (o menor primeiro)
+  grupo: string | null; // chave de equivalencia (substancia|concentracao); null se faltar um dos dois
 }
 
 interface PrecosGoiania {
@@ -57,6 +59,8 @@ const out: ClientMed[] = lines.map((l) => {
     semTeto: m.semTeto,
     tetoGo: pmcParaUF(m.pmc, "GO"),
     precos: sortRedePrecos(redePrecos),
+    // recalcula a chave de equivalencia dos campos crus (grupoKey atualizado, sem re-rodar build:data)
+    grupo: m.substancia && m.concentracao ? grupoKey(m.substancia, m.concentracao) : null,
   };
 });
 

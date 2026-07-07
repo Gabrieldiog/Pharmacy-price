@@ -19,6 +19,7 @@ export interface ClientMed {
   semTeto: boolean;
   tetoGo: number | null; // centavos
   precos: RedePreco[]; // precos por rede, ordenados asc (o menor primeiro); [] se nao houver
+  grupo: string | null; // chave de equivalencia (substancia|concentracao); null se faltar um dos dois
 }
 
 // Metadados da coleta de preco praticado (cidade, data, redes cobertas com nº de lojas).

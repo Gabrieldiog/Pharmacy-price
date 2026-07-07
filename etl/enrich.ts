@@ -41,9 +41,12 @@ export function extractConcentracao(apresentacao: string | null): string | null 
 }
 
 // Chave de equivalencia: mesmo principio ativo + mesma concentracao.
+// Normaliza forte (tira acento, caixa, espacos e pontuacao) pra nao fragmentar grupos por
+// grafia: "tri-hidratada" e "trihidratada", "axetil cefuroxima" e "axetilcefuroxima",
+// "ibuprofeno;arginina" e "ibuprofeno arginina" caem na mesma chave.
 export function grupoKey(substancia: string | null, concentracao: string | null): string {
-  const s = semAcento(substancia ?? "").toLowerCase().replace(/\s+/g, " ").trim();
-  const c = (concentracao ?? "").toLowerCase().replace(/\s+/g, "");
+  const s = semAcento(substancia ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const c = (concentracao ?? "").toLowerCase().replace(/,/g, ".").replace(/[^a-z0-9.]/g, "");
   return `${s}|${c}`;
 }
 
