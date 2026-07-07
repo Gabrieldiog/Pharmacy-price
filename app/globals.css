@@ -187,7 +187,7 @@ body {
 
 .card-teto {
   flex-shrink: 0;
-  width: 158px;
+  width: 182px;
   border-left: 1px solid var(--line);
   padding-left: 16px;
   display: flex;
@@ -232,7 +232,29 @@ body {
 .sem-ambar { color: #f5c453; background: rgba(245, 196, 83, 0.12); border: 1px solid rgba(245, 196, 83, 0.3); }
 .sem-vermelho { color: var(--danger); background: rgba(242, 104, 95, 0.12); border: 1px solid rgba(242, 104, 95, 0.34); }
 .teto-mini { font-size: 11px; color: var(--faint); margin-top: 7px; font-variant-numeric: tabular-nums; }
-.preco-meta { font-size: 10.5px; color: var(--faint); margin-top: 5px; line-height: 1.35; max-width: 148px; }
+.preco-rede { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+.preco-meta { font-size: 10.5px; color: var(--faint); margin-top: 5px; line-height: 1.35; max-width: 170px; }
+
+/* comparativo das outras redes */
+.card-redes {
+  list-style: none;
+  width: 100%;
+  margin-top: 9px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.card-redes li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+.card-redes .cr-nome { color: var(--faint); }
+.card-redes .cr-val { font-variant-numeric: tabular-nums; }
 
 /* cta pra colaboracao (home) */
 .cta-colab {

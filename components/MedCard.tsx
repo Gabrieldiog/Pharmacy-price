@@ -27,14 +27,17 @@ function ddmm(iso: string | undefined): string {
 
 export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null }) {
   const teto = brl(med.tetoGo);
-  const preco = brl(med.precoRede);
   const sub = [med.concentracao, med.apresentacao].filter(Boolean).join(" · ");
 
-  // semaforo: preco praticado vs teto legal
+  const cheapest = med.precos?.[0] ?? null; // precos ja vem ordenado asc
+  const outras = med.precos?.slice(1) ?? [];
+  const preco = cheapest ? brl(cheapest.centavos) : null;
+
+  // semaforo: menor preco praticado vs teto legal
   const sem =
-    med.precoRede != null && med.tetoGo != null && !med.semTeto
-      ? semaforo(med.precoRede, med.tetoGo)
-      : null;
+    cheapest && med.tetoGo != null && !med.semTeto ? semaforo(cheapest.centavos, med.tetoGo) : null;
+
+  const lojas = cheapest && meta ? meta.redes?.find((r) => r.nome === cheapest.rede)?.lojasCount ?? 0 : 0;
 
   return (
     <article className="card">
@@ -58,15 +61,26 @@ export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null
       </div>
 
       <div className="card-teto">
-        {preco ? (
+        {preco && cheapest ? (
           <>
-            <span className="teto-label">{meta?.rede ?? "preço"} · retirada</span>
+            <span className="teto-label">{outras.length ? "menor preço" : "preço praticado"}</span>
             <span className="preco-val">{preco}</span>
+            <span className="preco-rede">na {cheapest.rede}</span>
             {sem && <span className={`semaforo sem-${sem.cls}`}>{sem.label}</span>}
             {teto && <span className="teto-mini">teto {teto}</span>}
+            {outras.length > 0 && (
+              <ul className="card-redes">
+                {outras.map((p) => (
+                  <li key={p.rede}>
+                    <span className="cr-nome">{p.rede}</span>
+                    <span className="cr-val">{brl(p.centavos)}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
             {meta && (
               <span className="preco-meta">
-                {meta.lojasCount} lojas em {meta.cidade}
+                {lojas > 0 ? `${lojas} ${lojas === 1 ? "loja" : "lojas"} em ${meta.cidade}` : `entrega em ${meta.cidade}`}
                 {ddmm(meta.observadoEm) && ` · ${ddmm(meta.observadoEm)}`}
               </span>
             )}

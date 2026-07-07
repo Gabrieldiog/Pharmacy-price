@@ -1,3 +1,9 @@
+// Preco praticado por uma rede, em centavos.
+export interface RedePreco {
+  rede: string;
+  centavos: number;
+}
+
 // Registro enxuto que o cliente carrega (piloto Goiania).
 export interface ClientMed {
   id: string;
@@ -12,15 +18,18 @@ export interface ClientMed {
   indicacao: string | null;
   semTeto: boolean;
   tetoGo: number | null; // centavos
-  precoRede: number | null; // preco praticado da rede piloto, em centavos
+  precos: RedePreco[]; // precos por rede, ordenados asc (o menor primeiro); [] se nao houver
 }
 
-// Metadados da coleta de preco praticado (rede, cidade, data, nº de lojas).
+// Metadados da coleta de preco praticado (cidade, data, redes cobertas com nº de lojas).
+export interface RedeMeta {
+  nome: string;
+  lojasCount: number;
+}
 export interface PrecosMeta {
-  rede: string;
   cidade: string;
   uf: string;
   tipo: string;
   observadoEm: string;
-  lojasCount: number;
+  redes: RedeMeta[];
 }
