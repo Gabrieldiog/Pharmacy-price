@@ -9,8 +9,9 @@ dist/
 *.tsbuildinfo
 next-env.d.ts
 
-# dataset gerado do cliente (regerado no build)
+# datasets gerados do cliente (regerados no build)
 /public/medicamentos-go.json
+/public/precos-meta.json
 
 # dados gerados pelo ETL (regerados pelo pipeline; sample/lookup versionados à parte)
 data/cmed-*.ndjson

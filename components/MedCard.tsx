@@ -1,4 +1,4 @@
-import type { ClientMed } from "@/lib/types";
+import type { ClientMed, PrecosMeta } from "@/lib/types";
 
 function brl(cents: number | null): string | null {
   if (cents == null) return null;
@@ -8,10 +8,8 @@ function brl(cents: number | null): string | null {
 // "Novo" na CMED = medicamento de referencia (marca original).
 function tipoLabel(tipo: string | null): string | null {
   if (!tipo) return null;
-  if (tipo.toLowerCase() === "novo") return "Referência";
-  return tipo;
+  return tipo.toLowerCase() === "novo" ? "Referência" : tipo;
 }
-
 function tipoClass(tipo: string | null): string {
   const t = (tipo ?? "").toLowerCase();
   if (t === "generico" || t === "genérico") return "tag-generico";
@@ -19,10 +17,27 @@ function tipoClass(tipo: string | null): string {
   if (t === "novo") return "tag-referencia";
   return "";
 }
+function ddmm(iso: string | undefined): string {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}`;
+}
 
-export function MedCard({ med }: { med: ClientMed }) {
+export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null }) {
   const teto = brl(med.tetoGo);
+  const preco = brl(med.precoRede);
   const sub = [med.concentracao, med.apresentacao].filter(Boolean).join(" · ");
+
+  // semaforo: preco praticado vs teto legal
+  let sem: { cls: string; label: string } | null = null;
+  if (med.precoRede != null && med.tetoGo != null && !med.semTeto) {
+    const pct = med.precoRede / med.tetoGo;
+    const diff = Math.round((1 - pct) * 100);
+    if (pct > 1) sem = { cls: "vermelho", label: `${Math.abs(diff)}% acima do teto` };
+    else if (pct > 0.9) sem = { cls: "ambar", label: "quase no teto" };
+    else sem = { cls: "verde", label: `${diff}% abaixo do teto` };
+  }
 
   return (
     <article className="card">
@@ -46,7 +61,20 @@ export function MedCard({ med }: { med: ClientMed }) {
       </div>
 
       <div className="card-teto">
-        {med.semTeto ? (
+        {preco ? (
+          <>
+            <span className="teto-label">{meta?.rede ?? "preço"} · retirada</span>
+            <span className="preco-val">{preco}</span>
+            {sem && <span className={`semaforo sem-${sem.cls}`}>{sem.label}</span>}
+            {teto && <span className="teto-mini">teto {teto}</span>}
+            {meta && (
+              <span className="preco-meta">
+                {meta.lojasCount} lojas em {meta.cidade}
+                {ddmm(meta.observadoEm) && ` · ${ddmm(meta.observadoEm)}`}
+              </span>
+            )}
+          </>
+        ) : med.semTeto ? (
           <>
             <span className="teto-label">preço liberado</span>
             <span className="teto-na">sem teto legal</span>

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import MiniSearch from "minisearch";
-import type { ClientMed } from "@/lib/types";
+import type { ClientMed, PrecosMeta } from "@/lib/types";
 import { MedCard } from "./MedCard";
 
 const norm = (t: string) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
@@ -10,17 +10,20 @@ const norm = (t: string) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCa
 export function Search() {
   const [byId, setById] = useState<Map<string, ClientMed> | null>(null);
   const [mini, setMini] = useState<MiniSearch | null>(null);
+  const [meta, setMeta] = useState<PrecosMeta | null>(null);
   const [q, setQ] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let alive = true;
-    fetch("/medicamentos-go.json")
-      .then((r) => r.json())
-      .then((data: ClientMed[]) => {
+    Promise.all([
+      fetch("/medicamentos-go.json").then((r) => r.json()),
+      fetch("/precos-meta.json").then((r) => r.json()).catch(() => null),
+    ])
+      .then(([data, m]: [ClientMed[], PrecosMeta | null]) => {
         if (!alive) return;
         const map = new Map<string, ClientMed>();
-        for (const m of data) map.set(m.id, m);
+        for (const med of data) map.set(med.id, med);
         const ms = new MiniSearch({
           idField: "id",
           fields: ["produto", "substancia"],
@@ -30,6 +33,7 @@ export function Search() {
         ms.addAll([...map.values()]);
         setById(map);
         setMini(ms);
+        setMeta(m);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -72,7 +76,7 @@ export function Search() {
             {results.length ? `${results.length} resultado${results.length > 1 ? "s" : ""}` : "Nada encontrado — tente o nome genérico"}
           </div>
           {results.map((m) => (
-            <MedCard key={m.id} med={m} />
+            <MedCard key={m.id} med={m} meta={meta} />
           ))}
         </div>
       )}
