@@ -68,3 +68,22 @@ export interface Destaques {
   gratis: GratisCard[];
   acimaDoTeto: TetoCard[];
 }
+
+// Numeros agregados do dataset pra pagina de panorama.
+export interface PanoramaIndicacao {
+  indicacao: string;
+  count: number;
+}
+export interface Panorama {
+  totalMeds: number;
+  comTeto: number;
+  deGraca: number;
+  comPreco: number;
+  economiaMediaPct: number | null;
+  gratisTopIndicacoes: PanoramaIndicacao[];
+  gratisMaisCaro: { id: string; produto: string; cents: number } | null;
+  redesCount: number;
+  lojas: number;
+  cidade: string;
+  observadoEm: string;
+}

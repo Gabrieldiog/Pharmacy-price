@@ -4,6 +4,7 @@ import type { AppMed } from "./enrich";
 import { grupoKey } from "./enrich";
 import { pmcParaUF } from "./aliquotas";
 import { computeDestaques } from "./destaques";
+import { computePanorama } from "./panorama";
 import { upsertPreco, sortRedePrecos, type RedePreco } from "./precos";
 
 // Gera o dataset enxuto do cliente (piloto Goiania): campos da UI + teto de GO + precos
@@ -82,6 +83,16 @@ writeFileSync(
 // destaques da home (economia, de graca, acima do teto) — precomputados pra mostrar valor na hora
 const destaques = computeDestaques(out);
 writeFileSync("public/destaques.json", JSON.stringify(destaques));
+
+// panorama: numeros agregados do dataset + cobertura das redes coletadas
+const panorama = {
+  ...computePanorama(out),
+  redesCount: precos.redes.length,
+  lojas: precos.redes.reduce((s, r) => s + r.lojasCount, 0),
+  cidade: precos.cidade,
+  observadoEm: precos.observadoEm,
+};
+writeFileSync("public/panorama.json", JSON.stringify(panorama));
 
 const comPreco = out.filter((m) => m.precos.length > 0).length;
 const comparaveis = out.filter((m) => m.precos.length > 1).length;
