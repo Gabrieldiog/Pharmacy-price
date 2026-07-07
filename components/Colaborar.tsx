@@ -80,9 +80,11 @@ export function Colaborar() {
     return parsed ? decodeChaveNfce(parsed) : null;
   }, [nfceRaw]);
   const nfceMexeu = nfceRaw.trim().length > 0;
+  // so anexa a nota ao relato se for uma NFC-e de Goias com digito verificador valido
+  const chaveOk = chave?.valido && chave.isGoias && chave.isNfce ? chave : null;
 
   const pronto = Boolean(med && farmacia.trim() && cents);
-  const url = pronto ? issueUrl(med!, farmacia.trim(), cents!, chave) : null;
+  const url = pronto ? issueUrl(med!, farmacia.trim(), cents!, chaveOk) : null;
 
   return (
     <div className="colab">
@@ -188,16 +190,18 @@ export function Colaborar() {
           placeholder="cole o link do QR da nota ou a chave de 44 dígitos"
         />
         {nfceMexeu && (
-          <div className={`colab-nfce ${chave?.valido && chave.isGoias ? "ok" : "warn"}`}>
+          <div className={`colab-nfce ${chave?.valido && chave.isGoias && chave.isNfce ? "ok" : "warn"}`}>
             {!chave ? (
               "Não reconheci uma chave de NFC-e aí. Cole o link do QR ou os 44 dígitos."
             ) : !chave.valido ? (
               "Chave com dígito verificador inválido — confere se copiou certinho."
             ) : !chave.isGoias ? (
               `Essa nota é de ${chave.uf ?? "outra UF"}, não de Goiás. O piloto é Goiânia.`
+            ) : !chave.isNfce ? (
+              "Essa é uma NF-e (modelo 55), não a NFC-e do consumidor. Use a notinha da sua compra."
             ) : (
               <>
-                Nota reconhecida · {chave.isNfce ? "NFC-e" : "NF-e"} · Goiás ·{" "}
+                Nota reconhecida · NFC-e · Goiás ·{" "}
                 {String(chave.mes).padStart(2, "0")}/{chave.ano} · CNPJ {formatCnpj(chave.cnpj)}
               </>
             )}
