@@ -412,6 +412,84 @@ body {
 }
 .colab-nota { font-size: 12px; color: var(--faint); line-height: 1.6; }
 
+/* link do rodape pra metodologia */
+.foot-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.16s, color 0.16s;
+}
+.foot-link:hover { color: #7aa9ff; border-bottom-color: rgba(79, 141, 255, 0.5); }
+
+/* pagina de metodologia */
+.met-sec { margin-top: 36px; }
+.met-h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.met-sec-lede { color: var(--muted); font-size: 15px; line-height: 1.65; margin-top: 10px; max-width: 68ch; }
+
+.met-camadas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+.met-camada {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.met-camada-nome { font-size: 15px; font-weight: 700; color: var(--brand); }
+.met-camada-fonte { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--faint); }
+.met-camada p { font-size: 13.5px; color: var(--ink); margin-top: 6px; line-height: 1.55; }
+.met-camada-nota { font-size: 12px; color: var(--muted); margin-top: auto; padding-top: 8px; font-style: italic; }
+
+.met-fontes { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+.met-fonte {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.met-fonte h3 { font-size: 16px; font-weight: 600; }
+.met-o { font-size: 14px; color: var(--ink); margin-top: 8px; }
+.met-como { font-size: 13.5px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+.met-pegadinha { font-size: 13.5px; color: var(--muted); margin-top: 10px; line-height: 1.6; }
+.met-peg-tag {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  background: rgba(79, 141, 255, 0.1);
+  border: 1px solid rgba(79, 141, 255, 0.24);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.met-semaforo { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.met-sem-linha { display: flex; align-items: center; gap: 12px; }
+.met-sem-linha .semaforo { flex-shrink: 0; min-width: 148px; text-align: center; }
+.met-sem-txt { font-size: 14px; color: var(--muted); }
+
+.met-limites { margin-top: 14px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.met-limites li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.met-limites li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
+
+@media (max-width: 620px) {
+  .met-camadas { grid-template-columns: 1fr; }
+  .met-sem-linha { flex-direction: column; align-items: flex-start; gap: 4px; }
+}
+
 /* pagina de detalhe do remedio */
 .det-loading { color: var(--muted); margin-top: 40px; text-align: center; }
 .det-vazio { margin-top: 40px; text-align: center; color: var(--muted); display: flex; flex-direction: column; gap: 14px; align-items: center; }
