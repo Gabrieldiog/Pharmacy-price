@@ -5,6 +5,7 @@ import type { ClientMed } from "@/lib/types";
 import { loadMedsIndex, searchMeds, type MedsIndex } from "@/lib/meds-client";
 import { semaforo } from "@/lib/semaforo";
 import { parseNfceInput, decodeChaveNfce, formatCnpj, type ChaveNfce } from "@/lib/nfce";
+import { Denuncia } from "./Denuncia";
 
 const REPO = "Gabrieldiog/Pharmacy-price";
 
@@ -169,7 +170,7 @@ export function Colaborar() {
               <strong>{sem.label}</strong>
               <span>
                 Você pagou {brl(cents)} · teto legal {brl(med.tetoGo)}
-                {sem.cls === "vermelho" && " — acima do permitido por lei. Você pode denunciar no Procon."}
+                {sem.cls === "vermelho" && " — acima do permitido por lei."}
               </span>
             </>
           ) : (
@@ -178,6 +179,10 @@ export function Colaborar() {
             </span>
           )}
         </div>
+      )}
+
+      {sem?.cls === "vermelho" && med && cents != null && med.tetoGo != null && (
+        <Denuncia produto={med.produto} precoCents={cents} tetoCents={med.tetoGo} farmacia={farmacia.trim() || null} uf="GO" />
       )}
 
       {/* 4. NFC-e (opcional) */}
