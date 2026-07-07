@@ -11,6 +11,7 @@ dist/
 # dados gerados pelo ETL (regerados pelo pipeline; sample/lookup versionados à parte)
 data/cmed-*.ndjson
 data/farmacia-popular-*.ndjson
+data/app/medicamentos.ndjson
 data/*.xlsx
 data/*.csv
 data/*.pdf

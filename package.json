@@ -7,9 +7,11 @@
   "scripts": {
     "etl:cmed": "tsx etl/run.ts",
     "etl:pfpb": "tsx etl/pfpb-run.ts",
+    "build:data": "tsx etl/build-dataset.ts",
+    "data:all": "pnpm etl:cmed && pnpm etl:pfpb && pnpm build:data",
     "fixture": "tsx etl/__fixtures__/make-fixture.ts",
     "pretest": "tsx etl/__fixtures__/make-fixture.ts",
-    "test": "node --import tsx --test etl/parse-cmed.test.ts etl/parse-pfpb.test.ts"
+    "test": "node --import tsx --test etl/parse-cmed.test.ts etl/parse-pfpb.test.ts etl/enrich.test.ts"
   },
   "dependencies": {
     "unpdf": "^1.6.2",
