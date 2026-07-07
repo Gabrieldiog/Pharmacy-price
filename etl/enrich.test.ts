@@ -17,7 +17,19 @@ test("extractConcentracao pega a primeira dose", () => {
 
 test("grupoKey junta substancia + concentracao normalizados", () => {
   assert.equal(grupoKey("DIPIRONA", "500 MG"), "dipirona|500mg");
-  assert.equal(grupoKey("Losartana Potássica", "50 MG"), "losartana potassica|50mg");
+  assert.equal(grupoKey("Losartana Potássica", "50 MG"), "losartanapotassica|50mg");
+});
+
+test("grupoKey nao fragmenta por pontuacao/espaco na substancia", () => {
+  // mesmo principio ativo, grafias diferentes -> mesma chave
+  assert.equal(
+    grupoKey("Amoxicilina Tri-Hidratada", "500 MG"),
+    grupoKey("Amoxicilina Trihidratada", "500 MG"),
+  );
+  assert.equal(
+    grupoKey("Ibuprofeno;Arginina", "400 MG"),
+    grupoKey("Ibuprofeno Arginina", "400 MG"),
+  );
 });
 
 test("toAppMed marca de graca e monta o grupo", () => {
