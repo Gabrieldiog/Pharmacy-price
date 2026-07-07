@@ -7,6 +7,10 @@ node_modules/
 out/
 dist/
 *.tsbuildinfo
+next-env.d.ts
+
+# dataset gerado do cliente (regerado no build)
+/public/medicamentos-go.json
 
 # dados gerados pelo ETL (regerados pelo pipeline; sample/lookup versionados à parte)
 data/cmed-*.ndjson

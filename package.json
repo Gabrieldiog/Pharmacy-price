@@ -8,17 +8,27 @@
     "etl:cmed": "tsx etl/run.ts",
     "etl:pfpb": "tsx etl/pfpb-run.ts",
     "build:data": "tsx etl/build-dataset.ts",
+    "build:client": "tsx etl/build-client.ts",
     "data:all": "pnpm etl:cmed && pnpm etl:pfpb && pnpm build:data",
+    "dev": "next dev",
+    "prebuild": "tsx etl/build-client.ts",
+    "build": "next build",
     "fixture": "tsx etl/__fixtures__/make-fixture.ts",
     "pretest": "tsx etl/__fixtures__/make-fixture.ts",
     "test": "node --import tsx --test etl/parse-cmed.test.ts etl/parse-pfpb.test.ts etl/enrich.test.ts"
   },
   "dependencies": {
+    "minisearch": "^7.2.0",
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "unpdf": "^1.6.2",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   }
