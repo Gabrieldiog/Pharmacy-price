@@ -12,4 +12,15 @@ export interface ClientMed {
   indicacao: string | null;
   semTeto: boolean;
   tetoGo: number | null; // centavos
+  precoRede: number | null; // preco praticado da rede piloto, em centavos
+}
+
+// Metadados da coleta de preco praticado (rede, cidade, data, nº de lojas).
+export interface PrecosMeta {
+  rede: string;
+  cidade: string;
+  uf: string;
+  tipo: string;
+  observadoEm: string;
+  lojasCount: number;
 }
