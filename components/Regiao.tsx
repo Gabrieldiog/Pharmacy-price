@@ -59,16 +59,14 @@ export function Regiao() {
       </button>
 
       {open && (
-        <ul className="regiao-menu" role="listbox">
+        <div className="regiao-menu" role="listbox">
           {ESTADOS.map((e) => (
-            <li key={e.uf}>
-              <button type="button" role="option" aria-selected={e.uf === uf} className={e.uf === uf ? "sel" : ""} onClick={() => pick(e.uf)}>
-                <span>{e.nome}</span>
-                <span className="regiao-uf">{e.uf}</span>
-              </button>
-            </li>
+            <button key={e.uf} type="button" role="option" aria-selected={e.uf === uf} className={e.uf === uf ? "sel" : ""} onClick={() => pick(e.uf)}>
+              <span>{e.nome}</span>
+              <span className="regiao-uf">{e.uf}</span>
+            </button>
           ))}
-        </ul>
+        </div>
       )}
 
       <p className={`regiao-cobertura ${isGO ? "full" : "parcial"}`}>
