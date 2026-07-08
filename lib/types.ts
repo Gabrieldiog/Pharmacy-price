@@ -23,9 +23,16 @@ export interface ClientMed {
 }
 
 // Metadados da coleta de preco praticado (cidade, data, redes cobertas com nº de lojas).
+export interface LojaMeta {
+  bairro: string | null;
+  endereco: string;
+  lat: number;
+  lng: number;
+}
 export interface RedeMeta {
   nome: string;
   lojasCount: number;
+  lojas?: LojaMeta[];
 }
 export interface PrecosMeta {
   cidade: string;

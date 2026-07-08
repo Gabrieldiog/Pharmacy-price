@@ -860,6 +860,18 @@ body {
 .det-controlado-teto { color: var(--muted) !important; font-size: 13.5px !important; }
 .det-controlado-teto strong { color: var(--ink) !important; }
 
+/* onde comprar: lojas da rede + link pro mapa */
+.det-lojas { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.det-lojas-head { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--faint); }
+.det-lojas ul { list-style: none; margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.det-lojas li { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13.5px; }
+.det-loja-end { color: var(--muted); min-width: 0; }
+.det-loja-mapa { color: var(--accent); text-decoration: none; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+.det-loja-mapa:hover { text-decoration: underline; }
+@media (max-width: 480px) {
+  .det-lojas li { flex-direction: column; align-items: flex-start; gap: 2px; }
+}
+
 /* footer */
 .foot {
   margin-top: auto;
