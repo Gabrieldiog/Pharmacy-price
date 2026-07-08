@@ -2,26 +2,52 @@
 
 import type { Geo } from "@/lib/geo";
 
-// Cliente do Balcao (gateway de dados publicos, projeto irmao). O preco ao vivo
-// vem das notas fiscais (NFC-e) que alguns estados publicam por loja. Hoje so o
-// Parana tem essa fonte aberta; Goias (piloto) ainda nao, entao la o preco de
-// balcao entra por colaboracao. Quando um estado novo abrir, e so mapear aqui.
+// Cliente do Balcao (gateway de dados publicos, projeto irmao). Cada UF tem uma
+// fonte de preco ao vivo com natureza propria: o Parana vem das notas fiscais
+// (Nota Parana, preco por loja); Goias vem do catalogo online da Drogaria Rosario
+// (rede goiana) — preco de internet. A UI deixa essa diferenca clara.
 
 // Base do Balcao. Em producao aponta pro dominio publicado (NEXT_PUBLIC_BALCAO_URL);
 // vazio = sem preco ao vivo, e o site cai no fallback honesto sem quebrar.
 const BASE = (process.env.NEXT_PUBLIC_BALCAO_URL ?? "").replace(/\/+$/, "");
 
-// UF -> nome do conector no Balcao. So cresce quando um estado novo publica NFC-e.
-const FONTE_POR_UF: Record<string, string> = { PR: "notaparana" };
+export interface FonteAoVivo {
+  conector: string; // nome do conector no Balcao (/v1/<conector>/produtos)
+  titulo: string; // cabecalho do bloco: "Paraná", "Drogaria Rosário · Goiânia"
+  comoObtido: string; // subtitulo: "das notas fiscais...", "do catálogo online..."
+  nota: string; // rodape honesto sobre a natureza do preco
+  porLoja: boolean; // true = NFC-e por loja (distancia, mapa); false = e-commerce
+}
+
+// UF -> fonte de preco ao vivo. Cresce conforme novas redes/estados entram.
+const FONTE_POR_UF: Record<string, FonteAoVivo> = {
+  PR: {
+    conector: "notaparana",
+    titulo: "Paraná",
+    comoObtido: "das notas fiscais, da loja mais barata pra mais cara",
+    nota: "Preço da última venda vista na nota fiscal — pode ter alguns dias.",
+    porLoja: true,
+  },
+  GO: {
+    conector: "rosario",
+    titulo: "Drogaria Rosário · Goiânia",
+    comoObtido: "do catálogo online da rede, do mais barato pro mais caro",
+    nota: "Preço do catálogo online da Drogaria Rosário, ao vivo — é preço de internet e pode diferir do balcão da loja.",
+    porLoja: false,
+  },
+};
 
 export function balcaoConfigurado(): boolean {
   return Boolean(BASE);
 }
 
-// Tem como mostrar preco ao vivo nessa UF? Precisa do Balcao configurado e de
-// uma fonte pra UF.
+// A fonte de preco ao vivo dessa UF, ou null (Balcao nao configurado ou UF sem fonte).
+export function fonteAoVivo(uf: string): FonteAoVivo | null {
+  return BASE ? FONTE_POR_UF[uf] ?? null : null;
+}
+
 export function temPrecoAoVivo(uf: string): boolean {
-  return Boolean(BASE) && uf in FONTE_POR_UF;
+  return fonteAoVivo(uf) != null;
 }
 
 export interface PrecoLoja {
@@ -70,21 +96,31 @@ function mapeia(d: Record<string, unknown>): PrecoLoja | null {
   };
 }
 
-// Busca o preco praticado por loja perto de `geo`, do mais barato pro mais caro.
-// Retorna [] quando nao ha fonte pra UF ou o Balcao nao esta configurado.
+// Busca o preco ao vivo do produto, do mais barato pro mais caro. Fonte por loja
+// (NFC-e) usa geo pra medir distancia; fonte de e-commerce ignora geo. Retorna []
+// quando nao ha fonte pra UF ou o Balcao nao esta configurado.
 export async function precoAoVivo(
   uf: string,
   termo: string,
-  geo: Geo,
-  opts: { raioKm?: number; timeoutMs?: number; signal?: AbortSignal } = {},
+  geo: Geo | null,
+  opts: { raioKm?: number; limite?: number; timeoutMs?: number; signal?: AbortSignal } = {},
 ): Promise<PrecoLoja[]> {
-  const fonte = FONTE_POR_UF[uf];
-  if (!BASE || !fonte || !termo.trim()) return [];
+  const fonte = fonteAoVivo(uf);
+  // tira pontuação que quebra a busca de algumas fontes (ex.: o "+" de
+  // "dipirona + cafeína" faz a VTEX responder 400); mantém letra, número e acento
+  const q = termo.replace(/[^\p{L}\p{N}\s]/gu, " ").replace(/\s+/g, " ").trim();
+  if (!fonte || !q) return [];
 
-  const url =
-    `${BASE}/v1/${fonte}/produtos` +
-    `?termo=${encodeURIComponent(termo.trim())}` +
-    `&lat=${geo.lat}&lon=${geo.lng}&raio=${opts.raioKm ?? 15}`;
+  const params = new URLSearchParams({ termo: q });
+  if (fonte.porLoja) {
+    if (!geo) return []; // preco por loja precisa saber de onde buscar
+    params.set("lat", String(geo.lat));
+    params.set("lon", String(geo.lng));
+    params.set("raio", String(opts.raioKm ?? 15));
+  } else {
+    params.set("limite", String(opts.limite ?? 12));
+  }
+  const url = `${BASE}/v1/${fonte.conector}/produtos?${params.toString()}`;
 
   // timeout proprio pra um Balcao lento nao deixar a UI travada em "carregando";
   // tambem repassamos o abort de quem chamou (desmontar o componente cancela).

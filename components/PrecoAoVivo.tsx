@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { ClientMed } from "@/lib/types";
-import { temPrecoAoVivo, precoAoVivo, type PrecoLoja } from "@/lib/balcao";
+import { fonteAoVivo, precoAoVivo, type PrecoLoja } from "@/lib/balcao";
 import { centroide, geoSalva, pedirGeo, type Geo } from "@/lib/geo";
 import { brl, haQuantoTempo } from "@/lib/med-format";
 import { mapsBusca } from "@/lib/maps";
@@ -15,12 +15,27 @@ const NOME_UF: Record<string, string> = {
   BA: "Bahia", RS: "Rio Grande do Sul", SC: "Santa Catarina", DF: "Distrito Federal",
 };
 
-function ondeLabel(uf: string): string {
-  return NOME_UF[uf] ?? `seu estado (${uf})`;
-}
+// Uma linha do resultado. A forma muda com a fonte: NFC-e é uma LOJA vendendo o
+// produto (mostra loja, bairro, distância, mapa); e-commerce é um PRODUTO da rede
+// (mostra o produto e o preço, sem loja/distância — é preço de internet).
+function Linha({ loja, melhor, porLoja }: { loja: PrecoLoja; melhor: boolean; porLoja: boolean }) {
+  if (!porLoja) {
+    const nome = loja.descricao || loja.estabelecimento || "Produto";
+    return (
+      <li className={melhor ? "vivo-loja melhor" : "vivo-loja"}>
+        <div className="vivo-loja-info">
+          <span className="vivo-loja-nome">
+            {nome}
+            {melhor && <span className="vivo-chip">menor</span>}
+          </span>
+        </div>
+        <div className="vivo-loja-dir">
+          <span className="vivo-loja-val">{brl(loja.valorCents)}</span>
+        </div>
+      </li>
+    );
+  }
 
-// Linha de uma loja: "Farmacia Z, bairro · a X km · ha N dias" + preco + mapa.
-function LinhaLoja({ loja, melhor }: { loja: PrecoLoja; melhor: boolean }) {
   const nome = loja.estabelecimento ?? "Farmácia";
   const local = [loja.bairro, loja.municipio].filter(Boolean).join(", ");
   const dist = loja.distanciaKm != null ? `a ${loja.distanciaKm.toFixed(1).replace(".", ",")} km` : null;
@@ -65,9 +80,9 @@ export function PrecoAoVivo({ med }: { med: ClientMed }) {
   const [usandoCentroide, setUsandoCentroide] = useState(true);
   const reqRef = useRef(0);
 
-  // termo de busca: o nome do produto (Venvanse, Dipirona...) e o que aparece na
-  // descricao da nota. Cai pra substancia se faltar.
+  // termo de busca: o nome do produto (Venvanse, Dipirona...). Cai pra substancia.
   const termo = (med.produto || med.substancia || "").trim();
+  const fonte = uf ? fonteAoVivo(uf) : null;
 
   useEffect(() => {
     const salvo = (() => {
@@ -83,14 +98,19 @@ export function PrecoAoVivo({ med }: { med: ClientMed }) {
   // busca o preco ao vivo quando ja sabemos a UF (e ela tem fonte)
   useEffect(() => {
     if (uf == null) return;
-    if (!temPrecoAoVivo(uf)) return;
+    const f = fonteAoVivo(uf);
+    if (!f) return;
 
-    const salva = geoSalva();
-    const geo = salva ?? centroide(uf);
-    setUsandoCentroide(!salva);
-    if (!geo) {
-      setStatus("erro");
-      return;
+    // fonte por loja (NFC-e) precisa de onde buscar; e-commerce ignora geo
+    let geo: Geo | null = null;
+    if (f.porLoja) {
+      const salva = geoSalva();
+      geo = salva ?? centroide(uf);
+      setUsandoCentroide(!salva);
+      if (!geo) {
+        setStatus("erro");
+        return;
+      }
     }
 
     const ctrl = new AbortController();
@@ -109,20 +129,15 @@ export function PrecoAoVivo({ med }: { med: ClientMed }) {
     return () => ctrl.abort();
   }, [uf, termo]);
 
-  // refina com a localizacao exata quando a pessoa permite
+  // refina com a localizacao exata quando a pessoa permite (só faz sentido por loja)
   const usarMinhaLocalizacao = async () => {
     const g = await pedirGeo();
     if (!g || uf == null) return;
-    refazer(g);
-  };
-
-  const refazer = (geo: Geo) => {
-    if (uf == null) return;
     const ctrl = new AbortController();
     const meu = ++reqRef.current;
     setUsandoCentroide(false);
     setStatus("carregando");
-    precoAoVivo(uf, termo, geo, { signal: ctrl.signal })
+    precoAoVivo(uf, termo, g, { signal: ctrl.signal })
       .then((res) => {
         if (meu !== reqRef.current) return;
         setLojas(res);
@@ -136,9 +151,8 @@ export function PrecoAoVivo({ med }: { med: ClientMed }) {
 
   if (uf == null) return null;
 
-  // UF sem fonte de preco ao vivo (inclui Goiania, o piloto): bloco honesto.
-  if (!temPrecoAoVivo(uf)) {
-    const goiania = uf === "GO";
+  // UF sem fonte de preco ao vivo: bloco honesto + convite pra colaborar.
+  if (!fonte) {
     return (
       <section className="det-vivo">
         <div className="vivo-head">
@@ -146,9 +160,9 @@ export function PrecoAoVivo({ med }: { med: ClientMed }) {
         </div>
         <div className="vivo-indisponivel">
           <p>
-            Preço ao vivo por farmácia ainda não em <strong>{ondeLabel(uf)}</strong>. Alguns estados publicam o
-            preço real de cada loja a partir das notas fiscais (NFC-e){goiania ? " — Goiás ainda não tem esse app" : ""}.
-            {goiania ? " Até lá, o preço de balcão aqui depende de gente como você." : ""}
+            Preço ao vivo ainda não em <strong>{NOME_UF[uf] ?? `seu estado (${uf})`}</strong>. Onde há uma fonte
+            aberta — nota fiscal do estado ou catálogo de uma rede — a gente mostra aqui. Até lá, o preço de balcão
+            depende de gente como você.
           </p>
           <Link href="/colaborar" className="vivo-cta">
             Escanear uma nota e ajudar →
@@ -159,37 +173,41 @@ export function PrecoAoVivo({ med }: { med: ClientMed }) {
   }
 
   const primeira = lojas[0];
+  const sub =
+    fonte.porLoja && primeira
+      ? `${primeira.descricao || termo} — ${fonte.comoObtido}.`
+      : `${fonte.comoObtido.charAt(0).toUpperCase()}${fonte.comoObtido.slice(1)}.`;
 
   return (
     <section className="det-vivo">
       <div className="vivo-head">
         <span className="vivo-dot" />
-        <span className="vivo-titulo">Preço ao vivo · {ondeLabel(uf)}</span>
+        <span className="vivo-titulo">Preço ao vivo · {fonte.titulo}</span>
       </div>
 
-      {status === "carregando" && <p className="vivo-msg">Buscando preços perto de você…</p>}
+      {status === "carregando" && (
+        <p className="vivo-msg">{fonte.porLoja ? "Buscando preços perto de você…" : "Buscando preços ao vivo…"}</p>
+      )}
 
       {status === "erro" && (
         <p className="vivo-msg">Não consegui o preço ao vivo agora. Tente recarregar a página.</p>
       )}
 
       {status === "vazio" && (
-        <p className="vivo-msg">Nenhuma loja registrou esse preço por perto ainda.</p>
+        <p className="vivo-msg">Nenhum preço ao vivo pra esse remédio por aqui ainda.</p>
       )}
 
       {status === "ok" && primeira && (
         <>
-          <p className="vivo-sub">
-            {primeira.descricao || termo} — direto das notas fiscais, da loja mais barata pra mais cara.
-          </p>
+          <p className="vivo-sub">{sub}</p>
           <ul className="vivo-lista">
             {lojas.slice(0, 6).map((l, i) => (
-              <LinhaLoja key={`${l.estabelecimento}-${i}`} loja={l} melhor={i === 0} />
+              <Linha key={`${l.estabelecimento ?? l.descricao}-${i}`} loja={l} melhor={i === 0} porLoja={fonte.porLoja} />
             ))}
           </ul>
           <div className="vivo-pe">
-            <span>Preço da última venda vista na nota fiscal — pode ter alguns dias.</span>
-            {usandoCentroide && (
+            <span>{fonte.nota}</span>
+            {fonte.porLoja && usandoCentroide && (
               <button type="button" className="vivo-refina" onClick={usarMinhaLocalizacao}>
                 usar minha localização
               </button>
