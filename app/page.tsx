@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Search } from "@/components/Search";
 import { Destaques } from "@/components/Destaques";
+import { Regiao } from "@/components/Regiao";
 
 export default function Home() {
   return (
     <main className="page">
       <header className="hero">
-        <span className="badge-pill">Piloto: Goiânia · GO</span>
+        <Regiao />
         <h1 className="title">
           Quanto <em>deveria</em> custar o seu remédio?
         </h1>

@@ -19,6 +19,11 @@ export function tipoClass(tipo: string | null): string {
   return "";
 }
 
+// Tarja Preta = medicamento controlado (nao vendido por e-commerce; preco so no balcao).
+export function isControlado(tarja: string | null): boolean {
+  return /preta/i.test(tarja ?? "");
+}
+
 export function ddmm(iso: string | undefined): string {
   if (!iso) return "";
   const d = new Date(iso);

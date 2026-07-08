@@ -26,12 +26,19 @@ interface ClientMed {
   grupo: string | null; // chave de equivalencia (substancia|concentracao); null se faltar um dos dois
 }
 
+interface LojaColeta {
+  nome: string;
+  endereco: string;
+  bairro: string | null;
+  lat: number | null;
+  lng: number | null;
+}
 interface PrecosGoiania {
   cidade: string;
   uf: string;
   tipo: string;
   observadoEm: string;
-  redes: { nome: string; lojasCount: number }[];
+  redes: { nome: string; lojasCount: number; lojas?: LojaColeta[] }[];
   byEan: Record<string, { precos: RedePreco[] }>;
 }
 
@@ -76,7 +83,15 @@ writeFileSync(
     uf: precos.uf,
     tipo: precos.tipo,
     observadoEm: precos.observadoEm,
-    redes: precos.redes.map((r) => ({ nome: r.nome, lojasCount: r.lojasCount })),
+    redes: precos.redes.map((r) => ({
+      nome: r.nome,
+      lojasCount: r.lojasCount,
+      // lojas com coordenada, pro "ver no mapa" (link Google Maps, sem embutir mapa)
+      lojas: (r.lojas ?? [])
+        .filter((l) => l.lat != null && l.lng != null)
+        .slice(0, 6)
+        .map((l) => ({ bairro: l.bairro, endereco: l.endereco, lat: l.lat, lng: l.lng })),
+    })),
   }),
 );
 
