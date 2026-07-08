@@ -27,7 +27,7 @@ export function temPrecoAoVivo(uf: string): boolean {
 export interface PrecoLoja {
   descricao: string;
   valorCents: number;
-  estabelecimento: string;
+  estabelecimento: string | null; // nome real da loja, ou null quando a fonte não trouxe
   empresa: string | null;
   bairro: string | null;
   municipio: string | null;
@@ -60,7 +60,7 @@ function mapeia(d: Record<string, unknown>): PrecoLoja | null {
   return {
     descricao: texto(d.descricao) ?? "",
     valorCents,
-    estabelecimento: texto(d.estabelecimento) ?? "Farmácia",
+    estabelecimento: texto(d.estabelecimento),
     empresa: texto(d.empresa),
     bairro: texto(d.bairro),
     municipio: texto(d.municipio),
