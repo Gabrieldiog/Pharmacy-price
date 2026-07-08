@@ -188,9 +188,10 @@ export function Colaborar() {
 
       {/* 4. NFC-e (opcional) */}
       <div className="colab-field">
-        <span className="colab-label">4 · Nota fiscal <span className="colab-opt">(opcional, mas dá credibilidade)</span></span>
+        <label htmlFor="colab-nfce" className="colab-label">4 · Nota fiscal <span className="colab-opt">(opcional, mas dá credibilidade)</span></label>
         <LeitorNota onLido={setNfceRaw} />
         <input
+          id="colab-nfce"
           className="colab-input"
           value={nfceRaw}
           onChange={(e) => setNfceRaw(e.target.value)}

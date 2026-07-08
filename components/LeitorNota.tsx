@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Le o QR da NFC-e pela camera (ou por foto) e devolve o texto lido.
 // A lib qr-scanner usa o BarcodeDetector nativo quando existe (Android/Chrome) e cai
@@ -18,6 +18,15 @@ export function LeitorNota({ onLido }: { onLido: (texto: string) => void }) {
     scannerRef.current = null;
     setScanning(false);
   };
+
+  // desliga a camera se o componente sair da tela com o scanner aberto
+  useEffect(() => {
+    return () => {
+      scannerRef.current?.stop();
+      scannerRef.current?.destroy();
+      scannerRef.current = null;
+    };
+  }, []);
 
   const entregar = (result: unknown) => {
     const texto = typeof result === "string" ? result : (result as { data?: string })?.data;
