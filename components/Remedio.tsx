@@ -6,16 +6,18 @@ import { useSearchParams } from "next/navigation";
 import type { ClientMed } from "@/lib/types";
 import { loadMedsIndex, equivalentes, menorPreco, type MedsIndex } from "@/lib/meds-client";
 import { semaforo } from "@/lib/semaforo";
-import { brl, ddmm, isControlado, tipoClass, tipoLabel } from "@/lib/med-format";
+import { brl, ddmm, economiaVsTeto, GLOSSARIO, isControlado } from "@/lib/med-format";
 import { mapsUrl } from "@/lib/maps";
 import { Denuncia } from "./Denuncia";
 import { PrecoAoVivo } from "./PrecoAoVivo";
+import { TipoBadge } from "./TipoBadge";
+import { InfoTip } from "./InfoTip";
 
 // tipo (generico/similar/referencia) + tarja. O fabricante vai separado, com rotulo.
 function Tags({ med }: { med: ClientMed }) {
   return (
     <div className="card-tags">
-      {med.tipo && <span className={`tag ${tipoClass(med.tipo)}`}>{tipoLabel(med.tipo)}</span>}
+      <TipoBadge tipo={med.tipo} />
       {med.tarja && /^Tarja (Vermelha|Preta)/i.test(med.tarja) && (
         <span className="tag tag-tarja">{med.tarja.replace(/^Tarja\s+/i, "")}</span>
       )}
@@ -89,7 +91,9 @@ export function Remedio() {
   const redeMeta = cheapest && idx?.meta ? idx.meta.redes?.find((r) => r.nome === cheapest.rede) : undefined;
   const lojas = redeMeta?.lojasCount ?? 0;
   const lojasRede = redeMeta?.lojas ?? [];
-  const sub = [med.concentracao, med.apresentacao].filter(Boolean).join(" · ");
+  const eco = cheapest && med.tetoGo != null && !med.semTeto ? economiaVsTeto(cheapest.centavos, med.tetoGo) : null;
+  const ativo = [med.substancia?.replace(/\s*;\s*/g, " + "), med.concentracao].filter(Boolean).join(" ");
+  const ehGenerico = !!med.tipo && /gen[eé]rico|similar/i.test(med.tipo);
   const vistos = equivs.slice(0, 40);
 
   return (
@@ -100,7 +104,13 @@ export function Remedio() {
 
       <header className="det-head">
         <h1 className="det-titulo">{med.produto}</h1>
-        {sub && <p className="det-sub">{sub}</p>}
+        {ativo && (
+          <p className="det-ativo">
+            Princípio ativo: <strong>{ativo}</strong>
+            <InfoTip>{GLOSSARIO.principioAtivo}</InfoTip>
+          </p>
+        )}
+        {med.apresentacao && <p className="det-sub">{med.apresentacao}</p>}
         <Tags med={med} />
         {med.laboratorio && (
           <p className="det-fab">
@@ -108,13 +118,37 @@ export function Remedio() {
           </p>
         )}
         {med.deGraca && (
-          <div className="free">
-            <span className="free-dot" />
-            De graça no Farmácia Popular
-            {med.indicacao && <span className="free-ind">· {med.indicacao.toLowerCase()}</span>}
+          <div className="det-popular">
+            <div className="free">
+              <span className="free-check" aria-hidden="true">✓</span>
+              De graça pela Farmácia Popular
+            </div>
+            <p className="det-popular-req">
+              Pra retirar de graça: receita na validade, documento com foto + CPF, e uma farmácia com o selo
+              &ldquo;Aqui Tem Farmácia Popular&rdquo;.
+              {med.indicacao && <> · trata {med.indicacao.toLowerCase()}</>}
+            </p>
           </div>
         )}
       </header>
+
+      {ehGenerico && (
+        <section className="det-generico">
+          <div className="det-generico-selos">
+            <span>Mesmo princípio ativo do original</span>
+            <span>Aprovado pela Anvisa</span>
+            <span>Mesmo efeito</span>
+          </div>
+          <p className="det-generico-pq">
+            Por que costuma ser mais barato?
+            <InfoTip rotulo="Por que o genérico é mais barato?">
+              O genérico não paga a pesquisa, os testes e o marketing que a marca já pagou. Vários laboratórios
+              fazem o mesmo remédio, e a concorrência derruba o preço — sem perder qualidade. A Anvisa testa e
+              garante que funciona igual.
+            </InfoTip>
+          </p>
+        </section>
+      )}
 
       <section className="det-preco">
         {cheapest ? (
@@ -138,7 +172,13 @@ export function Remedio() {
               ))}
             </ul>
             <div className="det-preco-pe">
-              {med.tetoGo != null && !med.semTeto && <span>teto legal em GO {brl(med.tetoGo)}</span>}
+              {med.tetoGo != null && !med.semTeto && (
+                <span>
+                  teto legal em GO {brl(med.tetoGo)}
+                  {eco && <span className="det-eco"> · você economiza {eco.pct}%</span>}
+                  <InfoTip>{GLOSSARIO.teto}</InfoTip>
+                </span>
+              )}
               <span>
                 {lojas > 0 ? `${lojas} ${lojas === 1 ? "loja" : "lojas"}` : "entrega"} ·{" "}
                 {ddmm(idx?.meta?.observadoEm)}
@@ -165,8 +205,11 @@ export function Remedio() {
         ) : isControlado(med.tarja) ? (
           <div className="det-controlado">
             <p>
-              <strong>Medicamento controlado (tarja preta).</strong> Não é vendido pela internet — por isso não
-              temos o preço praticado das redes pra comparar. O preço real fica no balcão da farmácia, com receita.
+              <strong>
+                Medicamento controlado (tarja preta). <InfoTip>{GLOSSARIO.controlado}</InfoTip>
+              </strong>{" "}
+              Não é vendido pela internet — por isso não temos o preço praticado das redes pra comparar. O preço
+              real fica no balcão da farmácia, com receita.
             </p>
             {med.tetoGo != null && !med.semTeto && (
               <p className="det-controlado-teto">
