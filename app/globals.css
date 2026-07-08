@@ -816,6 +816,50 @@ body {
 .denuncia-link { font-size: 13.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
 .denuncia-link:hover { text-decoration: underline; }
 
+/* fabricante (quem faz) vs farmacia (quem vende) + controlado */
+.tag-fab { display: inline-flex; align-items: center; gap: 4px; }
+.tag-fab svg { color: var(--faint); flex-shrink: 0; }
+
+.controlado-nota {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--amber);
+  background: rgba(var(--amber-rgb), 0.1);
+  border: 1px solid rgba(var(--amber-rgb), 0.28);
+  padding: 4px 11px;
+  border-radius: 999px;
+}
+
+.det-fab { font-size: 14px; color: var(--muted); margin-top: 12px; }
+.det-fab strong { color: var(--ink); font-weight: 600; }
+
+.det-redes-head {
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.det-redes-head + .det-redes { margin-top: 8px; padding-top: 0; border-top: 0; }
+
+.det-controlado {
+  background: rgba(var(--amber-rgb), 0.06);
+  border: 1px solid rgba(var(--amber-rgb), 0.28);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.det-controlado p { font-size: 14.5px; color: var(--ink); line-height: 1.6; }
+.det-controlado > p:first-child strong { color: var(--amber); }
+.det-controlado-teto { color: var(--muted) !important; font-size: 13.5px !important; }
+.det-controlado-teto strong { color: var(--ink) !important; }
+
 /* footer */
 .foot {
   margin-top: auto;

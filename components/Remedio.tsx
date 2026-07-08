@@ -6,13 +6,13 @@ import { useSearchParams } from "next/navigation";
 import type { ClientMed } from "@/lib/types";
 import { loadMedsIndex, equivalentes, menorPreco, type MedsIndex } from "@/lib/meds-client";
 import { semaforo } from "@/lib/semaforo";
-import { brl, ddmm, tipoClass, tipoLabel } from "@/lib/med-format";
+import { brl, ddmm, isControlado, tipoClass, tipoLabel } from "@/lib/med-format";
 import { Denuncia } from "./Denuncia";
 
+// tipo (generico/similar/referencia) + tarja. O fabricante vai separado, com rotulo.
 function Tags({ med }: { med: ClientMed }) {
   return (
     <div className="card-tags">
-      {med.laboratorio && <span className="tag">{med.laboratorio}</span>}
       {med.tipo && <span className={`tag ${tipoClass(med.tipo)}`}>{tipoLabel(med.tipo)}</span>}
       {med.tarja && /^Tarja (Vermelha|Preta)/i.test(med.tarja) && (
         <span className="tag tag-tarja">{med.tarja.replace(/^Tarja\s+/i, "")}</span>
@@ -98,6 +98,11 @@ export function Remedio() {
         <h1 className="det-titulo">{med.produto}</h1>
         {sub && <p className="det-sub">{sub}</p>}
         <Tags med={med} />
+        {med.laboratorio && (
+          <p className="det-fab">
+            Fabricante: <strong>{med.laboratorio}</strong>
+          </p>
+        )}
         {med.deGraca && (
           <div className="free">
             <span className="free-dot" />
@@ -119,6 +124,7 @@ export function Remedio() {
               </div>
               {sem && <span className={`semaforo sem-${sem.cls}`}>{sem.label}</span>}
             </div>
+            {med.precos.length > 1 && <p className="det-redes-head">preço em cada rede de farmácia</p>}
             <ul className="det-redes">
               {med.precos.map((p) => (
                 <li key={p.rede} className={p.rede === cheapest.rede ? "melhor" : ""}>
@@ -135,6 +141,18 @@ export function Remedio() {
               </span>
             </div>
           </>
+        ) : isControlado(med.tarja) ? (
+          <div className="det-controlado">
+            <p>
+              <strong>Medicamento controlado (tarja preta).</strong> Não é vendido pela internet — por isso não
+              temos o preço praticado das redes pra comparar. O preço real fica no balcão da farmácia, com receita.
+            </p>
+            {med.tetoGo != null && !med.semTeto && (
+              <p className="det-controlado-teto">
+                Teto legal em Goiás: <strong>{brl(med.tetoGo)}</strong> — o máximo que a lei permite cobrar.
+              </p>
+            )}
+          </div>
         ) : med.semTeto ? (
           <p className="det-preco-simples">Preço liberado — este medicamento não tem teto legal na CMED.</p>
         ) : med.tetoGo != null ? (
