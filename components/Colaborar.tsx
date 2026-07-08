@@ -6,6 +6,7 @@ import { loadMedsIndex, searchMeds, type MedsIndex } from "@/lib/meds-client";
 import { semaforo } from "@/lib/semaforo";
 import { parseNfceInput, decodeChaveNfce, formatCnpj, type ChaveNfce } from "@/lib/nfce";
 import { Denuncia } from "./Denuncia";
+import { LeitorNota } from "./LeitorNota";
 
 const REPO = "Gabrieldiog/Pharmacy-price";
 
@@ -186,13 +187,14 @@ export function Colaborar() {
       )}
 
       {/* 4. NFC-e (opcional) */}
-      <label className="colab-field">
+      <div className="colab-field">
         <span className="colab-label">4 · Nota fiscal <span className="colab-opt">(opcional, mas dá credibilidade)</span></span>
+        <LeitorNota onLido={setNfceRaw} />
         <input
           className="colab-input"
           value={nfceRaw}
           onChange={(e) => setNfceRaw(e.target.value)}
-          placeholder="cole o link do QR da nota ou a chave de 44 dígitos"
+          placeholder="ou cole o link do QR da nota / a chave de 44 dígitos"
         />
         {nfceMexeu && (
           <div className={`colab-nfce ${chave?.valido && chave.isGoias && chave.isNfce ? "ok" : "warn"}`}>
@@ -212,7 +214,7 @@ export function Colaborar() {
             )}
           </div>
         )}
-      </label>
+      </div>
 
       {/* envio */}
       {url ? (
