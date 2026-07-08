@@ -977,6 +977,101 @@ body {
   .det-lojas li { flex-direction: column; align-items: flex-start; gap: 2px; }
 }
 
+/* preco ao vivo (das notas fiscais, por loja) */
+.det-vivo {
+  margin-top: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.vivo-head { display: flex; align-items: center; gap: 8px; }
+.vivo-titulo { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); font-weight: 600; }
+.vivo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--free);
+  box-shadow: 0 0 0 0 rgba(var(--free-rgb), 0.55);
+  animation: vivo-pulse 1.8s ease-out infinite;
+}
+@keyframes vivo-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(var(--free-rgb), 0.5); }
+  70% { box-shadow: 0 0 0 7px rgba(var(--free-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--free-rgb), 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vivo-dot { animation: none; }
+}
+.vivo-sub { margin-top: 10px; font-size: 13px; color: var(--muted); }
+.vivo-msg { margin-top: 12px; font-size: 14px; color: var(--muted); }
+
+.vivo-lista { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.vivo-loja {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.vivo-loja.melhor { border-color: rgba(var(--brand-rgb), 0.45); background: rgba(var(--brand-rgb), 0.05); }
+.vivo-loja-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.vivo-loja-nome { font-size: 14px; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+.vivo-chip {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--brand-deep);
+  background: rgba(var(--brand-rgb), 0.14);
+  border-radius: 999px;
+  padding: 1px 7px;
+}
+.vivo-loja-local { font-size: 12.5px; color: var(--muted); }
+.vivo-loja-meta { font-size: 11.5px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.vivo-loja-dir { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; }
+.vivo-loja-val { font-size: 18px; font-weight: 700; color: var(--brand); font-variant-numeric: tabular-nums; }
+.vivo-loja-mapa { font-size: 12px; font-weight: 600; color: var(--accent); text-decoration: none; white-space: nowrap; }
+.vivo-loja-mapa:hover { text-decoration: underline; }
+
+.vivo-pe { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; margin-top: 14px; font-size: 12px; color: var(--faint); }
+.vivo-refina {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.vivo-refina:hover { color: var(--brand-deep); }
+
+.vivo-indisponivel { margin-top: 12px; display: flex; flex-direction: column; gap: 12px; }
+.vivo-indisponivel p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.vivo-indisponivel strong { color: var(--ink); }
+.vivo-cta {
+  align-self: flex-start;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--on-brand);
+  background: linear-gradient(180deg, var(--brand), var(--brand-deep));
+  border-radius: 999px;
+  padding: 9px 16px;
+  text-decoration: none;
+  transition: transform 0.14s;
+}
+.vivo-cta:hover { transform: translateY(-1px); }
+
+@media (max-width: 480px) {
+  .vivo-loja { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .vivo-loja-dir { flex-direction: row; align-items: baseline; gap: 12px; align-self: stretch; justify-content: space-between; }
+}
+
 /* footer */
 .foot {
   margin-top: auto;

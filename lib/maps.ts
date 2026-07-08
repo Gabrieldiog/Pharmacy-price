@@ -3,3 +3,9 @@
 export function mapsUrl(lat: number, lng: number): string {
   return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
 }
+
+// Busca por texto no Maps — pro preco ao vivo, onde temos nome/endereco da loja
+// mas nao a coordenada (a fonte da NFC-e nao devolve lat/lng).
+export function mapsBusca(query: string): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
