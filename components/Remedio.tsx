@@ -9,6 +9,7 @@ import { semaforo } from "@/lib/semaforo";
 import { brl, ddmm, isControlado, tipoClass, tipoLabel } from "@/lib/med-format";
 import { mapsUrl } from "@/lib/maps";
 import { Denuncia } from "./Denuncia";
+import { PrecoAoVivo } from "./PrecoAoVivo";
 
 // tipo (generico/similar/referencia) + tarja. O fabricante vai separado, com rotulo.
 function Tags({ med }: { med: ClientMed }) {
@@ -183,6 +184,8 @@ export function Remedio() {
           <p className="det-preco-simples">Teto legal indisponível para esta apresentação.</p>
         )}
       </section>
+
+      <PrecoAoVivo med={med} />
 
       {sem?.cls === "vermelho" && cheapest && med.tetoGo != null && (
         <section className="det-denuncia">

@@ -30,3 +30,15 @@ export function ddmm(iso: string | undefined): string {
   if (Number.isNaN(d.getTime())) return "";
   return `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}`;
 }
+
+// "hoje" / "há N dias" a partir de uma data ISO. O preco ao vivo (NFC-e) tem
+// alguns dias de atraso, entao mostrar a idade do dado e questao de honestidade.
+export function haQuantoTempo(iso: string | null): string {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  const dias = Math.floor((Date.now() - d.getTime()) / 86_400_000);
+  if (dias <= 0) return "hoje";
+  if (dias === 1) return "há 1 dia";
+  return `há ${dias} dias`;
+}
