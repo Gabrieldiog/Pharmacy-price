@@ -76,7 +76,7 @@ export async function precoAoVivo(
   uf: string,
   termo: string,
   geo: Geo,
-  opts: { raioKm?: number; signal?: AbortSignal } = {},
+  opts: { raioKm?: number; timeoutMs?: number; signal?: AbortSignal } = {},
 ): Promise<PrecoLoja[]> {
   const fonte = FONTE_POR_UF[uf];
   if (!BASE || !fonte || !termo.trim()) return [];
@@ -86,13 +86,26 @@ export async function precoAoVivo(
     `?termo=${encodeURIComponent(termo.trim())}` +
     `&lat=${geo.lat}&lon=${geo.lng}&raio=${opts.raioKm ?? 15}`;
 
-  const resp = await fetch(url, { signal: opts.signal });
-  if (!resp.ok) throw new Error(`balcao respondeu ${resp.status}`);
+  // timeout proprio pra um Balcao lento nao deixar a UI travada em "carregando";
+  // tambem repassamos o abort de quem chamou (desmontar o componente cancela).
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), opts.timeoutMs ?? 8000);
+  if (opts.signal) {
+    if (opts.signal.aborted) ctrl.abort();
+    else opts.signal.addEventListener("abort", () => ctrl.abort(), { once: true });
+  }
 
-  const corpo = (await resp.json()) as EnvelopeBalcao;
-  const itens = Array.isArray(corpo.dados) ? corpo.dados : [];
-  return itens
-    .map(mapeia)
-    .filter((x): x is PrecoLoja => x != null)
-    .sort((a, b) => a.valorCents - b.valorCents);
+  try {
+    const resp = await fetch(url, { signal: ctrl.signal });
+    if (!resp.ok) throw new Error(`balcao respondeu ${resp.status}`);
+
+    const corpo = (await resp.json()) as EnvelopeBalcao;
+    const itens = Array.isArray(corpo.dados) ? corpo.dados : [];
+    return itens
+      .map(mapeia)
+      .filter((x): x is PrecoLoja => x != null)
+      .sort((a, b) => a.valorCents - b.valorCents);
+  } finally {
+    clearTimeout(timer);
+  }
 }
