@@ -3,17 +3,17 @@
 import type { Geo } from "@/lib/geo";
 
 // Cliente do Balcao (gateway de dados publicos, projeto irmao). Cada UF tem uma
-// fonte de preco ao vivo com natureza propria: o Parana vem das notas fiscais
-// (Nota Parana, preco por loja); Goias vem do catalogo online da Drogaria Rosario
-// (rede goiana) — preco de internet. A UI deixa essa diferenca clara.
+// ou mais fontes de preco ao vivo: o Parana vem das notas fiscais (por loja);
+// Goias bate em varias redes locais (catalogo online) ao mesmo tempo e mostra a
+// mais barata na frente. A UI deixa a natureza do preco clara.
 
 // Base do Balcao. Em producao aponta pro dominio publicado (NEXT_PUBLIC_BALCAO_URL);
 // vazio = sem preco ao vivo, e o site cai no fallback honesto sem quebrar.
 const BASE = (process.env.NEXT_PUBLIC_BALCAO_URL ?? "").replace(/\/+$/, "");
 
 export interface FonteAoVivo {
-  conector: string; // nome do conector no Balcao (/v1/<conector>/produtos)
-  titulo: string; // cabecalho do bloco: "Paraná", "Drogaria Rosário · Goiânia"
+  conectores: string[]; // conectores do Balcao consultados em paralelo (/v1/<conector>/produtos)
+  titulo: string; // cabecalho do bloco: "Paraná", "Goiânia"
   comoObtido: string; // subtitulo: "das notas fiscais...", "do catálogo online..."
   nota: string; // rodape honesto sobre a natureza do preco
   porLoja: boolean; // true = NFC-e por loja (distancia, mapa); false = e-commerce
@@ -22,17 +22,17 @@ export interface FonteAoVivo {
 // UF -> fonte de preco ao vivo. Cresce conforme novas redes/estados entram.
 const FONTE_POR_UF: Record<string, FonteAoVivo> = {
   PR: {
-    conector: "notaparana",
+    conectores: ["notaparana"],
     titulo: "Paraná",
     comoObtido: "das notas fiscais, da loja mais barata pra mais cara",
     nota: "Preço da última venda vista na nota fiscal — pode ter alguns dias.",
     porLoja: true,
   },
   GO: {
-    conector: "rosario",
-    titulo: "Drogaria Rosário · Goiânia",
-    comoObtido: "do catálogo online da rede, do mais barato pro mais caro",
-    nota: "Preço do catálogo online da Drogaria Rosário, ao vivo — é preço de internet e pode diferir do balcão da loja.",
+    conectores: ["rosario", "alexfarma"],
+    titulo: "Goiânia",
+    comoObtido: "do catálogo online das redes de Goiânia, do mais barato pro mais caro",
+    nota: "Preço do catálogo online das redes (Rosário, Alexfarma), ao vivo — é preço de internet e pode diferir do balcão da loja.",
     porLoja: false,
   },
 };
@@ -96,14 +96,21 @@ function mapeia(d: Record<string, unknown>): PrecoLoja | null {
   };
 }
 
-// Busca o preco ao vivo do produto, do mais barato pro mais caro. Fonte por loja
-// (NFC-e) usa geo pra medir distancia; fonte de e-commerce ignora geo. Retorna []
-// quando nao ha fonte pra UF ou o Balcao nao esta configurado.
+interface Opts {
+  raioKm?: number;
+  limite?: number;
+  timeoutMs?: number;
+  signal?: AbortSignal;
+}
+
+// Busca o preco ao vivo do produto, do mais barato pro mais caro. Consulta as
+// redes da UF em paralelo e junta; se uma cair, as outras ainda respondem (só
+// falha tudo se todas caírem). Fonte por loja (NFC-e) usa geo; e-commerce ignora.
 export async function precoAoVivo(
   uf: string,
   termo: string,
   geo: Geo | null,
-  opts: { raioKm?: number; limite?: number; timeoutMs?: number; signal?: AbortSignal } = {},
+  opts: Opts = {},
 ): Promise<PrecoLoja[]> {
   const fonte = fonteAoVivo(uf);
   // tira pontuação que quebra a busca de algumas fontes (ex.: o "+" de
@@ -111,7 +118,26 @@ export async function precoAoVivo(
   const q = termo.replace(/[^\p{L}\p{N}\s]/gu, " ").replace(/\s+/g, " ").trim();
   if (!fonte || !q) return [];
 
-  const params = new URLSearchParams({ termo: q });
+  const resultados = await Promise.allSettled(
+    fonte.conectores.map((conn) => umaFonte(conn, fonte, q, geo, opts)),
+  );
+  const ok = resultados.filter((r): r is PromiseFulfilledResult<PrecoLoja[]> => r.status === "fulfilled");
+  // se NENHUMA respondeu, propaga o erro pra UI mostrar "erro" (e não "vazio")
+  if (ok.length === 0) {
+    throw (resultados[0] as PromiseRejectedResult | undefined)?.reason ?? new Error("nenhuma fonte respondeu");
+  }
+  return ok.flatMap((r) => r.value).sort((a, b) => a.valorCents - b.valorCents);
+}
+
+// Consulta um conector do Balcao e devolve os precos (sem ordenar — a juncao ordena).
+async function umaFonte(
+  conector: string,
+  fonte: FonteAoVivo,
+  termo: string,
+  geo: Geo | null,
+  opts: Opts,
+): Promise<PrecoLoja[]> {
+  const params = new URLSearchParams({ termo });
   if (fonte.porLoja) {
     if (!geo) return []; // preco por loja precisa saber de onde buscar
     params.set("lat", String(geo.lat));
@@ -120,9 +146,9 @@ export async function precoAoVivo(
   } else {
     params.set("limite", String(opts.limite ?? 12));
   }
-  const url = `${BASE}/v1/${fonte.conector}/produtos?${params.toString()}`;
+  const url = `${BASE}/v1/${conector}/produtos?${params.toString()}`;
 
-  // timeout proprio pra um Balcao lento nao deixar a UI travada em "carregando";
+  // timeout proprio pra uma fonte lenta nao deixar a UI travada em "carregando";
   // tambem repassamos o abort de quem chamou (desmontar o componente cancela).
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), opts.timeoutMs ?? 8000);
@@ -134,13 +160,9 @@ export async function precoAoVivo(
   try {
     const resp = await fetch(url, { signal: ctrl.signal });
     if (!resp.ok) throw new Error(`balcao respondeu ${resp.status}`);
-
     const corpo = (await resp.json()) as EnvelopeBalcao;
     const itens = Array.isArray(corpo.dados) ? corpo.dados : [];
-    return itens
-      .map(mapeia)
-      .filter((x): x is PrecoLoja => x != null)
-      .sort((a, b) => a.valorCents - b.valorCents);
+    return itens.map(mapeia).filter((x): x is PrecoLoja => x != null);
   } finally {
     clearTimeout(timer);
   }

@@ -28,6 +28,9 @@ function Linha({ loja, melhor, porLoja }: { loja: PrecoLoja; melhor: boolean; po
             {nome}
             {melhor && <span className="vivo-chip">menor</span>}
           </span>
+          {loja.estabelecimento && loja.descricao && (
+            <span className="vivo-loja-local">{loja.estabelecimento}</span>
+          )}
         </div>
         <div className="vivo-loja-dir">
           <span className="vivo-loja-val">{brl(loja.valorCents)}</span>
