@@ -402,6 +402,61 @@ body {
 .card-redes .cr-nome { color: var(--faint); }
 .card-redes .cr-val { font-variant-numeric: tabular-nums; }
 
+/* comunicacao do card: hierarquia clara das 5 duvidas (de graca, tipo, ativo,
+   fabricante | preco, farmacia, economia). 4 eixos, cores que nao se misturam */
+.card .free { margin-top: 0; margin-bottom: 10px; }
+.free-check { font-weight: 800; }
+
+.card-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.card-head .card-title { margin: 0; }
+
+.tbadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px 2px 5px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tbadge-sigla {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--surface);
+}
+.tb-generico { color: var(--gold); background: rgba(var(--gold-rgb), 0.16); }
+.tb-generico .tbadge-sigla { background: var(--gold); }
+.tb-similar { color: var(--accent); background: rgba(var(--accent-rgb), 0.12); }
+.tb-similar .tbadge-sigla { background: var(--accent); }
+.tb-marca { color: var(--muted); background: rgba(var(--muted-rgb), 0.14); }
+.tb-marca .tbadge-sigla { background: var(--muted); }
+
+.card-ativo { font-size: 13px; color: var(--ink); font-weight: 500; margin-top: 7px; }
+.card-lab { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--faint); margin-top: 8px; }
+.card-lab svg { color: var(--faint); flex-shrink: 0; }
+.card .tag-tarja { display: inline-flex; margin-top: 10px; }
+
+.eco-chip {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--free-deep);
+  background: rgba(var(--free-rgb), 0.12);
+  border: 1px solid rgba(var(--free-rgb), 0.28);
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.eco-sub { font-weight: 500; color: var(--free); font-size: 11px; }
+
 /* cta pra colaboracao (home) */
 .cta-colab {
   display: inline-block;
