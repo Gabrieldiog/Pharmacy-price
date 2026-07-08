@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { gzipSync } from "node:zlib";
 import type { AppMed } from "./enrich";
 import { grupoKey } from "./enrich";
@@ -40,6 +40,14 @@ interface PrecosGoiania {
   observadoEm: string;
   redes: { nome: string; lojasCount: number; lojas?: LojaColeta[] }[];
   byEan: Record<string, { precos: RedePreco[] }>;
+}
+
+// Na build de produção (ex.: Netlify) os dados brutos da ETL não vêm no repo —
+// mas os JSONs finais estão commitados em public/. Se é esse o caso, não há o que
+// regerar: usa o que já está lá e sai limpo, em vez de quebrar o build.
+if (!existsSync("data/app/medicamentos.ndjson") && existsSync("public/medicamentos-go.json")) {
+  console.log("[build-client] dados brutos ausentes; usando os JSONs já commitados em public/");
+  process.exit(0);
 }
 
 const precos = JSON.parse(readFileSync("data/app/precos-goiania.json", "utf8")) as PrecosGoiania;
