@@ -7,6 +7,7 @@ import type { ClientMed } from "@/lib/types";
 import { loadMedsIndex, equivalentes, menorPreco, type MedsIndex } from "@/lib/meds-client";
 import { semaforo } from "@/lib/semaforo";
 import { brl, ddmm, isControlado, tipoClass, tipoLabel } from "@/lib/med-format";
+import { mapsUrl } from "@/lib/maps";
 import { Denuncia } from "./Denuncia";
 
 // tipo (generico/similar/referencia) + tarja. O fabricante vai separado, com rotulo.
@@ -84,7 +85,9 @@ export function Remedio() {
 
   const cheapest = med.precos?.[0] ?? null;
   const sem = cheapest && med.tetoGo != null && !med.semTeto ? semaforo(cheapest.centavos, med.tetoGo) : null;
-  const lojas = cheapest && idx?.meta ? idx.meta.redes?.find((r) => r.nome === cheapest.rede)?.lojasCount ?? 0 : 0;
+  const redeMeta = cheapest && idx?.meta ? idx.meta.redes?.find((r) => r.nome === cheapest.rede) : undefined;
+  const lojas = redeMeta?.lojasCount ?? 0;
+  const lojasRede = redeMeta?.lojas ?? [];
   const sub = [med.concentracao, med.apresentacao].filter(Boolean).join(" · ");
   const vistos = equivs.slice(0, 40);
 
@@ -140,6 +143,23 @@ export function Remedio() {
                 {ddmm(idx?.meta?.observadoEm)}
               </span>
             </div>
+            {lojasRede.length > 0 && (
+              <div className="det-lojas">
+                <span className="det-lojas-head">
+                  onde comprar · {cheapest.rede} em {idx?.meta?.cidade ?? "Goiânia"}
+                </span>
+                <ul>
+                  {lojasRede.slice(0, 3).map((l, i) => (
+                    <li key={i}>
+                      <span className="det-loja-end">{[l.bairro, l.endereco].filter(Boolean).join(" · ")}</span>
+                      <a href={mapsUrl(l.lat, l.lng)} target="_blank" rel="noopener noreferrer" className="det-loja-mapa">
+                        ver no mapa →
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </>
         ) : isControlado(med.tarja) ? (
           <div className="det-controlado">
