@@ -1,7 +1,16 @@
 import Link from "next/link";
 import type { ClientMed, PrecosMeta } from "@/lib/types";
 import { semaforo } from "@/lib/semaforo";
-import { brl, ddmm, tipoClass, tipoLabel } from "@/lib/med-format";
+import { brl, ddmm, isControlado, tipoClass, tipoLabel } from "@/lib/med-format";
+
+// icone de fabrica: marca o laboratorio como "quem fabrica" (vs. a farmacia que vende)
+function FabIcon() {
+  return (
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M2 20h20M4 20V9l5 3V9l5 3V5h6v15" />
+    </svg>
+  );
+}
 
 export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null }) {
   const teto = brl(med.tetoGo);
@@ -23,12 +32,19 @@ export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null
         <h3 className="card-title">{med.produto}</h3>
         {sub && <p className="card-sub">{sub}</p>}
         <div className="card-tags">
-          {med.laboratorio && <span className="tag">{med.laboratorio}</span>}
+          {med.laboratorio && (
+            <span className="tag tag-fab" title="Fabricante">
+              <FabIcon /> {med.laboratorio}
+            </span>
+          )}
           {med.tipo && <span className={`tag ${tipoClass(med.tipo)}`}>{tipoLabel(med.tipo)}</span>}
           {med.tarja && /^Tarja (Vermelha|Preta)/i.test(med.tarja) && (
             <span className="tag tag-tarja">{med.tarja.replace(/^Tarja\s+/i, "")}</span>
           )}
         </div>
+        {isControlado(med.tarja) && med.precos.length === 0 && (
+          <div className="controlado-nota">Controlado — vendido só no balcão, com receita</div>
+        )}
         {med.deGraca && (
           <div className="free">
             <span className="free-dot" />
