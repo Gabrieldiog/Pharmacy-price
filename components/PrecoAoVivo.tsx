@@ -21,17 +21,20 @@ function ondeLabel(uf: string): string {
 
 // Linha de uma loja: "Farmacia Z, bairro · a X km · ha N dias" + preco + mapa.
 function LinhaLoja({ loja, melhor }: { loja: PrecoLoja; melhor: boolean }) {
+  const nome = loja.estabelecimento ?? "Farmácia";
   const local = [loja.bairro, loja.municipio].filter(Boolean).join(", ");
   const dist = loja.distanciaKm != null ? `a ${loja.distanciaKm.toFixed(1).replace(".", ",")} km` : null;
   const idade = haQuantoTempo(loja.atualizado);
   const rodape = [dist, idade].filter(Boolean).join(" · ");
-  const busca = [loja.estabelecimento, loja.endereco, loja.municipio].filter(Boolean).join(" ");
+  // só oferece o mapa quando há algo real pra procurar (nome de verdade ou
+  // endereço/cidade). Sem isso, o link cairia numa busca genérica por "Farmácia".
+  const alvo = [loja.estabelecimento, loja.endereco, loja.municipio].filter(Boolean).join(" ");
 
   return (
     <li className={melhor ? "vivo-loja melhor" : "vivo-loja"}>
       <div className="vivo-loja-info">
         <span className="vivo-loja-nome">
-          {loja.estabelecimento}
+          {nome}
           {melhor && <span className="vivo-chip">menor</span>}
         </span>
         {local && <span className="vivo-loja-local">{local}</span>}
@@ -39,9 +42,17 @@ function LinhaLoja({ loja, melhor }: { loja: PrecoLoja; melhor: boolean }) {
       </div>
       <div className="vivo-loja-dir">
         <span className="vivo-loja-val">{brl(loja.valorCents)}</span>
-        <a className="vivo-loja-mapa" href={mapsBusca(busca)} target="_blank" rel="noopener noreferrer">
-          ver no mapa →
-        </a>
+        {alvo && (
+          <a
+            className="vivo-loja-mapa"
+            href={mapsBusca(alvo)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Ver no mapa: ${nome}${local ? `, ${local}` : ""} (abre em nova aba)`}
+          >
+            ver no mapa →
+          </a>
+        )}
       </div>
     </li>
   );
@@ -163,9 +174,7 @@ export function PrecoAoVivo({ med }: { med: ClientMed }) {
       )}
 
       {status === "vazio" && (
-        <p className="vivo-msg">
-          Nenhuma loja registrou esse preço por perto ainda. O preço praticado das redes fica logo acima.
-        </p>
+        <p className="vivo-msg">Nenhuma loja registrou esse preço por perto ainda.</p>
       )}
 
       {status === "ok" && primeira && (
