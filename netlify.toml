@@ -1,0 +1,11 @@
+# Deploy do comparador no Netlify. É um export estático do Next
+# (output: "export" no next.config.ts -> a build sai na pasta out/), então é
+# só servir arquivo — nada de runtime/SSR. A ETL não roda aqui: os dados finais
+# ficam commitados em public/, e o prebuild pula quando não acha os dados brutos.
+[build]
+  command = "pnpm build"
+  publish = "out"
+
+[build.environment]
+  # aponta o preço ao vivo pro Balcão já publicado (senão cai no fallback honesto)
+  NEXT_PUBLIC_BALCAO_URL = "https://balcao-api.onrender.com"

@@ -9,11 +9,8 @@ dist/
 *.tsbuildinfo
 next-env.d.ts
 
-# datasets gerados do cliente (regerados no build)
-/public/medicamentos-go.json
-/public/precos-meta.json
-/public/destaques.json
-/public/panorama.json
+# datasets do cliente: agora COMMITADOS (o deploy estático não roda a ETL).
+# Regere com `pnpm build:client` quando os dados mudarem e commite de novo.
 
 # dados gerados pelo ETL (regerados pelo pipeline; sample/lookup versionados à parte)
 data/cmed-*.ndjson
