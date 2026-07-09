@@ -240,13 +240,17 @@ export function Remedio() {
             )}
           </div>
         ) : med.semTeto ? (
-          <p className="det-preco-simples">Preço liberado — este medicamento não tem teto legal na CMED.</p>
+          <p className="det-preco-simples">
+            Ainda não temos o preço coletado deste medicamento. Ele é de preço livre — a CMED não define um teto
+            legal pra ele.
+          </p>
         ) : med.tetoGo != null ? (
           <p className="det-preco-simples">
-            Teto legal em Goiás: <strong>{brl(med.tetoGo)}</strong>. Ainda não temos preço praticado coletado.
+            Ainda não temos o preço coletado deste medicamento. O teto legal em Goiás — o máximo que a lei permite
+            cobrar, não um preço à venda — é <strong>{brl(med.tetoGo)}</strong>.
           </p>
         ) : (
-          <p className="det-preco-simples">Teto legal indisponível para esta apresentação.</p>
+          <p className="det-preco-simples">Ainda não temos o preço coletado nem o teto legal desta apresentação.</p>
         )}
       </section>
 

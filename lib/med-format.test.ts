@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { tipoLabel, tipoBadge, economiaVsTeto } from "./med-format";
+import { tipoLabel, tipoBadge, economiaVsTeto, tetoPelaLei } from "./med-format";
 
 test("tipoLabel: 'novo' vira 'De marca', nunca 'Referência'", () => {
   assert.equal(tipoLabel("Novo"), "De marca");
@@ -28,4 +28,14 @@ test("economiaVsTeto: null quando não há economia ou teto inválido", () => {
   assert.equal(economiaVsTeto(1000, 1000), null); // igual ao teto
   assert.equal(economiaVsTeto(2000, 1000), null); // acima do teto
   assert.equal(economiaVsTeto(500, 0), null); // teto inválido
+});
+
+test("tetoPelaLei: rotula o teto como máximo da lei (nunca como preço)", () => {
+  // tem teto e não é liberado -> "teto pela lei R$X"
+  assert.equal(tetoPelaLei({ tetoGo: 44994, semTeto: false }), "teto pela lei R$ 449,94");
+  // regime liberado -> não há teto legal, e isso é o contexto honesto
+  assert.equal(tetoPelaLei({ tetoGo: null, semTeto: true }), "sem teto legal");
+  assert.equal(tetoPelaLei({ tetoGo: 1000, semTeto: true }), "sem teto legal"); // liberado ganha do PMC
+  // sem teto e sem regime liberado -> nada útil a mostrar
+  assert.equal(tetoPelaLei({ tetoGo: null, semTeto: false }), null);
 });
