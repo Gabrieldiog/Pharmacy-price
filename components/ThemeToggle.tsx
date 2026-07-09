@@ -14,6 +14,9 @@ export function ThemeToggle() {
     const next = dark ? "light" : "dark";
     setDark(!dark);
     document.documentElement.dataset.theme = next;
+    // mantem a barra do navegador (theme-color) em sincronia com o tema escolhido
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", next === "dark" ? "#0a1120" : "#f5f8f9");
     try {
       localStorage.setItem("pp:theme", next);
     } catch {}

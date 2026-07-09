@@ -31,8 +31,11 @@ export const metadata: Metadata = {
 };
 
 // Aplica o tema antes do primeiro paint (evita flash). Comeca no claro; respeita a escolha salva.
-// Conteudo constante, sem dado de usuario.
-const themeScript = `try{var t=localStorage.getItem('pp:theme');var s=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=(t==='dark'||t==='light')?t:(t==='system'?s:'light');}catch(e){}`;
+// Tambem escreve a meta theme-color (cor da barra do navegador no celular) a partir do tema
+// resolvido — precisa seguir o app, nao o prefers-color-scheme do SO, senao a barra fica
+// escura numa pagina clara (ou vice-versa). O ThemeToggle atualiza a mesma meta ao alternar.
+// As cores batem com --bg de cada tema no globals.css. Conteudo constante, sem dado de usuario.
+const themeScript = `try{var t=localStorage.getItem('pp:theme');var s=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';var r=(t==='dark'||t==='light')?t:(t==='system'?s:'light');document.documentElement.dataset.theme=r;var m=document.querySelector('meta[name=theme-color]');if(!m){m=document.createElement('meta');m.name='theme-color';document.head.appendChild(m);}m.setAttribute('content',r==='dark'?'#0a1120':'#f5f8f9');}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
