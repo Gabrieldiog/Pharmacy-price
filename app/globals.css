@@ -1097,9 +1097,17 @@ body {
 .det-loja-end { color: var(--muted); min-width: 0; }
 .det-loja-mapa { color: var(--accent); text-decoration: none; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
 .det-loja-mapa:hover { text-decoration: underline; }
+.det-lojas-todas { display: inline-block; margin-top: 10px; font-size: 12.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.det-lojas-todas:hover { text-decoration: underline; }
+.det-lojas-vazio { margin-top: 10px; font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+.det-lojas-vazio-link { color: var(--accent); text-decoration: none; font-weight: 600; }
+.det-lojas-vazio-link:hover { text-decoration: underline; }
 @media (max-width: 480px) {
   .det-lojas li { flex-direction: column; align-items: flex-start; gap: 2px; }
 }
+
+/* "preço da rede, não de uma loja" — a linha que mata a dúvida "qual loja?" */
+.det-preco-nota { margin-top: 8px; font-size: 12.5px; line-height: 1.5; color: var(--muted); max-width: 60ch; }
 
 /* preco ao vivo (das notas fiscais, por loja) */
 .det-vivo {
