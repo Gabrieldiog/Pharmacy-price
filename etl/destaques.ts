@@ -1,5 +1,6 @@
 import type { Destaques, EconomiaCard, GratisCard, TetoCard } from "../lib/types";
 import { isControlado } from "../lib/med-format";
+import { semaforo } from "../lib/semaforo";
 
 // Entrada minima (subset do ClientMed) pro calculo dos destaques da home.
 export interface DestaqueMedInput {
@@ -93,7 +94,9 @@ function acimaCards(meds: DestaqueMedInput[]): TetoCard[] {
   for (const m of meds) {
     if (m.semTeto || m.tetoGo == null) continue;
     const p = menor(m);
-    if (p == null || p <= m.tetoGo) continue;
+    // mesmo veredito do semaforo do detalhe: so alerta quando o excesso e inequivoco
+    // (>=R$0,50 OU >=2% acima), pra a home nao acusar uma farmacia por ruido de coleta
+    if (p == null || semaforo(p, m.tetoGo)?.cls !== "vermelho") continue;
     cards.push({
       id: m.id,
       produto: m.produto,
@@ -103,7 +106,9 @@ function acimaCards(meds: DestaqueMedInput[]): TetoCard[] {
       rede: m.precos[0]!.rede,
     });
   }
-  return cards.sort((a, b) => b.acimaPct - a.acimaPct);
+  // ordena pelo valor absoluto cobrado a mais (R$), nao pelo %: R$4,90 acima de um
+  // teto de R$500 (0,98%) importa mais que R$0,20 acima de R$5 (4%)
+  return cards.sort((a, b) => b.cents - b.teto - (a.cents - a.teto));
 }
 
 export function computeDestaques(meds: DestaqueMedInput[]): Destaques {
