@@ -2,6 +2,7 @@
 
 import MiniSearch from "minisearch";
 import type { ClientMed, PrecosMeta } from "@/lib/types";
+import { isControlado } from "@/lib/med-format";
 
 const norm = (t: string) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
@@ -12,8 +13,11 @@ export interface MedsIndex {
   meta: PrecosMeta | null;
 }
 
-// menor preco praticado do medicamento (centavos), ou null se nao houver
+// menor preco praticado do medicamento (centavos), ou null se nao houver. Tarja
+// preta (controlado forte) nunca mostra preco — qualquer preco casado e espurio —,
+// entao aqui tambem some, pra a lista de equivalentes ficar consistente com a pagina.
 export function menorPreco(m: ClientMed): number | null {
+  if (isControlado(m.tarja)) return null;
   return m.precos?.[0]?.centavos ?? null;
 }
 

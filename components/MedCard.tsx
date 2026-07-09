@@ -21,7 +21,9 @@ export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null
   // separa com " + " pra ler como gente
   const ativo = [med.substancia?.replace(/\s*;\s*/g, " + "), med.concentracao].filter(Boolean).join(" ");
 
-  const cheapest = med.precos?.[0] ?? null; // precos ja vem ordenado asc
+  // tarja preta é controlado forte: não vende online, então qualquer preço casado
+  // é espúrio (colisão de EAN). Suprime o preço e cai no aviso de controlado.
+  const cheapest = isControlado(med.tarja) ? null : med.precos?.[0] ?? null; // precos ja vem ordenado asc
   const preco = cheapest ? brl(cheapest.centavos) : null;
 
   const sem = cheapest && med.tetoGo != null && !med.semTeto ? semaforo(cheapest.centavos, med.tetoGo) : null;
@@ -61,9 +63,6 @@ export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null
         {med.tarja && /^Tarja (Vermelha|Preta)/i.test(med.tarja) && (
           <span className="tag tag-tarja">{med.tarja.replace(/^Tarja\s+/i, "")}</span>
         )}
-        {isControlado(med.tarja) && med.precos.length === 0 && (
-          <div className="controlado-nota">Controlado — vendido só no balcão, com receita</div>
-        )}
       </div>
 
       {/* eixo 3 + 4: quanto e onde */}
@@ -88,6 +87,11 @@ export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null
                 {frescor && ` · ${frescor}`}
               </span>
             )}
+          </>
+        ) : isControlado(med.tarja) ? (
+          <>
+            <span className="teto-label">controlado</span>
+            <span className="teto-ceil">só no balcão, com receita</span>
           </>
         ) : (
           // sem preço de mercado coletado: diz isso na cara, e mostra o teto

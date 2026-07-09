@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import type { ClientMed } from "@/lib/types";
 import { loadMedsIndex, equivalentes, menorPreco, type MedsIndex } from "@/lib/meds-client";
 import { semaforo } from "@/lib/semaforo";
-import { brl, ddmm, economiaVsTeto, GLOSSARIO, isControlado } from "@/lib/med-format";
+import { brl, ddmm, economiaVsTeto, exigeReceitaRetida, GLOSSARIO, isControlado } from "@/lib/med-format";
 import { ondeComprar } from "@/lib/onde-comprar";
 import { Denuncia } from "./Denuncia";
 import { PrecoAoVivo } from "./PrecoAoVivo";
@@ -86,7 +86,10 @@ export function Remedio() {
     );
   }
 
-  const cheapest = med.precos?.[0] ?? null;
+  // tarja preta (controlado forte) não vende online: suprime qualquer preço casado
+  // (espúrio) e deixa o bloco de controlado assumir. A vermelha "sob restrição" é
+  // vendida (com receita retida), então mantém o preço, só com um aviso.
+  const cheapest = isControlado(med.tarja) ? null : med.precos?.[0] ?? null;
   const sem = cheapest && med.tetoGo != null && !med.semTeto ? semaforo(cheapest.centavos, med.tetoGo) : null;
   const redeMeta = cheapest && idx?.meta ? idx.meta.redes?.find((r) => r.nome === cheapest.rede) : undefined;
   const lojas = redeMeta?.lojasCount ?? 0;
@@ -154,6 +157,11 @@ export function Remedio() {
       )}
 
       <section className="det-preco">
+        {exigeReceitaRetida(med.tarja) && (
+          <p className="det-receita-retida">
+            Exige receita — a farmácia retém a receita na hora da compra (tarja vermelha sob restrição).
+          </p>
+        )}
         {cheapest ? (
           <>
             <div className="det-preco-topo">
@@ -254,7 +262,10 @@ export function Remedio() {
         )}
       </section>
 
-      <PrecoAoVivo med={med} />
+      {/* controlado (tarja preta) não vende online: nada de preço ao vivo — a nota
+          fiscal de um estado poderia até captar a venda de balcão, e mostrá-la aqui
+          contradiria o aviso de "só no balcão, com receita" logo acima */}
+      {!isControlado(med.tarja) && <PrecoAoVivo med={med} />}
 
       {sem?.cls === "vermelho" && cheapest && med.tetoGo != null && (
         <section className="det-denuncia">
