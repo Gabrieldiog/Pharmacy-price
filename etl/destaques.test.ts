@@ -60,6 +60,16 @@ test("acimaDoTeto: detecta preco acima do teto legal", () => {
   assert.equal(a[0]?.acimaPct, 20);
 });
 
+test("acimaDoTeto: exclui excesso dentro do ruído (mesmo veredito do semáforo)", () => {
+  const meds = [
+    med({ id: "ruido", tetoGo: 50000, precos: [{ rede: "X", centavos: 50040 }] }), // R$0,40 / 0,08% -> âmbar
+    med({ id: "real", produto: "REAL", tetoGo: 50000, precos: [{ rede: "Y", centavos: 50490 }] }), // R$4,90 -> vermelho
+  ];
+  const a = computeDestaques(meds).acimaDoTeto;
+  assert.equal(a.length, 1); // só o excesso inequívoco entra
+  assert.equal(a[0]?.id, "real");
+});
+
 test("tarja preta nao entra em card de preco na home (guard preventivo)", () => {
   // preco espurio casado a um controlado: nao pode virar 'economia' nem 'acima do teto'
   const meds = [
