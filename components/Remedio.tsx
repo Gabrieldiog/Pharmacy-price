@@ -187,7 +187,7 @@ export function Remedio() {
                 </span>
               )}
               <span>
-                {lojas > 0 ? `${lojas} ${lojas === 1 ? "loja" : "lojas"}` : "entrega"} ·{" "}
+                {lojas > 0 ? `${lojas} ${lojas === 1 ? "loja" : "lojas"}` : "entrega"} · coletado em{" "}
                 {ddmm(idx?.meta?.observadoEm)}
               </span>
             </div>

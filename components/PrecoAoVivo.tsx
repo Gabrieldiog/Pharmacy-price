@@ -7,6 +7,7 @@ import { fonteAoVivo, precoAoVivo, type PrecoLoja } from "@/lib/balcao";
 import { centroide, geoSalva, pedirGeo, type Geo } from "@/lib/geo";
 import { brl, haQuantoTempo } from "@/lib/med-format";
 import { mapsBusca } from "@/lib/maps";
+import { filtraPorDose } from "@/lib/dose";
 
 type Status = "carregando" | "ok" | "vazio" | "erro";
 
@@ -175,11 +176,29 @@ export function PrecoAoVivo({ med }: { med: ClientMed }) {
     );
   }
 
-  const primeira = lojas[0];
+  // casa a dose: a busca por nome do e-commerce traz várias apresentações (10mg,
+  // 20mg, 40mg) e um 10mg barato não pode se passar pelo "menor" de uma página que
+  // é da 40mg. Mostra só a mesma dose; se não dá pra identificar ou não há a mesma,
+  // mostra tudo com ressalva (nunca esconde a ponto de ficar vazio). O modo NFC-e
+  // (por loja) não filtra: ali "menor" é a loja mais barata e a descrição é a venda
+  // real — filtrar por dose escondendo item sem avisar seria o oposto do objetivo.
+  const filtro = fonte.porLoja ? null : filtraPorDose(lojas, med.concentracao);
+  const exibidas = filtro ? filtro.itens : lojas;
+  const primeira = exibidas[0];
+
   const sub =
     fonte.porLoja && primeira
       ? `${primeira.descricao || termo} — ${fonte.comoObtido}.`
       : `${fonte.comoObtido.charAt(0).toUpperCase()}${fonte.comoObtido.slice(1)}.`;
+  // ressalva de dose (só no e-commerce): diz se a lista foi restrita à dose da
+  // página ou se pode misturar apresentações
+  const notaDose = !filtro
+    ? null
+    : filtro.filtrando
+      ? `Só a mesma dose da página (${med.concentracao}).`
+      : filtro.dose
+        ? "Pode incluir outras apresentações — confira a dose na descrição."
+        : null;
 
   return (
     <section className="det-vivo">
@@ -203,8 +222,9 @@ export function PrecoAoVivo({ med }: { med: ClientMed }) {
       {status === "ok" && primeira && (
         <>
           <p className="vivo-sub">{sub}</p>
+          {notaDose && <p className="vivo-dose">{notaDose}</p>}
           <ul className="vivo-lista">
-            {lojas.slice(0, 6).map((l, i) => (
+            {exibidas.slice(0, 6).map((l, i) => (
               <Linha key={`${l.estabelecimento ?? l.descricao}-${i}`} loja={l} melhor={i === 0} porLoja={fonte.porLoja} />
             ))}
           </ul>
