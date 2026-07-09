@@ -58,6 +58,8 @@ export const GLOSSARIO: Record<string, string> = {
   marca: "O original, o nome que você conhece na propaganda. Geralmente o mais caro.",
   teto:
     "O máximo que a farmácia pode cobrar por lei, definido pela ANVISA. Nenhuma pode passar disso — e quase sempre dá pra pagar bem menos.",
+  precoRede:
+    "É o preço do site da rede, não de uma loja específica: o mesmo pra rede inteira na internet. Você compra online (e retira ou recebe). No balcão de uma loja física o valor pode variar.",
   farmaciaPopular:
     'Programa do governo. Alguns remédios saem de graça em farmácias com o selo "Aqui Tem Farmácia Popular".',
   controlado:

@@ -32,7 +32,7 @@ const FONTE_POR_UF: Record<string, FonteAoVivo> = {
     conectores: ["rosario", "alexfarma", "nissei"],
     titulo: "Goiânia",
     comoObtido: "do catálogo online das redes de Goiânia, do mais barato pro mais caro",
-    nota: "Preço do catálogo online das redes (Rosário, Alexfarma, Nissei), ao vivo — é preço de internet e pode diferir do balcão da loja.",
+    nota: "Preço do site de cada rede (Rosário, Alexfarma, Nissei), ao vivo e igual em toda a rede — não é de uma loja específica. No balcão da loja pode variar.",
     porLoja: false,
   },
 };

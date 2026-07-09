@@ -7,7 +7,7 @@ import type { ClientMed } from "@/lib/types";
 import { loadMedsIndex, equivalentes, menorPreco, type MedsIndex } from "@/lib/meds-client";
 import { semaforo } from "@/lib/semaforo";
 import { brl, ddmm, economiaVsTeto, GLOSSARIO, isControlado } from "@/lib/med-format";
-import { mapsUrl } from "@/lib/maps";
+import { ondeComprar } from "@/lib/onde-comprar";
 import { Denuncia } from "./Denuncia";
 import { PrecoAoVivo } from "./PrecoAoVivo";
 import { TipoBadge } from "./TipoBadge";
@@ -90,7 +90,10 @@ export function Remedio() {
   const sem = cheapest && med.tetoGo != null && !med.semTeto ? semaforo(cheapest.centavos, med.tetoGo) : null;
   const redeMeta = cheapest && idx?.meta ? idx.meta.redes?.find((r) => r.nome === cheapest.rede) : undefined;
   const lojas = redeMeta?.lojasCount ?? 0;
-  const lojasRede = redeMeta?.lojas ?? [];
+  const cidade = idx?.meta?.cidade ?? "Goiânia";
+  // onde comprar a rede mais barata: lojas com mapa quando temos, e SEMPRE um
+  // link pra achar a rede na cidade (nunca some, como sumia pra São João/Drogal)
+  const oc = cheapest ? ondeComprar(cheapest.rede, cidade, redeMeta?.lojas ?? []) : null;
   const eco = cheapest && med.tetoGo != null && !med.semTeto ? economiaVsTeto(cheapest.centavos, med.tetoGo) : null;
   const ativo = [med.substancia?.replace(/\s*;\s*/g, " + "), med.concentracao].filter(Boolean).join(" ");
   const ehGenerico = !!med.tipo && /gen[eé]rico|similar/i.test(med.tipo);
@@ -155,13 +158,17 @@ export function Remedio() {
           <>
             <div className="det-preco-topo">
               <div>
-                <span className="det-preco-label">menor preço praticado em {idx?.meta?.cidade ?? "Goiânia"}</span>
+                <span className="det-preco-label">menor preço praticado em {cidade}</span>
                 <div className="det-preco-val">
                   {brl(cheapest.centavos)} <span className="det-preco-rede">na {cheapest.rede}</span>
                 </div>
               </div>
               {sem && <span className={`semaforo sem-${sem.cls}`}>{sem.label}</span>}
             </div>
+            <p className="det-preco-nota">
+              Preço do site da {cheapest.rede} — o mesmo pra rede toda na internet. No balcão da loja pode variar.
+              <InfoTip>{GLOSSARIO.precoRede}</InfoTip>
+            </p>
             {med.precos.length > 1 && <p className="det-redes-head">preço em cada rede de farmácia</p>}
             <ul className="det-redes">
               {med.precos.map((p) => (
@@ -184,21 +191,36 @@ export function Remedio() {
                 {ddmm(idx?.meta?.observadoEm)}
               </span>
             </div>
-            {lojasRede.length > 0 && (
+            {oc && (
               <div className="det-lojas">
                 <span className="det-lojas-head">
-                  onde comprar · {cheapest.rede} em {idx?.meta?.cidade ?? "Goiânia"}
+                  onde comprar · {oc.rede} em {oc.cidade}
                 </span>
-                <ul>
-                  {lojasRede.slice(0, 3).map((l, i) => (
-                    <li key={i}>
-                      <span className="det-loja-end">{[l.bairro, l.endereco].filter(Boolean).join(" · ")}</span>
-                      <a href={mapsUrl(l.lat, l.lng)} target="_blank" rel="noopener noreferrer" className="det-loja-mapa">
-                        ver no mapa →
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                {oc.temEndereco ? (
+                  <>
+                    <ul>
+                      {oc.lojas.map((l, i) => (
+                        <li key={i}>
+                          <span className="det-loja-end">{l.rotulo}</span>
+                          <a href={l.mapa} target="_blank" rel="noopener noreferrer" className="det-loja-mapa">
+                            ver no mapa →
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <a href={oc.buscaRede} target="_blank" rel="noopener noreferrer" className="det-lojas-todas">
+                      ver todas as lojas da {oc.rede} →
+                    </a>
+                  </>
+                ) : (
+                  <p className="det-lojas-vazio">
+                    Esse é o preço do site da {oc.rede} (o mesmo pra rede toda). Pra comprar pessoalmente, ache uma
+                    loja em {oc.cidade}:{" "}
+                    <a href={oc.buscaRede} target="_blank" rel="noopener noreferrer" className="det-lojas-vazio-link">
+                      ver lojas da {oc.rede} no mapa →
+                    </a>
+                  </p>
+                )}
               </div>
             )}
           </>
