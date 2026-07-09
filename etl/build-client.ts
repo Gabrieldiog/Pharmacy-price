@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { gzipSync } from "node:zlib";
 import type { AppMed } from "./enrich";
-import { grupoKey } from "./enrich";
+import { grupoKey, doseCompleta } from "./enrich";
 import { pmcParaUF } from "./aliquotas";
 import { computeDestaques } from "./destaques";
 import { computePanorama } from "./panorama";
@@ -66,7 +66,9 @@ const out: ClientMed[] = lines.map((l) => {
     id: m.id,
     produto: m.produto,
     substancia: m.substancia,
-    concentracao: m.concentracao,
+    // dose COMPLETA (mostra o combo inteiro, ex.: "2 MG + 0,035 MG") — recalculada
+    // da apresentacao, sem re-rodar build:data
+    concentracao: doseCompleta(m.apresentacao),
     apresentacao: m.apresentacao,
     laboratorio: m.laboratorio,
     tipo: m.tipo,
@@ -76,8 +78,9 @@ const out: ClientMed[] = lines.map((l) => {
     semTeto: m.semTeto,
     tetoGo: pmcParaUF(m.pmc, "GO"),
     precos: sortRedePrecos(redePrecos),
-    // recalcula a chave de equivalencia dos campos crus (grupoKey atualizado, sem re-rodar build:data)
-    grupo: m.substancia && m.concentracao ? grupoKey(m.substancia, m.concentracao) : null,
+    // recalcula a chave de equivalencia (substancia + dose completa + forma + liberacao),
+    // dos campos crus, sem re-rodar build:data
+    grupo: m.substancia && m.apresentacao ? grupoKey(m.substancia, m.apresentacao) : null,
   };
 });
 
