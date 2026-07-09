@@ -90,6 +90,51 @@ export function exigeReceitaRetida(tarja: string | null): boolean {
   return /sob\s+restri/i.test(tarja ?? "");
 }
 
+// A forma farmaceutica em fala de gente ("comprimido", "gotas", "creme"). A ordem
+// importa (INJ antes de SOL; CAP antes de GEL). \bCAP\b (nao \bCAP) pra nao casar
+// "CAPI" de "SOL CAPI" (solucao capilar). Null quando nao reconhece a forma.
+const FORMAS: [RegExp, string][] = [
+  [/\bINJ\b|LIOF/, "injetável"],
+  [/\bCOMP?\b/, "comprimido"],
+  [/\bCAP\b/, "cápsula"],
+  [/\bDRG\b/, "drágea"],
+  [/\bPAST?\b/, "pastilha"],
+  [/\bSUP\b/, "supositório"],
+  [/OVULO/, "óvulo"],
+  [/CREM/, "creme"],
+  [/\bPOM\b/, "pomada"],
+  [/XAMP|SHAMP/, "xampu"],
+  [/\bLOC\b|LOÇ/, "loção"],
+  [/\bGEL\b/, "gel"],
+  [/XPE|XAR|\bELX\b|ELIX/, "xarope"],
+  [/\bGOT\b|\bGTS\b/, "gotas"],
+  [/SUS/, "suspensão"],
+  [/EMULS/, "emulsão"],
+  [/\bSOL\b/, "solução"],
+  [/GRAN/, "granulado"],
+  [/AER|INAL|SPRAY|\bNEB\b/, "spray / inalação"],
+  [/ADES|TRANSD/, "adesivo"],
+  [/\bPO\b/, "pó"],
+];
+
+// só a forma (sem a quantidade) — usada na chave de agrupamento pra separar comprimido
+// de cápsula, creme de pomada (o "grupo" da CMED junta essas numa via só).
+export function formaBase(apresentacao: string | null): string | null {
+  if (!apresentacao) return null;
+  return FORMAS.find(([rx]) => rx.test(apresentacao.toUpperCase()))?.[1] ?? null;
+}
+
+export function formaLegivel(apresentacao: string | null): string | null {
+  const forma = formaBase(apresentacao);
+  if (!forma) return null;
+  // quantidade da caixa no fim: "X 30" -> "30 un"; "X 20 ML" -> "20 ml"; "X 40 G" -> "40 g"
+  const q = apresentacao!.toUpperCase().match(/X\s*(\d+)\s*(ML|G)?\s*$/);
+  if (!q) return forma;
+  const [, n, uni] = q;
+  const cauda = uni ? `${n} ${uni.toLowerCase()}` : `${n} un`;
+  return `${forma} · ${cauda}`;
+}
+
 export function ddmm(iso: string | undefined): string {
   if (!iso) return "";
   const d = new Date(iso);

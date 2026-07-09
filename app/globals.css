@@ -287,6 +287,41 @@ body {
   transform: translateY(-1px);
 }
 
+/* um card e o nudge do genérico ficam juntos (a lista dá gap entre wraps) */
+.card-wrap { display: flex; flex-direction: column; gap: 6px; }
+.card-outras { color: var(--faint); }
+
+/* nudge do genérico mais barato: link próprio (não dá link dentro de link) */
+.card-nudge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: rgba(var(--brand-rgb), 0.08);
+  border: 1px solid rgba(var(--brand-rgb), 0.26);
+  border-radius: 12px;
+  padding: 9px 14px;
+  color: var(--brand);
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.4;
+  transition: background 0.16s;
+}
+.card-nudge:hover { background: rgba(var(--brand-rgb), 0.15); }
+.card-nudge-txt strong { font-weight: 700; }
+.card-nudge-seta { font-weight: 700; flex-shrink: 0; }
+
+/* nada encontrado: guia pro nome do princípio ativo */
+.results-vazio { padding: 22px 4px; }
+.results-vazio-titulo { font-size: 15px; color: var(--ink); }
+.results-vazio-dica { margin-top: 10px; font-size: 14px; line-height: 1.65; color: var(--muted); max-width: 62ch; }
+.results-vazio-dica em { font-style: normal; color: var(--ink); font-weight: 600; }
+
+/* no celular a busca acompanha a rolagem dos resultados */
+@media (max-width: 640px) {
+  .search-box { position: sticky; top: 8px; z-index: 10; }
+}
+
 .card-main { flex: 1; min-width: 0; }
 .card-title {
   font-size: 16px;
@@ -857,6 +892,7 @@ body {
 .det-head { margin-top: 12px; }
 .det-titulo { font-size: clamp(24px, 5vw, 34px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
 .det-sub { color: var(--muted); font-size: 15px; margin-top: 6px; }
+.det-sub-cru { color: var(--faint); font-size: 12.5px; } /* a apresentação crua da CMED, discreta */
 .det-head .card-tags { margin-top: 12px; }
 .det-head .free { margin-top: 14px; }
 

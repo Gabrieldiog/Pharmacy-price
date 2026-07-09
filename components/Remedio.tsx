@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import type { ClientMed } from "@/lib/types";
 import { loadMedsIndex, equivalentes, menorPreco, type MedsIndex } from "@/lib/meds-client";
 import { semaforo } from "@/lib/semaforo";
-import { brl, ddmm, economiaVsTeto, exigeReceitaRetida, GLOSSARIO, isControlado } from "@/lib/med-format";
+import { brl, ddmm, economiaVsTeto, exigeReceitaRetida, formaLegivel, GLOSSARIO, isControlado } from "@/lib/med-format";
 import { ondeComprar } from "@/lib/onde-comprar";
 import { Denuncia } from "./Denuncia";
 import { PrecoAoVivo } from "./PrecoAoVivo";
@@ -116,7 +116,12 @@ export function Remedio() {
             <InfoTip>{GLOSSARIO.principioAtivo}</InfoTip>
           </p>
         )}
-        {med.apresentacao && <p className="det-sub">{med.apresentacao}</p>}
+        {med.apresentacao && (
+          <p className="det-sub">
+            {formaLegivel(med.apresentacao) ?? med.apresentacao}
+            {formaLegivel(med.apresentacao) && <span className="det-sub-cru"> · {med.apresentacao}</span>}
+          </p>
+        )}
         <Tags med={med} />
         {med.laboratorio && (
           <p className="det-fab">
