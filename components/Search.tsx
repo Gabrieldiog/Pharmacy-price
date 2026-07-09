@@ -23,7 +23,8 @@ export function Search({ fallback }: { fallback?: ReactNode }) {
     };
   }, []);
 
-  const results = useMemo(() => (idx ? searchMeds(idx, q) : []), [q, idx]);
+  // porUtilidade: na busca da home, quem tem preço/de-graça sobe (o que a pessoa veio ver)
+  const results = useMemo(() => (idx ? searchMeds(idx, q, 40, true) : []), [q, idx]);
   const show = q.trim().length >= 2;
 
   return (

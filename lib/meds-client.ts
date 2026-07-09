@@ -62,11 +62,25 @@ export async function loadMedsIndex(): Promise<MedsIndex> {
   return { byId, byGrupo, mini, meta };
 }
 
-export function searchMeds(idx: MedsIndex, q: string, limit = 40): ClientMed[] {
+// Reordena os resultados da busca: o que a pessoa veio ver sobe. "De graça" primeiro
+// (o melhor desfecho), depois os que têm preço coletado, e por fim o resto (só teto /
+// sem nada). A relevância do MiniSearch vira o desempate — sort estável preserva a
+// ordem de entrada dentro de cada faixa. Como 98% da base não tem preço, sem isso o
+// único resultado útil costuma cair lá embaixo.
+export function ordenaPorUtilidade(meds: ClientMed[]): ClientMed[] {
+  const faixa = (m: ClientMed) => (m.deGraca ? 0 : menorPreco(m) != null ? 1 : 2);
+  return [...meds].sort((a, b) => faixa(a) - faixa(b));
+}
+
+// porUtilidade=true (busca da home): sobe quem tem preço/de-graça, reordenando ANTES
+// de cortar (um remédio com preço na posição 50 por relevância precisa poder subir e
+// caber no limite). Default false = pura relevância — o Colaborar quer achar o remédio
+// pra reportar (que muitas vezes NÃO tem preço), então não pode empurrá-lo pra baixo.
+export function searchMeds(idx: MedsIndex, q: string, limit = 40, porUtilidade = false): ClientMed[] {
   if (q.trim().length < 2) return [];
-  return idx.mini
+  const hits = idx.mini
     .search(q)
-    .slice(0, limit)
     .map((r) => idx.byId.get(String(r.id)))
     .filter((m): m is ClientMed => Boolean(m));
+  return (porUtilidade ? ordenaPorUtilidade(hits) : hits).slice(0, limit);
 }

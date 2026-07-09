@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { equivalentes, menorPreco, type MedsIndex } from "./meds-client";
+import { equivalentes, menorPreco, ordenaPorUtilidade, type MedsIndex } from "./meds-client";
 import type { ClientMed } from "./types";
 
 function med(id: string, grupo: string | null, precos: { rede: string; centavos: number }[], tetoGo: number | null = null): ClientMed {
@@ -34,4 +34,17 @@ test("equivalentes: exclui o proprio e ordena do mais barato pro sem preco", () 
 test("equivalentes: sem grupo retorna vazio", () => {
   const a = med("a", null, [{ rede: "X", centavos: 500 }]);
   assert.deepEqual(equivalentes(idxDe([a]), a), []);
+});
+
+test("ordenaPorUtilidade: de graça primeiro, depois com preço, depois o resto (estável)", () => {
+  const gratis = { ...med("gratis", null, []), deGraca: true };
+  const caro = med("caro", null, [{ rede: "X", centavos: 900 }]);
+  const barato = med("barato", null, [{ rede: "X", centavos: 500 }]);
+  const soTeto = med("soteto", null, [], 1000);
+  const preta = { ...med("preta", null, [{ rede: "X", centavos: 700 }]), tarja: "Tarja Preta" };
+  // ordem de entrada (relevância): caro, soTeto, gratis, preta, barato
+  const out = ordenaPorUtilidade([caro, soTeto, gratis, preta, barato]).map((m) => m.id);
+  // de graça sobe; caro/barato mantêm a ordem de entrada (desempate por relevância);
+  // preta cai no "resto" porque o preço de controlado é suprimido (menorPreco = null)
+  assert.deepEqual(out, ["gratis", "caro", "barato", "soteto", "preta"]);
 });
