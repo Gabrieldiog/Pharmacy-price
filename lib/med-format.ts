@@ -48,6 +48,16 @@ export function economiaVsTeto(precoCents: number, tetoCents: number): { reais: 
   return { reais: brl(eco)!, pct: Math.round((eco / tetoCents) * 100) };
 }
 
+// Contexto do teto pra quando NAO ha preco de mercado coletado. O teto e o
+// maximo que a lei permite cobrar — nao um preco a pagar —, entao aqui ele vem
+// como linha pequena e rotulada, pra nunca ser confundido com um preco de venda.
+// null quando nao ha teto nem regime liberado (nada util a mostrar).
+export function tetoPelaLei(med: { tetoGo: number | null; semTeto: boolean }): string | null {
+  if (med.tetoGo != null && !med.semTeto) return `teto pela lei ${brl(med.tetoGo)}`;
+  if (med.semTeto) return "sem teto legal";
+  return null;
+}
+
 // Termos tecnicos traduzidos pra uma frase simples (tooltip/rodape).
 export const GLOSSARIO: Record<string, string> = {
   principioAtivo:

@@ -348,14 +348,8 @@ body {
   letter-spacing: 0.05em;
   color: var(--faint);
 }
-.teto-val {
-  font-size: 21px;
-  font-weight: 700;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-  margin-top: 4px;
-}
-.teto-na { font-size: 13px; color: var(--faint); margin-top: 4px; }
+/* teto quando NAO ha preco: pequeno e discreto, pra nunca virar "preco" no olho */
+.teto-ceil { font-size: 11.5px; color: var(--faint); margin-top: 6px; font-variant-numeric: tabular-nums; }
 
 /* preco praticado + semaforo */
 .preco-val {

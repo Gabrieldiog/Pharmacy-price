@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ClientMed, PrecosMeta } from "@/lib/types";
 import { semaforo } from "@/lib/semaforo";
-import { brl, economiaVsTeto, haQuantoTempo, isControlado } from "@/lib/med-format";
+import { brl, economiaVsTeto, haQuantoTempo, isControlado, tetoPelaLei } from "@/lib/med-format";
 import { TipoBadge } from "./TipoBadge";
 
 // icone de fabrica: marca o laboratorio como "quem fabrica" (vs. a farmacia que vende)
@@ -28,6 +28,7 @@ export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null
   const eco = cheapest && med.tetoGo != null && !med.semTeto ? economiaVsTeto(cheapest.centavos, med.tetoGo) : null;
   const lojas = cheapest && meta ? meta.redes?.find((r) => r.nome === cheapest.rede)?.lojasCount ?? 0 : 0;
   const frescor = meta ? haQuantoTempo(meta.observadoEm) : "";
+  const semPrecoTeto = tetoPelaLei(med); // contexto do teto quando não há preço
 
   return (
     <Link href={`/remedio?id=${encodeURIComponent(med.id)}`} className="card">
@@ -88,18 +89,13 @@ export function MedCard({ med, meta }: { med: ClientMed; meta: PrecosMeta | null
               </span>
             )}
           </>
-        ) : med.semTeto ? (
-          <>
-            <span className="teto-label">preço liberado</span>
-            <span className="teto-na">sem teto legal</span>
-          </>
-        ) : teto ? (
-          <>
-            <span className="teto-label">Teto legal · GO</span>
-            <span className="teto-val">{teto}</span>
-          </>
         ) : (
-          <span className="teto-na">teto indisponível</span>
+          // sem preço de mercado coletado: diz isso na cara, e mostra o teto
+          // pequeno e rotulado (é o máximo pela lei, não um preço a pagar)
+          <>
+            <span className="teto-label">ainda sem preço</span>
+            {semPrecoTeto && <span className="teto-ceil">{semPrecoTeto}</span>}
+          </>
         )}
       </div>
     </Link>
