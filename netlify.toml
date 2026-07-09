@@ -9,3 +9,10 @@
 [build.environment]
   # aponta o preço ao vivo pro Balcão já publicado (senão cai no fallback honesto)
   NEXT_PUBLIC_BALCAO_URL = "https://balcao-api.onrender.com"
+
+# A imagem OG (next/og) é exportada como arquivo sem extensão (out/opengraph-image),
+# então o Netlify serviria como octet-stream e o preview não renderiza. Força o tipo.
+[[headers]]
+  for = "/opengraph-image"
+  [headers.values]
+    Content-Type = "image/png"

@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import type { ClientMed } from "@/lib/types";
 import { loadMedsIndex, equivalentes, menorPreco, type MedsIndex } from "@/lib/meds-client";
 import { semaforo } from "@/lib/semaforo";
@@ -34,9 +33,7 @@ function precoResumo(m: ClientMed): { texto: string; cls: string } {
   return { texto: "—", cls: "eq-preco eq-vazio" };
 }
 
-export function Remedio() {
-  const params = useSearchParams();
-  const id = params.get("id");
+export function Remedio({ id }: { id: string }) {
   const [idx, setIdx] = useState<MedsIndex | null>(null);
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState(false);
@@ -296,7 +293,7 @@ export function Remedio() {
                   const barato = menorPreco(m) != null && menorPreco(m) === menorPreco(vistos[0]!);
                   return (
                     <li key={m.id}>
-                      <Link href={`/remedio?id=${encodeURIComponent(m.id)}`} className={`eq ${barato ? "eq-barato" : ""}`}>
+                      <Link href={`/remedio/${encodeURIComponent(m.id)}`} className={`eq ${barato ? "eq-barato" : ""}`}>
                         <span className="eq-nome">
                           <span className="eq-titulo">
                             {m.produto}

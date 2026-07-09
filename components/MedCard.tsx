@@ -48,7 +48,7 @@ export function MedCard({
 
   return (
     <div className="card-wrap">
-      <Link href={`/remedio?id=${encodeURIComponent(med.id)}`} className="card">
+      <Link href={`/remedio/${encodeURIComponent(med.id)}`} className="card">
         <div className="card-main">
           {/* eixo 1: de graca — ganha de qualquer preco, entao vem no topo */}
           {med.deGraca && (
@@ -126,7 +126,7 @@ export function MedCard({
 
       {/* o coração da promessa: buscou a marca, mostra o genérico mais barato aqui */}
       {nudge && (
-        <Link href={`/remedio?id=${encodeURIComponent(nudge.id)}`} className="card-nudge">
+        <Link href={`/remedio/${encodeURIComponent(nudge.id)}`} className="card-nudge">
           <span className="card-nudge-txt">
             Tem genérico bem mais barato: <strong>{nudge.produto}</strong> a partir de{" "}
             <strong>{brl(nudge.centavos)}</strong>

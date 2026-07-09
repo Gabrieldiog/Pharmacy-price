@@ -5,10 +5,29 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap" });
 
+// URL de producao pra os links absolutos do OpenGraph (preview no WhatsApp, Google).
+// No Netlify a env URL ja vem preenchida com o dominio do site; NEXT_PUBLIC_SITE_URL
+// permite fixar um dominio proprio. O fallback so vale em dev.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || "https://pharmacy-price.netlify.app";
+
+const TITULO = "Pharmacy-price — o preço justo do seu remédio";
+const DESCRICAO =
+  "Compare o preço de medicamentos com o teto legal da Anvisa (CMED) e veja o que é de graça no Farmácia Popular. Piloto em Goiânia.";
+
 export const metadata: Metadata = {
-  title: "Pharmacy-price — o preço justo do seu remédio",
-  description:
-    "Compare o preço de medicamentos com o teto legal da Anvisa (CMED) e veja o que é de graça no Farmácia Popular. Piloto em Goiânia.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: TITULO, template: "%s · Pharmacy-price" },
+  description: DESCRICAO,
+  applicationName: "Pharmacy-price",
+  openGraph: {
+    title: TITULO,
+    description: DESCRICAO,
+    siteName: "Pharmacy-price",
+    locale: "pt_BR",
+    type: "website",
+    url: "/",
+  },
+  twitter: { card: "summary_large_image", title: TITULO, description: DESCRICAO },
 };
 
 // Aplica o tema antes do primeiro paint (evita flash). Comeca no claro; respeita a escolha salva.

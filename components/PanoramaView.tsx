@@ -79,7 +79,7 @@ export function PanoramaView() {
             <p className="pan-txt">Mesma substância, mesma dose. Alguns exemplos reais:</p>
             <div className="pan-eco">
               {d!.economia.slice(0, 3).map((c) => (
-                <Link key={c.id} href={`/remedio?id=${encodeURIComponent(c.id)}`} className="pan-eco-item">
+                <Link key={c.id} href={`/remedio/${encodeURIComponent(c.id)}`} className="pan-eco-item">
                   <span className="pan-eco-nome">{[c.substancia?.replace(/;/g, " + "), c.concentracao].filter(Boolean).join(" · ")}</span>
                   <span className="pan-eco-preco">
                     {brl(c.baratoCents)} <s>{brl(c.caroCents)}</s>
@@ -106,7 +106,7 @@ export function PanoramaView() {
           {p.gratisMaisCaro && (
             <p className="pan-txt pan-destaque">
               Tem remédio que, pelo teto, chegaria a <strong>{brl(p.gratisMaisCaro.cents)}</strong> —{" "}
-              <Link href={`/remedio?id=${encodeURIComponent(p.gratisMaisCaro.id)}`} className="pan-link">
+              <Link href={`/remedio/${encodeURIComponent(p.gratisMaisCaro.id)}`} className="pan-link">
                 {p.gratisMaisCaro.produto.toLowerCase()}
               </Link>{" "}
               — e sai de graça.

@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import { Remedio } from "@/components/Remedio";
+import { RedirecionaLegado } from "@/components/RedirecionaLegado";
 
-export const metadata: Metadata = {
-  title: "Detalhe do remédio · Pharmacy-price",
-  description: "Preço praticado, teto legal e equivalentes na mesma dose.",
-};
+// Compat: os links agora sao /remedio/<id>. Esta rota so existe pra redirecionar os
+// links antigos (/remedio?id=<id>). noindex: e um stub de redirect, nao deve ser
+// indexado como duplicata da home.
+export const metadata: Metadata = { robots: { index: false, follow: true } };
 
-export default function RemedioPage() {
+export default function RemedioLegacy() {
   return (
     <main className="page">
-      <Suspense fallback={<p className="det-loading">Carregando…</p>}>
-        <Remedio />
-      </Suspense>
+      <RedirecionaLegado />
     </main>
   );
 }
