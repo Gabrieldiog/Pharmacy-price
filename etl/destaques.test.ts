@@ -5,7 +5,7 @@ import { computeDestaques, type DestaqueMedInput } from "./destaques";
 function med(p: Partial<DestaqueMedInput> & { id: string }): DestaqueMedInput {
   return {
     produto: p.id, substancia: null, concentracao: null, apresentacao: null, laboratorio: null,
-    deGraca: false, indicacao: null, semTeto: false, tetoGo: null, precos: [], grupo: null,
+    tarja: null, deGraca: false, indicacao: null, semTeto: false, tetoGo: null, precos: [], grupo: null,
     ...p,
   };
 }
@@ -58,4 +58,16 @@ test("acimaDoTeto: detecta preco acima do teto legal", () => {
   assert.equal(a.length, 1);
   assert.equal(a[0]?.id, "caro");
   assert.equal(a[0]?.acimaPct, 20);
+});
+
+test("tarja preta nao entra em card de preco na home (guard preventivo)", () => {
+  // preco espurio casado a um controlado: nao pode virar 'economia' nem 'acima do teto'
+  const meds = [
+    med({ id: "barato", produto: "GENERICO", grupo: "x|10mg", apresentacao: "X 30", precos: [{ rede: "X", centavos: 500 }] }),
+    med({ id: "preto", produto: "CONTROLADO", grupo: "x|10mg", apresentacao: "X 30", tarja: "Tarja Preta", precos: [{ rede: "Y", centavos: 5000 }] }),
+    med({ id: "acima", produto: "PRETO2", tarja: "Tarja Preta", tetoGo: 1000, precos: [{ rede: "Z", centavos: 9000 }] }),
+  ];
+  const d = computeDestaques(meds);
+  assert.equal(d.economia.length, 0); // o "caro" seria o preto (5000) -> sem par valido
+  assert.equal(d.acimaDoTeto.length, 0); // o preto acima do teto foi suprimido
 });

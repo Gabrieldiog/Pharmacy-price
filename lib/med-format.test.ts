@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { tipoLabel, tipoBadge, economiaVsTeto, tetoPelaLei } from "./med-format";
+import { tipoLabel, tipoBadge, economiaVsTeto, tetoPelaLei, isControlado, exigeReceitaRetida } from "./med-format";
 
 test("tipoLabel: 'novo' vira 'De marca', nunca 'Referência'", () => {
   assert.equal(tipoLabel("Novo"), "De marca");
@@ -38,4 +38,14 @@ test("tetoPelaLei: rotula o teto como máximo da lei (nunca como preço)", () =>
   assert.equal(tetoPelaLei({ tetoGo: 1000, semTeto: true }), "sem teto legal"); // liberado ganha do PMC
   // sem teto e sem regime liberado -> nada útil a mostrar
   assert.equal(tetoPelaLei({ tetoGo: null, semTeto: false }), null);
+});
+
+test("isControlado é só tarja preta (não vende online); exigeReceitaRetida é a vermelha restrita", () => {
+  assert.equal(isControlado("Tarja Preta"), true);
+  assert.equal(isControlado("Tarja Vermelha"), false);
+  assert.equal(isControlado("Tarja Vermelha sob restrição"), false); // restrita não é preta
+  assert.equal(exigeReceitaRetida("Tarja Vermelha sob restrição"), true);
+  assert.equal(exigeReceitaRetida("Tarja Vermelha"), false);
+  assert.equal(exigeReceitaRetida("Tarja Preta"), false);
+  assert.equal(exigeReceitaRetida(null), false);
 });

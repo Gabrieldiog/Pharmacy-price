@@ -1,4 +1,5 @@
 import type { Destaques, EconomiaCard, GratisCard, TetoCard } from "../lib/types";
+import { isControlado } from "../lib/med-format";
 
 // Entrada minima (subset do ClientMed) pro calculo dos destaques da home.
 export interface DestaqueMedInput {
@@ -8,6 +9,7 @@ export interface DestaqueMedInput {
   concentracao: string | null;
   apresentacao: string | null;
   laboratorio: string | null;
+  tarja: string | null;
   deGraca: boolean;
   indicacao: string | null;
   semTeto: boolean;
@@ -16,7 +18,9 @@ export interface DestaqueMedInput {
   grupo: string | null;
 }
 
-const menor = (m: DestaqueMedInput) => m.precos[0]?.centavos ?? null;
+// tarja preta (controlado forte) nunca entra num card de preco na home — mesmo
+// guard do resto do app, aqui no pre-calculo dos destaques
+const menor = (m: DestaqueMedInput) => (isControlado(m.tarja) ? null : m.precos[0]?.centavos ?? null);
 
 // Economia: mesma apresentacao EXATA (mesmo grupo + apresentacao) com precos diferentes.
 // Comparar a apresentacao exata evita o falso "desconto" que so vem de tamanho de caixa.

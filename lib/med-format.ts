@@ -77,8 +77,17 @@ export const GLOSSARIO: Record<string, string> = {
 };
 
 // Tarja Preta = medicamento controlado (nao vendido por e-commerce; preco so no balcao).
+// Qualquer preco que apareca casado a um tarja-preta e espurio (colisao de EAN) — a UI
+// suprime o preco desses e mostra so o aviso de controlado.
 export function isControlado(tarja: string | null): boolean {
   return /preta/i.test(tarja ?? "");
+}
+
+// Tarja Vermelha "sob restricao" = exige RETENCAO de receita. Diferente do tarja
+// preta: e vendido (inclusive online, as vezes), mas o medico/farmacia retem a
+// receita. Aqui o preco fica, com um aviso — nao se suprime.
+export function exigeReceitaRetida(tarja: string | null): boolean {
+  return /sob\s+restri/i.test(tarja ?? "");
 }
 
 export function ddmm(iso: string | undefined): string {

@@ -1102,6 +1102,18 @@ body {
 
 /* "preço da rede, não de uma loja" — a linha que mata a dúvida "qual loja?" */
 .det-preco-nota { margin-top: 8px; font-size: 12.5px; line-height: 1.5; color: var(--muted); max-width: 60ch; }
+/* aviso de receita retida (tarja vermelha sob restrição) — atenção discreta */
+.det-receita-retida {
+  margin-top: 10px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--amber);
+  background: rgba(var(--amber-rgb), 0.08);
+  border: 1px solid rgba(var(--amber-rgb), 0.24);
+  border-radius: 8px;
+  padding: 8px 12px;
+  max-width: 60ch;
+}
 
 /* preco ao vivo (das notas fiscais, por loja) */
 .det-vivo {
