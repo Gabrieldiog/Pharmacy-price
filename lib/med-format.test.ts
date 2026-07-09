@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { tipoLabel, tipoBadge, economiaVsTeto, tetoPelaLei, isControlado, exigeReceitaRetida } from "./med-format";
+import { tipoLabel, tipoBadge, economiaVsTeto, tetoPelaLei, isControlado, exigeReceitaRetida, formaLegivel } from "./med-format";
 
 test("tipoLabel: 'novo' vira 'De marca', nunca 'Referência'", () => {
   assert.equal(tipoLabel("Novo"), "De marca");
@@ -48,4 +48,16 @@ test("isControlado é só tarja preta (não vende online); exigeReceitaRetida é
   assert.equal(exigeReceitaRetida("Tarja Vermelha"), false);
   assert.equal(exigeReceitaRetida("Tarja Preta"), false);
   assert.equal(exigeReceitaRetida(null), false);
+});
+
+test("formaLegivel: traduz a apresentação crua da CMED pra fala de gente", () => {
+  assert.equal(formaLegivel("500 MG COM REV CT BL AL X 30"), "comprimido · 30 un");
+  assert.equal(formaLegivel("500 MG/ML SOL OR CT FR GOT PLAS X 20 ML"), "gotas · 20 ml"); // gotas ganha de solução
+  assert.equal(formaLegivel("125 MG/ML SOL INJ CT FA X 5 ML"), "injetável · 5 ml"); // INJ ganha de SOL
+  assert.equal(formaLegivel("10 MG/G CREM DERM CT BG AL X 40 G"), "creme · 40 g");
+  assert.equal(formaLegivel("500 MG CAP DURA CT BL X 21"), "cápsula · 21 un"); // CAP ganha, não é gel
+  // "CAPI" (capilar) NÃO vira cápsula — cai em solução (o \bCAP\b em vez de \bCAP)
+  assert.equal(formaLegivel("50 MG/ML SOL SPR CAPI CT FR X 50 ML"), "solução · 50 ml");
+  assert.equal(formaLegivel(null), null);
+  assert.equal(formaLegivel("ALGO SEM FORMA RECONHECIVEL"), null); // cai na apresentação crua
 });

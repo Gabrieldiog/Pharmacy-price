@@ -2,7 +2,7 @@
 
 import MiniSearch from "minisearch";
 import type { ClientMed, PrecosMeta } from "@/lib/types";
-import { isControlado } from "@/lib/med-format";
+import { formaBase, isControlado } from "@/lib/med-format";
 
 const norm = (t: string) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
@@ -83,4 +83,86 @@ export function searchMeds(idx: MedsIndex, q: string, limit = 40, porUtilidade =
     .map((r) => idx.byId.get(String(r.id)))
     .filter((m): m is ClientMed => Boolean(m));
   return (porUtilidade ? ordenaPorUtilidade(hits) : hits).slice(0, limit);
+}
+
+// o "melhor" membro de um grupo pra representar o card: de graça primeiro, senão o
+// mais barato com preço, senão o primeiro (mais relevante, já que a lista vem ordenada)
+function melhorMembro(membros: ClientMed[]): ClientMed {
+  const gratis = membros.find((m) => m.deGraca);
+  if (gratis) return gratis;
+  let melhor = membros[0]!;
+  let melhorPreco = menorPreco(melhor) ?? Infinity;
+  for (const m of membros) {
+    const p = menorPreco(m) ?? Infinity;
+    if (p < melhorPreco) {
+      melhor = m;
+      melhorPreco = p;
+    }
+  }
+  return melhor;
+}
+
+export interface GrupoResultado {
+  rep: ClientMed; // o card que aparece
+  total: number; // quantas apresentações/marcas caíram nesse grupo
+}
+
+// Agrupa a lista de busca por REMÉDIO — mesmo produto + mesma dose + mesma forma. Junta
+// as N marcas/embalagens da mesma dipirona genérica num card só ("a partir de R$X · +N
+// opções"), mas mantém Novalgina separada da dipirona, e formas diferentes cada uma no
+// seu card. A chave usa o grupo (substância+dose+liberação) MAIS a formaBase, porque o
+// bucket de forma do grupo é largo (junta comprimido com cápsula, creme com pomada).
+// Preserva a ordem de entrada: o grupo aparece na posição do seu 1º membro (o mais útil).
+export function agrupaResultados(meds: ClientMed[]): GrupoResultado[] {
+  const grupos = new Map<string, ClientMed[]>();
+  const ordem: string[] = [];
+  for (const m of meds) {
+    const chave = m.grupo ? `${norm(m.produto)}|${m.grupo}|${formaBase(m.apresentacao) ?? ""}` : `solo:${m.id}`;
+    let arr = grupos.get(chave);
+    if (!arr) {
+      arr = [];
+      grupos.set(chave, arr);
+      ordem.push(chave);
+    }
+    arr.push(m);
+  }
+  return ordem.map((chave) => {
+    const membros = grupos.get(chave)!;
+    return { rep: melhorMembro(membros), total: membros.length };
+  });
+}
+
+export interface NudgeGenerico {
+  id: string;
+  produto: string;
+  centavos: number;
+}
+
+// Pro card de uma marca (ou similar) COM PREÇO e um genérico equivalente MAIS BARATO:
+// aponta pra ele. É o coração da promessa ("o mesmo remédio, muito mais barato") onde a
+// decisão acontece. Só quando faz sentido de verdade:
+//  - o próprio não pode ser genérico nem de graça (não vai mandar pagar pelo que é grátis);
+//  - o próprio precisa ter preço-base (senão não dá pra afirmar "mais barato");
+//  - a economia tem que ser relevante (>= R$3 OU >= 20%), pra "bem mais barato" ser honesto.
+const ehGenerico = (m: ClientMed) => /gen[eé]rico/i.test(m.tipo ?? "");
+const ECONOMIA_MIN_CENTAVOS = 300;
+const ECONOMIA_MIN_FRACAO = 0.2;
+
+export function genericoMaisBarato(idx: MedsIndex, med: ClientMed): NudgeGenerico | null {
+  if (!med.grupo || ehGenerico(med) || med.deGraca) return null;
+  const precoMed = menorPreco(med);
+  if (precoMed == null) return null;
+  let melhor: NudgeGenerico | null = null;
+  let melhorPreco = precoMed;
+  for (const m of idx.byGrupo.get(med.grupo) ?? []) {
+    if (!ehGenerico(m)) continue;
+    const p = menorPreco(m);
+    if (p == null || p >= melhorPreco) continue;
+    melhor = { id: m.id, produto: m.produto, centavos: p };
+    melhorPreco = p;
+  }
+  if (!melhor) return null;
+  const economia = precoMed - melhor.centavos;
+  if (economia < ECONOMIA_MIN_CENTAVOS && economia / precoMed < ECONOMIA_MIN_FRACAO) return null;
+  return melhor;
 }

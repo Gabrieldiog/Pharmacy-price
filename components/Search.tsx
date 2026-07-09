@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import { loadMedsIndex, searchMeds, type MedsIndex } from "@/lib/meds-client";
+import { loadMedsIndex, searchMeds, agrupaResultados, genericoMaisBarato, menorPreco, type MedsIndex } from "@/lib/meds-client";
 import { MedCard } from "./MedCard";
 
 export function Search({ fallback }: { fallback?: ReactNode }) {
   const [idx, setIdx] = useState<MedsIndex | null>(null);
   const [q, setQ] = useState("");
   const [loading, setLoading] = useState(true);
+  const [erro, setErro] = useState(false);
 
   useEffect(() => {
     let alive = true;
@@ -17,14 +18,21 @@ export function Search({ fallback }: { fallback?: ReactNode }) {
         setIdx(i);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        if (!alive) return;
+        setErro(true); // base não carregou — distinto de "nada encontrado"
+        setLoading(false);
+      });
     return () => {
       alive = false;
     };
   }, []);
 
-  // porUtilidade: na busca da home, quem tem preço/de-graça sobe (o que a pessoa veio ver)
-  const results = useMemo(() => (idx ? searchMeds(idx, q, 40, true) : []), [q, idx]);
+  // agrupa por remédio (produto + dose/forma): junta as N marcas da mesma dipirona num
+  // card só, em vez da parede de cards idênticos. Busca um pool maior (120) porque o
+  // agrupamento encolhe a lista. porUtilidade: quem tem preço/de-graça sobe.
+  const grupos = useMemo(() => (idx ? agrupaResultados(searchMeds(idx, q, 120, true)) : []), [q, idx]);
+  const comPreco = useMemo(() => grupos.filter((g) => menorPreco(g.rep) != null).length, [grupos]);
   const show = q.trim().length >= 2;
 
   return (
@@ -46,17 +54,52 @@ export function Search({ fallback }: { fallback?: ReactNode }) {
 
       {show ? (
         <div className="results">
-          <div className="results-count">
-            {results.length ? `${results.length} resultado${results.length > 1 ? "s" : ""}` : "Nada encontrado — tente o nome genérico"}
-          </div>
-          {results.map((m) => (
-            <MedCard key={m.id} med={m} meta={idx?.meta ?? null} />
-          ))}
+          {erro ? (
+            <div className="results-vazio" role="status">
+              <p className="results-vazio-titulo">Não consegui carregar a base de remédios.</p>
+              <p className="results-vazio-dica">Verifique a conexão e recarregue a página.</p>
+            </div>
+          ) : grupos.length > 0 ? (
+            <>
+              <div className="results-count" role="status">
+                {grupos.length} {grupos.length === 1 ? "remédio" : "remédios"}
+                {comPreco > 0 && comPreco < grupos.length && <span className="card-outras"> · {comPreco} com preço aqui</span>}
+              </div>
+              {grupos.map((g) => (
+                <MedCard
+                  key={g.rep.id}
+                  med={g.rep}
+                  meta={idx?.meta ?? null}
+                  outras={g.total - 1}
+                  nudge={idx ? genericoMaisBarato(idx, g.rep) : null}
+                />
+              ))}
+            </>
+          ) : (
+            <VazioBusca q={q.trim()} />
+          )}
         </div>
       ) : (
         // destaques aparecem na hora (2 KB proprios), sem esperar o indice de busca (8,5 MB)
         fallback
       )}
+    </div>
+  );
+}
+
+// estado vazio que ajuda: aponta pro nome do princípio ativo (não um mapa sintoma→remédio,
+// que seria conselho médico). Também lembra de conferir a grafia.
+function VazioBusca({ q }: { q: string }) {
+  return (
+    <div className="results-vazio" role="status">
+      <p className="results-vazio-titulo">
+        Nada encontrado para <strong>“{q}”</strong>.
+      </p>
+      <p className="results-vazio-dica">
+        Tente o <strong>nome do princípio ativo</strong> (a substância) em vez da marca — por exemplo{" "}
+        <em>dipirona</em> (Novalgina), <em>ibuprofeno</em> (Advil), <em>omeprazol</em> (Losec). Vale também conferir a
+        grafia.
+      </p>
     </div>
   );
 }
