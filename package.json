@@ -14,6 +14,7 @@
     "dev": "next dev",
     "prebuild": "tsx etl/build-client.ts",
     "build": "next build",
+    "postbuild": "node scripts/strip-prefetch.mjs",
     "fixture": "tsx etl/__fixtures__/make-fixture.ts",
     "pretest": "tsx etl/__fixtures__/make-fixture.ts",
     "test": "node --import tsx --test etl/parse-cmed.test.ts etl/parse-pfpb.test.ts etl/enrich.test.ts etl/vtex.test.ts etl/precos.test.ts etl/destaques.test.ts etl/panorama.test.ts lib/nfce.test.ts lib/equivalentes.test.ts lib/denuncia.test.ts lib/live-format.test.ts lib/med-format.test.ts lib/onde-comprar.test.ts lib/dose.test.ts lib/semaforo.test.ts"

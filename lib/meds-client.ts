@@ -35,9 +35,23 @@ export function equivalentes(idx: MedsIndex, med: ClientMed): ClientMed[] {
     });
 }
 
-// Carrega a base do cliente e monta o indice de busca uma unica vez.
-// Reusado pela home (Search) e pela pagina de colaboracao.
-export async function loadMedsIndex(): Promise<MedsIndex> {
+// Carrega a base do cliente e monta o indice de busca uma unica vez por sessao.
+// Cacheado: agora cada remedio e uma rota propria, entao navegar entre eles nao
+// pode re-baixar e reconstruir os 8,9 MB toda vez. Reusado pela home (Search),
+// pela pagina de remedio e pela de colaboracao.
+let indexCache: Promise<MedsIndex> | null = null;
+
+export function loadMedsIndex(): Promise<MedsIndex> {
+  if (!indexCache) {
+    indexCache = construirIndice().catch((e) => {
+      indexCache = null; // falha de rede nao fica grudada: permite nova tentativa
+      throw e;
+    });
+  }
+  return indexCache;
+}
+
+async function construirIndice(): Promise<MedsIndex> {
   const [data, meta] = await Promise.all([
     fetch("/medicamentos-go.json").then((r) => r.json()) as Promise<ClientMed[]>,
     fetch("/precos-meta.json").then((r) => r.json()).catch(() => null) as Promise<PrecosMeta | null>,

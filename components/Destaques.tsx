@@ -31,7 +31,7 @@ export function Destaques() {
           <p className="dest-lede">Mesma substância e mesma dose — só muda a marca e o preço.</p>
           <div className="dest-grid">
             {d.economia.map((c) => (
-              <Link key={c.id} href={`/remedio?id=${encodeURIComponent(c.id)}`} className="dest-eco">
+              <Link key={c.id} href={`/remedio/${encodeURIComponent(c.id)}`} className="dest-eco">
                 <span className="dest-eco-sub">
                   {[c.substancia?.replace(/;/g, " + "), c.concentracao].filter(Boolean).join(" · ")}
                 </span>
@@ -57,7 +57,7 @@ export function Destaques() {
           <p className="dest-lede">Esses o governo dá sem custo — é só a receita.</p>
           <div className="dest-gratis">
             {d.gratis.map((g) => (
-              <Link key={g.id} href={`/remedio?id=${encodeURIComponent(g.id)}`} className="dest-free">
+              <Link key={g.id} href={`/remedio/${encodeURIComponent(g.id)}`} className="dest-free">
                 <span className="dest-free-nome">{g.produto}</span>
                 {g.indicacao && <span className="dest-free-ind">{g.indicacao.toLowerCase()}</span>}
               </Link>
