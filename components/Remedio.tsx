@@ -266,8 +266,9 @@ export function Remedio() {
         <section className="det-equiv">
           <h2 className="det-h2">Equivalentes na mesma dose</h2>
           <p className="det-equiv-lede">
-            Mesmo princípio ativo e mesma concentração — genéricos, similares e a marca de referência. Do mais
-            barato pro mais caro.
+            Mesmo princípio ativo, mesma dose e mesma apresentação — genéricos, similares e a marca de referência,
+            do mais barato pro mais caro. Formas diferentes (injetável, comprimido de liberação prolongada) ficam
+            de fora porque não se trocam.
           </p>
           {equivs.length === 0 ? (
             <p className="det-equiv-vazio">Não encontramos outra apresentação equivalente na base.</p>
