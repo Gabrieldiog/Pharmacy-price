@@ -4,6 +4,8 @@ Comparador de preços de medicamentos para o Brasil. Cruza o **preço-teto legal
 **preços reais praticados**, avisa quando uma farmácia cobra **acima do teto**, e destaca quando o
 remédio é **de graça no Farmácia Popular**.
 
+**Ver ao vivo:** [pharmacy-price.netlify.app](https://pharmacy-price.netlify.app)
+
 > **Não existe uma fonte de preço de remédio no Brasil.** Existem fontes incompatíveis, formatos que
 > brigam, uma planilha do governo com nome de arquivo aleatório, PDFs escaneados, WAFs e um app federado
 > sem documentação. Este projeto constrói a camada que faltava.
@@ -29,7 +31,7 @@ ETL via GitHub Actions · deploy Netlify. Sem backend permanente, custo zero.
 
 ## Status
 
-Em construção. **Fase 0 — ETL da CMED** (teto nacional por UF).
+No ar (link acima). O **teto legal (CMED)** já está integrado — cobertura nacional por UF. O **preço real de balcão** começa regional, com piloto em Goiânia/GO. Em evolução ativa.
 
 ## Docs
 
